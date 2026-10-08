@@ -1,0 +1,49 @@
+{
+  "consultas": [
+    {
+      "candidate_id": "C021",
+      "campo": "availability_date",
+      "respuesta": "2026-10-30"
+    },
+    {
+      "candidate_id": "C022",
+      "campo": "availability_date",
+      "respuesta": "2026-11-05"
+    },
+    {
+      "candidate_id": "C023",
+      "campo": "availability_date",
+      "respuesta": "2026-10-28"
+    },
+    {
+      "candidate_id": "C024",
+      "campo": "availability_date",
+      "respuesta": "2026-11-10"
+    },
+    {
+      "candidate_id": "C025",
+      "campo": "availability_date",
+      "respuesta": "no se sabe"
+    },
+    {
+      "candidate_id": "C026",
+      "campo": "availability_date",
+      "respuesta": "2026-11-15"
+    },
+    {
+      "candidate_id": "C027",
+      "campo": "availability_date",
+      "respuesta": "2026-11-03"
+    },
+    {
+      "candidate_id": "C028",
+      "campo": "availability_date",
+      "respuesta": "no se sabe"
+    },
+    {
+      "candidate_id": "C031",
+      "campo": "availability_date",
+      "respuesta": "2026-10-29"
+    }
+  ]
+}

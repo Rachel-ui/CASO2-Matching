@@ -1,0 +1,43 @@
+id,nombre,email,skills,experience_years,english_level,availability_date,modality
+
+id,nombre,email,skills,experience_years,english_level,availability_date,modality
+C001,Ana Rodríguez,ana.rodriguez@example.com,"Python;SQL;Git;Django;REST API",4,B2,2026-10-20,remoto
+C002,Carlos Méndez,carlos.mendez@example.com,"Python;SQL;Git;Flask;REST API",3,B2,2026-10-27,hibrido
+C003,María González,maria.gonzalez@example.com,"Java;SQL;Git;Spring;REST API",5,C1,2026-10-15,presencial
+C004,José Vargas,jose.vargas@example.com,"Python;JavaScript;Git;React;REST API",2,B2,2026-11-03,hibrido
+C005,Sofía Hernández,sofia.hernandez@example.com,"Python;SQL;Docker;Git;FastAPI",5,C1,2026-10-20,remoto
+C006,Daniel Castro,daniel.castro@example.com,"JavaScript;React;Node.js;Git;SQL",4,B2,2026-10-25,remoto
+C007,Valeria Mora,valeria.mora@example.com,"Python;SQL;Git;Django;Docker",3,B1,2026-11-10,hibrido
+C008,Andrés Solano,andres.solano@example.com,"Python;SQL;Git;Flask;Docker",6,C1,2026-10-18,remoto
+C009,Laura Jiménez,laura.jimenez@example.com,"Java;Spring;SQL;Git;Docker",4,B2,2026-10-22,presencial
+C010,Mateo Rojas,mateo.rojas@example.com,"Python;JavaScript;SQL;Git;REST API",2,B1,2026-11-05,hibrido
+C011,Camila Soto,camila.soto@example.com,"Python;SQL;Git;FastAPI;Docker",4,B2,2026-10-28,remoto
+C012,Diego Navarro,diego.navarro@example.com,"JavaScript;Node.js;React;Git;MongoDB",3,B2,2026-10-30,remoto
+C013,Isabella Arias,isabella.arias@example.com,"Python;SQL;Git;Django;REST API",5,C1,2026-10-19,hibrido
+C014,Kevin Salazar,kevin.salazar@example.com,"Java;SQL;Git;Spring;Docker",6,C1,2026-10-21,presencial
+C015,Daniela Pérez,daniela.perez@example.com,"Python;SQL;Git;Flask;REST API",3,B2,2026-11-02,remoto
+C016,Marco Ramírez,marco.ramirez@example.com,"Python;JavaScript;Git;React;Node.js",4,B1,2026-11-12,hibrido
+C017,Lucía Fernández,lucia.fernandez@example.com,"Python;SQL;Git;Django;Docker",5,B2,2026-10-26,remoto
+C018,Sebastián León,sebastian.leon@example.com,"Java;SQL;Git;Spring;REST API",3,B2,2026-10-29,presencial
+C019,Natalia Campos,natalia.campos@example.com,"Python;SQL;Git;FastAPI;Docker",7,C1,2026-10-17,remoto
+C020,Adrián Chaves,adrian.chaves@example.com,"JavaScript;React;Node.js;Git;SQL",2,B1,2026-11-08,hibrido
+C021,Paula Jiménez,paula.jimenez@example.com,"Python;SQL;Git;Django;REST API",4,B2,,remoto
+C022,Felipe Herrera,felipe.herrera@example.com,"Java;SQL;Git;Spring;Docker",5,C1,,presencial
+C023,Andrea Solís,andrea.solis@example.com,"Python;SQL;Git;Flask;Docker",3,B1,,hibrido
+C024,Luis Calderón,luis.calderon@example.com,"Python;JavaScript;Git;React;REST API",4,B2,,remoto
+C025,Emma Villalobos,emma.villalobos@example.com,"Python;SQL;Git;FastAPI;Docker",6,C1,,remoto
+C026,Ricardo Fuentes,ricardo.fuentes@example.com,"JavaScript;Node.js;React;Git;SQL",3,B2,,hibrido
+C027,Mariana Acosta,mariana.acosta@example.com,"Python;SQL;Git;Django;Docker",2,B1,,remoto
+C028,Esteban Porras,esteban.porras@example.com,"Java;SQL;Git;Spring;REST API",4,B2,,presencial
+C029,Gabriela Montero,gabriela.montero@example.com,"Python;SQL;Git;Flask;REST API",5,C1,2026-11-15,remoto
+C030,Tomas Brenes,tomas.brenes@example.com,"Python;JavaScript;Git;React;Node.js",3,B1,2026-11-18,hibrido
+C031,Andrea Solís,andrea.solis@example.com,"Python;SQL;Git;Flask;Docker",3,B1,,hibrido
+C032,Ana Rodríguez,ana.rodriguez@example.com,"Python;SQL;Git;Django;REST API",4,B2,2026-10-20,remoto
+C033,Juan Quesada,juan.quesada@example.com,"Python;SQL;Git;Docker;FastAPI",6,C1,2026-10-23,remoto
+C034,Carolina Vega,carolina.vega@example.com,"Java;SQL;Git;Spring;REST API",5,B2,2026-10-24,presencial
+C035,Miguel Alfaro,miguel.alfaro@example.com,"Python;SQL;Git;Django;Docker",4,B2,2026-11-01,hibrido
+C036,Rebeca Zúñiga,rebeca.zuniga@example.com,"JavaScript;React;Node.js;Git;REST API",5,C1,2026-10-31,remoto
+C037,Pablo Murillo,pablo.murillo@example.com,"Python;SQL;Git;Flask;Docker",2,B1,2026-11-20,hibrido
+C038,Melissa Vargas,melissa.vargas@example.com,"Python;SQL;Git;Django;REST API",6,B2,2026-10-16,remoto
+C039,Óscar Valverde,oscar.valverde@example.com,"Java;SQL;Git;Spring;Docker",7,C1,2026-10-14,presencial
+C040,Patricia Cordero,patricia.cordero@example.com,"Python;SQL;Git;FastAPI;REST API",5,B2,2026-10-27,remoto

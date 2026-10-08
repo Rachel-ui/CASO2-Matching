@@ -1,0 +1,33 @@
+# Configuración del agente de matching
+scoring:
+  threshold: 70
+
+  weights:
+    mandatory_skills: 50
+    desirable_skills: 20
+    experience: 15
+    english: 10
+    availability: 5
+
+relaxation:
+  max_relaxations: 3
+
+  order:
+    - type: start_date
+      weeks: 2
+
+    - type: experience
+      years: 1
+
+    - type: english
+      levels: 1
+
+recruiter:
+  max_queries: 3
+
+llm:
+  max_calls_per_job: 30
+
+agent:
+  shortlist_size: 3
+  mode: without_llm
