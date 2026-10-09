@@ -22,6 +22,8 @@ def revisar_candidatos():
         "id",
         "nombre",
         "email",
+        "telefono",
+        "rol",
         "skills",
         "experience_years",
         "english_level",
@@ -43,6 +45,36 @@ def revisar_candidatos():
         if ids.count(identificador) > 1
     })
 
+     
+    # Detectar perfiles duplicados por correo.
+    correos = [
+        c["email"].strip().casefold()
+        for c in candidatos
+        if c["email"].strip()
+    ]
+
+    correos_duplicados = sorted({
+        correo
+        for correo in correos
+        if correos.count(correo) > 1
+    })
+
+    # Detectar perfiles con el mismo nombre y teléfono.
+    nombre_telefono = [
+        (
+            c["nombre"].strip().casefold(),
+            c["telefono"].strip().casefold(),
+        )
+        for c in candidatos
+        if c["nombre"].strip() and c["telefono"].strip()
+    ]
+
+    nombre_telefono_duplicados = sorted({
+        perfil
+        for perfil in nombre_telefono
+        if nombre_telefono.count(perfil) > 1
+    })
+     
     niveles = {"A1", "A2", "B1", "B2", "C1", "C2"}
     modalidades = {"remoto", "hibrido", "presencial"}
     errores = []
@@ -56,6 +88,11 @@ def revisar_candidatos():
         if not candidato["email"].strip():
             errores.append(f"{identificador}: falta email")
 
+        if not candidato["rol"].strip():
+            errores.append(f"{identificador}: falta rol")
+
+        if not candidato["telefono"].strip():
+            errores.append(f"{identificador}: falta telefono")
         try:
             experiencia = int(candidato["experience_years"])
             if experiencia < 0:
@@ -84,6 +121,11 @@ def revisar_candidatos():
     print(f"Total de candidatos: {len(candidatos)}")
     print(f"IDs únicos: {len(set(ids))}")
     print(f"IDs duplicados: {ids_duplicados or 'ninguno'}")
+    print(f"Correos duplicados: {correos_duplicados or 'ninguno'}")
+    print(
+        "Duplicados por nombre y teléfono:",
+        nombre_telefono_duplicados or "ninguno",
+    )
     print(
         "Candidatos sin fecha de disponibilidad:",
         sum(not c["availability_date"].strip() for c in candidatos),

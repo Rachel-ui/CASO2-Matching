@@ -3,3 +3,4 @@
 __pycache__/
 .pytest_cache/
 *.pyc
+data/candidatos_backup.csv
