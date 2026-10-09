@@ -1,0 +1,70 @@
+{
+  "vacantes": [
+    {
+      "id": "V001",
+      "titulo": "Desarrollador Backend Python",
+      "descripcion": "Se busca desarrollador backend con experiencia en Python y construcción de APIs REST. La persona debe trabajar con bases de datos SQL, utilizar Git y contar con experiencia en desarrollo de aplicaciones backend.",
+      "skills_obligatorios": [
+        "Python",
+        "SQL",
+        "Git",
+        "REST API"
+      ],
+      "skills_deseables": [
+        "Docker",
+        "FastAPI",
+        "Django"
+      ],
+      "experience_required": 3,
+      "english_required": "B1",
+      "availability_required": "2026-10-25",
+      "modality": "remoto",
+      "scenario": "facil"
+    },
+    {
+      "id": "V002",
+      "titulo": "Ingeniero Backend Senior",
+      "descripcion": "Se requiere profesional con sólida experiencia en desarrollo backend utilizando Python, SQL y herramientas modernas de desarrollo. Debe poseer experiencia trabajando con APIs, control de versiones y contenedores.",
+      "skills_obligatorios": [
+        "Python",
+        "SQL",
+        "Git",
+        "REST API",
+        "Docker"
+      ],
+      "skills_deseables": [
+        "FastAPI",
+        "Django"
+      ],
+      "experience_required": 6,
+      "english_required": "B2",
+      "availability_required": "2026-10-20",
+      "modality": "remoto",
+      "scenario": "media"
+    },
+    {
+      "id": "V003",
+      "titulo": "Especialista Backend Python",
+      "descripcion": "Se busca especialista backend altamente experimentado para desarrollar sistemas críticos utilizando Python, SQL, Git y tecnologías avanzadas de infraestructura y APIs.",
+      "skills_obligatorios": [
+        "Python",
+        "SQL",
+        "Git",
+        "REST API",
+        "Docker",
+        "Kubernetes",
+        "AWS"
+      ],
+      "skills_deseables": [
+        "FastAPI",
+        "Django",
+        "CI/CD"
+      ],
+      "experience_required": 10,
+      "english_required": "C2",
+      "availability_required": "2026-10-15",
+      "modality": "remoto",
+      "scenario": "dificil"
+    }
+  ]
+}

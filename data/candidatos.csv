@@ -1,6 +1,4 @@
 id,nombre,email,skills,experience_years,english_level,availability_date,modality
-
-id,nombre,email,skills,experience_years,english_level,availability_date,modality
 C001,Ana Rodríguez,ana.rodriguez@example.com,"Python;SQL;Git;Django;REST API",4,B2,2026-10-20,remoto
 C002,Carlos Méndez,carlos.mendez@example.com,"Python;SQL;Git;Flask;REST API",3,B2,2026-10-27,hibrido
 C003,María González,maria.gonzalez@example.com,"Java;SQL;Git;Spring;REST API",5,C1,2026-10-15,presencial
