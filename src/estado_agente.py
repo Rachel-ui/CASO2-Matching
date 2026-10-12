@@ -15,6 +15,7 @@ class EstadoAgente(TypedDict):
     errores: list[str]
     llm_calls: int
     requiere_revision_humana: bool
+    indice_candidato: int
     estado: str
 
 
@@ -40,5 +41,6 @@ def crear_estado_inicial(
         "errores": [],
         "llm_calls": 0,
         "requiere_revision_humana": False,
+        "indice_candidato": 0,
         "estado": "inicializado",
     }
