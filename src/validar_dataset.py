@@ -6,6 +6,8 @@ from pathlib import Path
 
 import yaml
 
+from src.duplicados import depurar_duplicados
+
 
 # Ubicación raíz del proyecto
 RAIZ = Path(__file__).resolve().parent.parent
@@ -45,7 +47,7 @@ def revisar_candidatos():
         if ids.count(identificador) > 1
     })
 
-     
+
     # Detectar perfiles duplicados por correo.
     correos = [
         c["email"].strip().casefold()
@@ -74,7 +76,10 @@ def revisar_candidatos():
         for perfil in nombre_telefono
         if nombre_telefono.count(perfil) > 1
     })
-     
+
+    # Aplicar las mismas reglas del agente de matching (RF-09).
+    unicos, duplicados = depurar_duplicados(candidatos)
+
     niveles = {"A1", "A2", "B1", "B2", "C1", "C2"}
     modalidades = {"remoto", "hibrido", "presencial"}
     errores = []
@@ -126,6 +131,12 @@ def revisar_candidatos():
         "Duplicados por nombre y teléfono:",
         nombre_telefono_duplicados or "ninguno",
     )
+    print(f"Perfiles únicos que se conservan: {len(unicos)}")
+    for duplicado in duplicados:
+        print(
+            f"- Se descarta {duplicado['id']} ({duplicado['nombre']}): "
+            f"{duplicado['motivo']} con el perfil único {duplicado['conservado_id']}"
+        )
     print(
         "Candidatos sin fecha de disponibilidad:",
         sum(not c["availability_date"].strip() for c in candidatos),
@@ -138,7 +149,12 @@ def revisar_candidatos():
     else:
         print("Validaciones de campos: sin errores.")
 
-    return candidatos, errores, ids_duplicados
+    # Los IDs repetidos por un perfil duplicado no son un error de datos.
+    ids_duplicados_reales = sorted(
+        set(ids_duplicados) - {d["id"] for d in duplicados}
+    )
+
+    return candidatos, errores, ids_duplicados_reales
 
 
 def revisar_vacantes():

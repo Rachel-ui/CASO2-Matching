@@ -1,7 +1,10 @@
-langgraph
-langchain
-langchain-openai
-pandas
-pytest
-python-dotenv
-pyyaml
+langgraph==1.2.14
+langchain==1.4.3
+langchain-core==1.6.8
+langchain-openai==1.7.0
+openai==3.26.1
+httpx==0.28.1
+pandas==3.0.6
+pytest==9.1.1
+python-dotenv==1.2.4
+PyYAML==6.0.3

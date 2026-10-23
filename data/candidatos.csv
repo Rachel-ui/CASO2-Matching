@@ -1,4 +1,4 @@
-id,nombre,email,skills,experience_years,english_level,availability_date,modality,rol,telefono
+﻿id,nombre,email,skills,experience_years,english_level,availability_date,modality,rol,telefono
 C001,Ana Rodríguez,ana.rodriguez@example.com,Python;SQL;Git;Django;REST API,4,B2,2026-10-20,remoto,Desarrollador Backend Python,FICTICIO-001
 C002,Carlos Méndez,carlos.mendez@example.com,Python;SQL;Git;Flask;REST API,3,B2,2026-10-27,hibrido,Desarrollador Backend Python,FICTICIO-002
 C003,María González,maria.gonzalez@example.com,Java;SQL;Git;Spring;REST API,5,C1,2026-10-15,presencial,Desarrollador Backend Java,FICTICIO-003
@@ -36,6 +36,7 @@ C034,Carolina Vega,carolina.vega@example.com,Java;SQL;Git;Spring;REST API,5,B2,2
 C035,Miguel Alfaro,miguel.alfaro@example.com,Python;SQL;Git;Django;Docker,4,B2,2026-11-01,hibrido,Desarrollador Backend Python,FICTICIO-035
 C036,Rebeca Zúñiga,rebeca.zuniga@example.com,JavaScript;React;Node.js;Git;REST API,5,C1,2026-10-31,remoto,Desarrollador Full Stack JavaScript,FICTICIO-036
 C037,Pablo Murillo,pablo.murillo@example.com,Python;SQL;Git;Flask;Docker,2,B1,2026-11-20,hibrido,Desarrollador Backend Python,FICTICIO-037
-C038,Melissa Vargas,melissa.vargas@example.com,Python;SQL;Git;Django;REST API,6,B2,2026-10-16,remoto,Desarrollador Backend Python,FICTICIO-038
+C038,Melissa Vargas,melissa.vargas@example.com,Python;SQL;Git,6,B2,2026-10-16,remoto,Desarrollador Backend Python,FICTICIO-038
 C039,Óscar Valverde,oscar.valverde@example.com,Java;SQL;Git;Spring;Docker,7,C1,2026-10-14,presencial,Desarrollador Backend Java,FICTICIO-039
 C040,Patricia Cordero,patricia.cordero@example.com,Python;SQL;Git;FastAPI;REST API,5,B2,2026-10-27,remoto,Desarrollador Backend Python,FICTICIO-040
+C041,Daniela quiros,,React;JavaScript;HTML,3,B1,,,Desarrollador Web,

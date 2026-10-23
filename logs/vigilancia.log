@@ -1,0 +1,14 @@
+Esperando correo nuevo en rachell-9884@agentmail.to. Ctrl+C para salir.
+[13:02:08] Vigilando rachell-9884@agentmail.to: 2 mensaje(s) conocidos. Consultando cada 15 s…
+[13:38:01] Error al consultar (1/5): No se pudo conectar con AgentMail: [WinError 10051] Se ha intentado una operación de socket en una red no accesible
+[13:38:16] Error al consultar (2/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[13:52:26] Error al consultar (1/5): No se pudo conectar con AgentMail: [WinError 10065] Se ha intentado una operación de socket en un host no accesible
+[13:52:41] Error al consultar (2/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[13:54:14] Error al consultar (1/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[13:54:40] Error al consultar (2/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[14:00:56] Error al consultar (1/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[14:01:12] Error al consultar (2/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[14:01:38] Error al consultar (3/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[14:02:04] Error al consultar (4/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+[14:02:19] Error al consultar (5/5): No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed
+Error: No se pudo conectar con AgentMail: [Errno 11001] getaddrinfo failed

@@ -1,0 +1,110 @@
+{
+  "vacante_id": "V003",
+  "titulo": "Especialista Backend Python",
+  "escenario": "dificil",
+  "estado": "incompleta",
+  "exito": false,
+  "aptos": 0,
+  "minimo": 3,
+  "shortlist": 0,
+  "requiere_revision_humana": true,
+  "relajaciones": [
+    "Se movió la fecha de inicio 2 semanas: 2026-10-15 -> 2026-10-29.",
+    "Se acepta 1 año menos de experiencia: 10 -> 9 años.",
+    "Se acepta un nivel menos de inglés: C2 -> C1."
+  ],
+  "consultas_reclutador": [
+    {
+      "candidato_id": "C021",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C021?",
+      "respuesta": "2026-10-30",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-10-30."
+    },
+    {
+      "candidato_id": "C022",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C022?",
+      "respuesta": "2026-11-05",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-11-05."
+    },
+    {
+      "candidato_id": "C023",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C023?",
+      "respuesta": "2026-10-28",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-10-28."
+    },
+    {
+      "candidato_id": "C024",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C024?",
+      "respuesta": "2026-11-10",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C025",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C025?",
+      "respuesta": "no se sabe",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C026",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C026?",
+      "respuesta": "2026-11-15",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C027",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C027?",
+      "respuesta": "2026-11-03",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C028",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C028?",
+      "respuesta": "no se sabe",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C041",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C041?",
+      "respuesta": "",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    }
+  ],
+  "criterios_vigentes": {
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API",
+      "Docker",
+      "Kubernetes",
+      "AWS"
+    ],
+    "experience_required": 9,
+    "english_required": "C1",
+    "availability_required": "2026-10-29",
+    "modality": "remoto"
+  },
+  "criterios_originales": {
+    "experience_required": 10,
+    "english_required": "C2",
+    "availability_required": "2026-10-15"
+  }
+}

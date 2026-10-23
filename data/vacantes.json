@@ -28,15 +28,15 @@
       "skills_obligatorios": [
         "Python",
         "SQL",
-        "Git",
-        "REST API",
-        "Docker"
+        "Git"
       ],
       "skills_deseables": [
+        "REST API",
+        "Docker",
         "FastAPI",
         "Django"
       ],
-      "experience_required": 6,
+      "experience_required": 7,
       "english_required": "B2",
       "availability_required": "2026-10-20",
       "modality": "remoto",

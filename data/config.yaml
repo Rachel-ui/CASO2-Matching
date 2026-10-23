@@ -27,6 +27,9 @@ recruiter:
 
 llm:
   max_calls_per_job: 30
+  # OpenRouter (API compatible con OpenAI). Se puede sobreescribir con LLM_MODEL.
+  model: anthropic/claude-3.5-haiku
+  base_url: https://openrouter.ai/api/v1
 
 agent:
   shortlist_size: 3

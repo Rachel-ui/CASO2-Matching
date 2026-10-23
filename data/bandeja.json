@@ -1,0 +1,124 @@
+{
+  "descripcion": "Bandeja simulada del Caso 2: 9 mensajes repartidos en 24 horas. Los correos de vacante traen ademas el campo vacante_estructurada, que es el que usa el agente en modo sin LLM (RNF-02).",
+  "inicio": "2026-10-20T06:00:00",
+  "correos": [
+    {
+      "message_id": "b1",
+      "timestamp": "2026-10-20T08:10:00",
+      "remitente": "rrhh@gestion-talentos.example",
+      "asunto": "Solicitud de vacante: Desarrollador Backend Python",
+      "cuerpo": "Hola, buenos días. Necesitamos cubrir un puesto de Desarrollador Backend Python para el equipo de plataforma. Se requiere Python, SQL, Git y REST API; deseables Docker, FastAPI y Django. Experiencia mínima de 3 años, inglés B1, modalidad remoto y disponible para iniciar el 25/10/2026. Quedamos atentos a sus candidatos.",
+      "vacante_estructurada": {
+        "id": "V001",
+        "titulo": "Desarrollador Backend Python",
+        "descripcion": "Se busca desarrollador backend con experiencia en Python y construccion de APIs REST, SQL y Git.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
+        "skills_deseables": ["Docker", "FastAPI", "Django"],
+        "experience_required": 3,
+        "english_required": "B1",
+        "availability_required": "2026-10-25",
+        "modality": "remoto",
+        "scenario": "facil"
+      }
+    },
+    {
+      "message_id": "b2",
+      "timestamp": "2026-10-20T10:35:00",
+      "remitente": "talentos@industria-example.com",
+      "asunto": "Ingeniero Backend Senior - urgente",
+      "cuerpo": "Buenas noches, se requiere profesional con sólida experiencia en desarrollo backend con Python, SQL, Git, APIs REST y contenedores Docker. Buscamos 6 años de experiencia, inglés B2, modalidad remoto y disponibilidad inmediata (20/10/2026).",
+      "vacante_estructurada": {
+        "id": "V002",
+        "titulo": "Ingeniero Backend Senior",
+        "descripcion": "Se requiere profesional con solida experiencia en desarrollo backend, Python, SQL, APIs y contenedores.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API", "Docker"],
+        "skills_deseables": ["FastAPI", "Django"],
+        "experience_required": 6,
+        "english_required": "B2",
+        "availability_required": "2026-10-20",
+        "modality": "remoto",
+        "scenario": "media"
+      }
+    },
+    {
+      "message_id": "b3",
+      "timestamp": "2026-10-20T13:05:00",
+      "remitente": "arquitectura@nube-example.io",
+      "asunto": "Especialista Backend Python (perfil senior)",
+      "cuerpo": "Necesitamos un especialista backend altamente experimentado para sistemas críticos: Python, SQL, Git, REST API, Docker, Kubernetes y AWS son obligatorios. 10 años de experiencia, inglés C2, remoto y disponibilidad para el 15/10/2026.",
+      "vacante_estructurada": {
+        "id": "V003",
+        "titulo": "Especialista Backend Python",
+        "descripcion": "Se busca especialista backend altamente experimentado en Python, SQL, Git e infraestructura avanzada.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API", "Docker", "Kubernetes", "AWS"],
+        "skills_deseables": ["FastAPI", "Django", "CI/CD"],
+        "experience_required": 10,
+        "english_required": "C2",
+        "availability_required": "2026-10-15",
+        "modality": "remoto",
+        "scenario": "dificil"
+      }
+    },
+    {
+      "message_id": "b4",
+      "timestamp": "2026-10-20T13:20:00",
+      "remitente": "rrhh@gestion-talentos.example",
+      "asunto": "RE: Solicitud de vacante: Desarrollador Backend Python",
+      "reenvio_de": "b1",
+      "cuerpo": "Reenvío por si no les llegó. Hola, buenos días. Necesitamos cubrir un puesto de Desarrollador Backend Python para el equipo de plataforma. Se requiere Python, SQL, Git y REST API; deseables Docker, FastAPI y Django. Experiencia mínima de 3 años, inglés B1, modalidad remoto y disponible para iniciar el 25/10/2026.",
+      "vacante_estructurada": {
+        "id": "V001",
+        "titulo": "Desarrollador Backend Python",
+        "descripcion": "Reenvio de la misma solicitud de vacante V001.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
+        "skills_deseables": ["Docker", "FastAPI", "Django"],
+        "experience_required": 3,
+        "english_required": "B1",
+        "availability_required": "2026-10-25",
+        "modality": "remoto",
+        "scenario": "facil"
+      }
+    },
+    {
+      "message_id": "b5",
+      "timestamp": "2026-10-20T16:40:00",
+      "remitente": "operaciones@logistica-example.com",
+      "asunto": "Necesitamos una persona para soporte",
+      "cuerpo": "Hola, necesitamos contratar a alguien para atender soporte a clientes. Que tenga buena comunicación y disponibilidad inmediata. No hemos definido el perfil técnico todavía; podemos conversar esta semana para acordarlo.",
+      "vacante_estructurada": null,
+      "nota": "Vacante sin skills: el agente debe pedir revisión humana en lugar de inventar criterios."
+    },
+    {
+      "message_id": "b6",
+      "timestamp": "2026-10-20T18:15:00",
+      "remitente": "andrea.rojas@example.net",
+      "asunto": "Mi perfil para puestos de backend",
+      "cuerpo": "Hola, me llamo Andrea Rojas. Tengo 4 años de experiencia como desarrolladora backend. Utilizo Python, SQL, Git y REST API. Mi nivel de inglés es B2, trabajo en modalidad remoto y puedo empezar el 01/11/2026.",
+      "vacante_estructurada": null
+    },
+    {
+      "message_id": "b7",
+      "timestamp": "2026-10-20T21:30:00",
+      "remitente": "newsletter@stack-weekly.example",
+      "asunto": "Boletín semanal: las 10 librerías de Python del mes",
+      "cuerpo": "Esta semana en Stack Weekly: las 10 librerías de Python que están dando de qué hablar, una entrevista sobre observabilidad y una guía de despliegues con contenedores. Suscríbete para recibir el próximo número.",
+      "vacante_estructurada": null
+    },
+    {
+      "message_id": "b8",
+      "timestamp": "2026-10-21T02:45:00",
+      "remitente": "coordinacion@empresa-example.com",
+      "asunto": "Sobre nuestro proyecto del próximo trimestre",
+      "cuerpo": "Saludos, les escribo del equipo de coordinación del proyecto. Queremos confirmar la reunión del próximo trimestre para revisar el avance del programa y alinear las prioridades con el área de tecnología. Avisen si la fecha propuesta les funciona.",
+      "vacante_estructurada": null
+    },
+    {
+      "message_id": "b9",
+      "timestamp": "2026-10-21T05:55:00",
+      "remitente": "info@cursos-example.com",
+      "asunto": "Su factura de octubre",
+      "cuerpo": "Adjuntamos el detalle de su factura del mes de octubre por el curso en línea. Cualquier consulta sobre el cobro, responda a este correo.",
+      "vacante_estructurada": null
+    }
+  ]
+}
