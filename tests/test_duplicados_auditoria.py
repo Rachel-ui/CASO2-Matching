@@ -3,8 +3,10 @@ import csv
 import json
 from pathlib import Path
 
+from src.configuracion import cargar_configuracion
 from src.duplicados import depurar_duplicados
 from src.estado_agente import crear_estado_inicial
+from src.ejecutar_matching import invocar_con_limite
 from src.grafo_matching import app_matching
 
 
@@ -23,7 +25,10 @@ def cargar_vacante():
 
 
 def ejecutar():
-    return app_matching.invoke(crear_estado_inicial(cargar_vacante(), cargar_candidatos()))
+    # Se usa el camino real de ejecución para respetar el recursion_limit (RNF-04).
+    return invocar_con_limite(
+        crear_estado_inicial(cargar_vacante(), cargar_candidatos()), cargar_configuracion()
+    )
 
 
 # --- RF-09 ---

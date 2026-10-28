@@ -120,3 +120,55 @@ def generar_justificacion(
         raise ErrorLLM("El LLM devolvió una respuesta vacía.")
 
     return texto
+
+
+PROMPT_CLASIFICACION = (
+    "Clasifica un correo de una bandeja de reclutamiento. Devuelve SOLO un "
+    "objeto JSON con las claves: clase (\"vacante_nueva\", \"no_relacionado\"), "
+    "motivo (una frase), y vacante. En vacante pon los campos titulo, "
+    "descripcion, skills_obligatorios (lista), skills_deseables (lista), "
+    "experience_required (entero o null), english_required (A1..C2 o null), "
+    "availability_required (YYYY-MM-DD o null) y modality (remoto, hibrido, "
+    "presencial o null). Si el correo no pide contratar a nadie, usa "
+    "\"no_relacionado\" y vacante null. No inventes skills, fechas ni niveles: "
+    "si no están en el correo, usa null o lista vacía."
+)
+
+
+def interpretar_correo_con_llm(llm, correo: dict, hoy=None) -> dict:
+    """Fase 2 de RF-16: el LLM clasifica el correo y extrae la vacante.
+
+    La respuesta se valida en `src.clasificar_correos` (rol y skills
+    obligatorios siguen siendo obligatorios). Si el LLM devuelve algo que no
+    es JSON, se levanta `ErrorLLM` y la clasificación cae a las reglas.
+    """
+
+    import json
+
+    asunto = str(correo.get("asunto") or "")
+    cuerpo = str(correo.get("cuerpo") or "")
+    fecha = f"Fecha del correo: {hoy.isoformat()}\n" if hoy else ""
+
+    mensajes = [
+        ("system", PROMPT_SISTEMA + " " + PROMPT_CLASIFICACION),
+        ("user", f"{fecha}Asunto: {asunto}\n\n{cuerpo}"),
+    ]
+
+    respuesta = llm.invoke(mensajes)
+    texto = str(getattr(respuesta, "content", "") or "").strip()
+    if not texto:
+        raise ErrorLLM("El LLM devolvió una respuesta vacía.")
+
+    inicio, fin = texto.find("{"), texto.rfind("}")
+    if inicio == -1 or fin <= inicio:
+        raise ErrorLLM("El LLM no devolvió un objeto JSON.")
+
+    try:
+        datos = json.loads(texto[inicio : fin + 1])
+    except ValueError as error:
+        raise ErrorLLM(f"El JSON del LLM no es válido: {error}") from error
+
+    if not isinstance(datos, dict):
+        raise ErrorLLM("El LLM no devolvió un objeto JSON.")
+
+    return {**datos, "llm_calls": 1}

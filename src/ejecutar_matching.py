@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 
 from src.estado_agente import crear_estado_inicial
+from src.configuracion import cargar_configuracion
 from src.grafo_matching import app_matching
 
 
@@ -75,11 +76,25 @@ def exportar_shortlist(shortlist: list[dict], ruta: Path) -> None:
             escritor.writerow(fila)
 
 
+def texto_limites(limites: dict, pasos: int) -> str:
+    """Resume los límites por corrida y los pasos usados (RNF-04)."""
+
+    return (
+        f"Límites RNF-04: {limites.get('horas_monitoreo', 0):g} h simuladas de "
+        f"monitoreo, {limites.get('relajaciones', 0)} relajaciones, "
+        f"{limites.get('consultas_reclutador', 0)} consultas al reclutador, "
+        f"{limites.get('llamadas_llm', 0)} llamadas al LLM y "
+        f"recursion_limit {limites.get('pasos_grafo', 0)} "
+        f"(pasos usados: {pasos})."
+    )
+
+
 def resumen_resultado(resultado: dict) -> dict:
     """Resume el resultado de una vacante: éxito, relajaciones y consultas (RF-04/05/06)."""
 
     vacante = resultado["vacante_actual"]
     vacante_original = resultado.get("vacante_original") or vacante
+    analisis = resultado.get("analisis_shortlist") or {}
 
     return {
         "vacante_id": vacante.get("id", ""),
@@ -90,7 +105,30 @@ def resumen_resultado(resultado: dict) -> dict:
         "aptos": (resultado.get("evaluacion") or {}).get("aptos", 0),
         "minimo": (resultado.get("evaluacion") or {}).get("minimo", 0),
         "shortlist": len(resultado["shortlist"]),
+        "shortlist_parcial": bool(analisis.get("puestos_libres")),
+        "puestos_libres": analisis.get("puestos_libres", 0),
         "requiere_revision_humana": resultado["requiere_revision_humana"],
+        # Solo tiene sentido explicar el bloqueo si faltan puestos (RF-07).
+        "motivo_incompleta": analisis.get("motivo_principal", "")
+        if analisis.get("puestos_libres")
+        else "",
+        "requisito_bloqueante": analisis.get("requisito_principal", "")
+        if analisis.get("puestos_libres")
+        else "",
+        "bloqueantes": analisis.get("bloqueantes", [])
+        if analisis.get("puestos_libres")
+        else [],
+        "perfiles_entregados": [
+            {
+                "posicion": item["posicion"],
+                "id": item["id"],
+                "puntaje": item["puntaje"],
+                "justificacion": item["justificacion"],
+            }
+            for item in resultado["shortlist"]
+        ],
+        "limites": resultado.get("limites", {}),
+        "pasos_grafo": resultado.get("pasos_grafo", 0),
         "relajaciones": [r["descripcion"] for r in resultado["relajaciones_aplicadas"]],
         "consultas_reclutador": [
             c for c in resultado["consultas_reclutador"]
@@ -117,6 +155,45 @@ def resumen_resultado(resultado: dict) -> dict:
     }
 
 
+def invocar_con_limite(estado_inicial: dict, config) -> dict:
+    """Ejecuta el grafo respetando `max_pasos_grafo` (RNF-04).
+
+    Primero se recorre el grafo en una pasada, sin consecuencias (los nodos
+    son deterministas y no escriben archivos), para saber cuántos pasos
+    necesita la corrida completa. Si caben en `max_pasos_grafo`, se vuelve a
+    invocar con el límite ajustado para que LangGraph no corte al final; si
+    no caben, se invoca solo con el máximo y LangGraph corta la corrida.
+    """
+
+    opciones = {"max_concurrency": 1}
+    # Cota provisional: ninguno de los límites por corrida (3 relajaciones,
+    # 3 consultas, 30 llamadas al LLM, 24 h de monitoreo) permite superarla.
+    # Cada recorrido de candidatos gasta ~4 pasos por perfil.
+    maximo_teorico = 4 * (len(estado_inicial["candidatos"]) + 1) * (
+        config.max_relajaciones + 2
+    ) + 50
+    try:
+        sonda = app_matching.invoke(
+            estado_inicial, {**opciones, "recursion_limit": maximo_teorico}
+        )
+    except RecursionError:
+        # Ni con la cota teórica termina: se corta con el máximo permitido.
+        return app_matching.invoke(
+            estado_inicial, {**opciones, "recursion_limit": config.recursion_limit}
+        )
+
+    if sonda.get("pasos_grafo", 0) > config.max_pasos_grafo:
+        # No cabe en el máximo: LangGraph corta la corrida al ejecutar.
+        return app_matching.invoke(
+            estado_inicial, {**opciones, "recursion_limit": config.recursion_limit}
+        )
+
+    # LangGraph reserva un paso extra al llegar a END: se le da margen, sin
+    # pasar nunca del máximo de pasos configurado.
+    limite = min(sonda["pasos_grafo"] + 10, config.max_pasos_grafo)
+    return app_matching.invoke(estado_inicial, {**opciones, "recursion_limit": limite})
+
+
 def ejecutar_vacante(vacante_id: str = "V001") -> dict:
     """Ejecuta el agente para una vacante y devuelve el estado final."""
 
@@ -124,7 +201,9 @@ def ejecutar_vacante(vacante_id: str = "V001") -> dict:
     candidatos = cargar_candidatos()
 
     estado_inicial = crear_estado_inicial(vacante, candidatos)
-    return app_matching.invoke(estado_inicial)
+    config = cargar_configuracion()
+
+    return invocar_con_limite(estado_inicial, config)
 
 
 if __name__ == "__main__":
@@ -144,6 +223,11 @@ if __name__ == "__main__":
         resultado = ejecutar_vacante(argumentos.vacante)
     except (ValueError, OSError) as error:
         raise SystemExit(f"Error: {error}")
+    except RecursionError as error:
+        raise SystemExit(
+            f"Error: se alcanzó el recursion_limit del grafo ({error}). "
+            "La corrida se detiene para no pasar el límite de pasos (RNF-04)."
+        )
     duracion = time.perf_counter() - inicio
 
     vacante_id = resultado["vacante_actual"]["id"]
@@ -163,6 +247,7 @@ if __name__ == "__main__":
         archivo.write("\n")
 
     print(f"Modo: {resultado['configuracion'].modo}")
+    print(texto_limites(resultado.get("limites", {}), resultado.get("pasos_grafo", 0)))
     print(f"Vacante: {vacante_id} ({resumen['escenario']})")
     print(f"Candidatos leídos: {len(resultado['candidatos'])}")
     print(f"Candidatos únicos: {len(resultado['candidatos_filtrados'])}")
@@ -192,6 +277,20 @@ if __name__ == "__main__":
             )
         else:
             print("La vacante queda INCOMPLETA y requiere revisión humana.")
+
+    # Shortlist parcial (RF-07): se entrega lo que hay y se explica el bloqueo.
+    if resumen["shortlist_parcial"]:
+        print(
+            f"\nShortlist parcial (RF-07): {resumen['shortlist']} de "
+            f"{resumen['shortlist'] + resumen['puestos_libres']} puestos. "
+            f"Requisito que impide completarla: {resumen['requisito_bloqueante']}. "
+            f"{resumen['motivo_incompleta']}"
+        )
+        for bloque in resumen["bloqueantes"]:
+            print(
+                f"  - {bloque['requisito']} ({len(bloque['casos'])} perfiles): "
+                f"{'; '.join(bloque['casos'])}"
+            )
 
     print("\nShortlist:")
     for item in resultado["shortlist"]:

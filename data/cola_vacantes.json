@@ -1,0 +1,138 @@
+{
+  "vacantes": [
+    {
+      "vacante": {
+        "id": "V001",
+        "titulo": "Desarrollador Backend Python",
+        "descripcion": "Se busca desarrollador backend con experiencia en Python y construccion de APIs REST, SQL y Git.",
+        "skills_obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "skills_deseables": [
+          "Docker",
+          "FastAPI",
+          "Django"
+        ],
+        "experience_required": 3,
+        "english_required": "B1",
+        "availability_required": "2026-10-25",
+        "modality": "remoto",
+        "scenario": "facil"
+      },
+      "message_id": "b1",
+      "origen": "vacante estructurada de la bandeja",
+      "fuente": "reglas",
+      "huella": "b2587ffb3fdcf928",
+      "procesada": true
+    },
+    {
+      "vacante": {
+        "id": "V002",
+        "titulo": "Ingeniero Backend Senior",
+        "descripcion": "Se requiere profesional con solida experiencia en desarrollo backend, Python, SQL, APIs y contenedores.",
+        "skills_obligatorios": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "skills_deseables": [
+          "REST API",
+          "Docker",
+          "FastAPI",
+          "Django"
+        ],
+        "experience_required": 7,
+        "english_required": "B2",
+        "availability_required": "2026-10-20",
+        "modality": "remoto",
+        "scenario": "media"
+      },
+      "message_id": "b2",
+      "origen": "vacante estructurada de la bandeja",
+      "fuente": "reglas",
+      "huella": "b78367ae65686baf",
+      "procesada": true
+    },
+    {
+      "vacante": {
+        "id": "V004",
+        "titulo": "Desarrollador Backend SQL",
+        "descripcion": "Se busca desarrollador backend con Python y SQL para el equipo de datos.",
+        "skills_obligatorios": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "skills_deseables": [
+          "FastAPI",
+          "REST API",
+          "Docker"
+        ],
+        "experience_required": 2,
+        "english_required": "B1",
+        "availability_required": "2026-11-01",
+        "modality": "remoto",
+        "scenario": "facil"
+      },
+      "message_id": "b11",
+      "origen": "vacante estructurada de la bandeja",
+      "fuente": "reglas",
+      "huella": "06a717d459a9fab1",
+      "procesada": true
+    },
+    {
+      "vacante": {
+        "id": "V003",
+        "titulo": "Especialista Backend Python",
+        "descripcion": "Se busca especialista backend altamente experimentado en Python, SQL, Git e infraestructura avanzada.",
+        "skills_obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "skills_deseables": [
+          "FastAPI",
+          "Django",
+          "CI/CD"
+        ],
+        "experience_required": 10,
+        "english_required": "C2",
+        "availability_required": "2026-10-30",
+        "modality": "remoto",
+        "scenario": "dificil"
+      },
+      "message_id": "b3",
+      "origen": "vacante estructurada de la bandeja",
+      "fuente": "reglas",
+      "huella": "3337973be69fd8af",
+      "procesada": true
+    }
+  ],
+  "duplicados": [],
+  "revision_humana": [
+    {
+      "message_id": "b0",
+      "datos": {
+        "titulo": "Buenos días, les escribo para consultar cómo es el proceso para enviarles una...",
+        "descripcion": "Buenos días, les escribo para consultar cómo es el proceso para enviarles una solicitud de vacante y cuánto tardan en responder. Gracias.",
+        "skills_obligatorios": [],
+        "skills_deseables": [],
+        "experience_required": null,
+        "english_required": null,
+        "availability_required": null,
+        "modality": null
+      },
+      "problemas": [
+        "no trae skills obligatorios"
+      ],
+      "motivo": "El correo parece una vacante pero no alcanza para el matching: no trae skills obligatorios"
+    }
+  ]
+}

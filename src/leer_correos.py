@@ -20,6 +20,20 @@ from dotenv import load_dotenv
 from src.agentmail_cliente import MIN_INTERVALO, AgentMailCliente, Correo, ErrorAgentMail
 
 
+# RNF-04: una corrida de monitoreo cubre como máximo 24 horas simuladas.
+# Cada lectura de la bandeja equivale a 8 h de bandeja simulada, así que la
+# corrida completa (3 lecturas) cubre las 24 h del escenario.
+HORAS_SIMULADAS_POR_CORRIDA = 8
+MAX_HORAS_SIMULADAS = 24
+
+
+def ventana_simulada(config) -> float:
+    """Horas simuladas que cubre una corrida, sin pasar de 24 (RNF-04)."""
+
+    horas = config.max_horas_monitoreo * HORAS_SIMULADAS_POR_CORRIDA
+    return min(horas, MAX_HORAS_SIMULADAS)
+
+
 def _configurar_salida() -> None:
     """La consola de Windows usa cp1252 y falla con caracteres no latinos."""
 
@@ -109,6 +123,14 @@ def main() -> int:
                 print(
                     f"Esperando correo nuevo en {cliente.inbox_id}. "
                     "Ctrl+C para salir.",
+                    flush=True,
+                )
+                from src.configuracion import cargar_configuracion
+
+                print(
+                    "Monitoreo simulado (RNF-04): "
+                    f"{ventana_simulada(cargar_configuracion()):g} h por corrida "
+                    f"({HORAS_SIMULADAS_POR_CORRIDA:g} h por lectura de la bandeja).",
                     flush=True,
                 )
                 if argumentos.vigilar:

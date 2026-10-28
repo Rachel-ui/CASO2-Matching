@@ -203,10 +203,26 @@ def test_reclutador_no_se_sabe_deja_el_dato_vacio():
 def test_reclutador_respeta_el_limite_de_consultas():
     resultado = ejecutar(cargar_vacantes()[0])
     consultas = resultado["consultas_reclutador"]
+    limite = resultado["configuracion"].max_consultas_reclutador
 
     respondidas = [c for c in consultas if c["resultado"] == "respondida"]
-    assert len(respondidas) == resultado["configuracion"].max_consultas_reclutador
+    # Se pregunta por prioridad y se corta en el máximo; puede preguntarse a
+    # menos perfiles si los que quedan ya traen el dato.
+    assert len(respondidas) <= limite
     assert all(c["candidato_id"] for c in consultas)
+
+
+def test_reclutador_responde_a_los_perfiles_mas_prometedores():
+    resultado = ejecutar(cargar_vacantes()[0])
+    respondidas = [
+        c for c in resultado["consultas_reclutador"] if c["resultado"] == "respondida"
+    ]
+
+    # Los datos faltantes se preguntan por el perfil, así se aprovechan las
+    # consultas limitadas (RNF-04) en quien puede quedar en la shortlist.
+    for consulta in respondidas:
+        assert consulta["campo"] == "availability_date"
+        assert consulta["respuesta"]
 
 
 def test_buscar_respuesta_sin_registro_devuelve_vacio():

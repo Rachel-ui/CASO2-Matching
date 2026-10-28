@@ -302,6 +302,39 @@ def construir_shortlist(
 
 
 MINIMO_APTOS = 3
+# Un perfil entra en "cercanos al umbral" si le faltan como máximo estos
+# puntos para que se expliquen los requisitos que lo dejaron fuera (RF-07).
+MARGEN_CERCA = 10
+# Si nadie queda cerca, se explican como máximo estos mejores perfiles.
+MAX_CERCANOS = 5
+DESCRIPCIONES = {
+    "skills_obligatorios": (
+        "Los skills obligatorios: ningún perfil cercano tiene todos los que pide "
+        "la vacante y estos no se relajan nunca, así que el puesto no se puede "
+        "cubrir ni después de las relajaciones."
+    ),
+    "experiencia": (
+        "La experiencia mínima: incluso tras aceptar un año menos, hay perfiles "
+        "cercanos al umbral que no llegan a los años exigidos."
+    ),
+    "ingles": (
+        "El nivel de inglés: incluso tras aceptar un nivel menos, hay perfiles "
+        "cercanos al umbral que quedan por debajo."
+    ),
+    "disponibilidad": (
+        "La fecha de disponibilidad: los perfiles cercanos no están disponibles "
+        "para la fecha de inicio (ni desplazada 2 semanas), o no tienen el dato "
+        "porque se agotaron las consultas al reclutador."
+    ),
+    "modalidad": (
+        "La modalidad: los perfiles cercanos no tienen una modalidad compatible "
+        "con la de la vacante y eso no se relaja."
+    ),
+    "umbral": (
+        "La puntuación: los perfiles cercanos cumplen los requisitos duros, pero "
+        "no alcanzan el umbral con las relajaciones aplicadas."
+    ),
+}
 
 
 def evaluar_resultado(
@@ -314,7 +347,8 @@ def evaluar_resultado(
     Hay éxito si al menos `minimo` candidatos (3 por defecto) superan el
     umbral. La condición se evalúa sobre la shortlist vigente: cualquier
     candidato con puntaje mayor o igual al umbral que todavía no tiene
-    un puesto asignado.
+    un puesto asignado. Para exigir además 3 puestos cubiertos se usa
+    `ajustar_a_shortlist` (RF-05/RF-07).
     """
 
     aptos = [item for item in calificados if item["puntaje"] >= config.threshold]
@@ -327,4 +361,137 @@ def evaluar_resultado(
         "cubiertos": len(cubiertos),
         "puestos_libres": max(0, config.shortlist_size - len(cubiertos)),
         "umbral": config.threshold,
+    }
+
+
+def ajustar_a_shortlist(evaluacion: dict, shortlist: list[dict], size: int) -> dict:
+    """Completa la evaluación con los puestos que la shortlist deja cubiertos.
+
+    `aptos` siguen siendo los que superan el umbral (RF-05); `cubiertos` y
+    `puestos_libres` dicen si además están cubiertos los puestos. Si no,
+    la corrida termina en `exito_parcial` y se relaja (RF-06/RF-07).
+    """
+
+    cubiertos = len(shortlist)
+
+    return {
+        **evaluacion,
+        "cubiertos": cubiertos,
+        "puestos_libres": max(0, size - cubiertos),
+    }
+
+
+def explicar_shortlist_incompleta(
+    calificados: list[dict],
+    vacante: dict,
+    shortlist: list[dict],
+    config: Configuracion,
+) -> dict:
+    """Explica qué requisito impide completar la shortlist (RF-07).
+
+    Se toma como base a los candidatos que están en el umbral o a menos de
+    10 puntos de él: son los que "casi" entran y por eso explican el bloqueo.
+    Para cada requisito duro se cuenta cuántos de ellos lo incumplen, se
+    nombran los casos concretos y se marca el requisito que bloquea más
+    puestos. Los skills obligatorios nunca se relajan, así que un perfil sin
+    todos esos skills no puede entrar a la shortlist ni con 3 relajaciones.
+    """
+
+    umbral = config.threshold
+    cercanos_a = umbral - MARGEN_CERCA
+    posiciones = {item["id"] for item in shortlist}
+    cercanos = [
+        item
+        for item in calificados
+        if item["id"] not in posiciones
+        and item["puntaje"] >= cercanos_a
+    ]
+
+    # Si nadie está cerca del umbral (vacante muy difícil), se explican los
+    # mejores perfiles fuera de la shortlist, que son los que casi entran.
+    ampliado = not cercanos and bool(calificados)
+    if ampliado:
+        cercanos = [
+            item for item in calificados if item["id"] not in posiciones
+        ][:MAX_CERCANOS]
+
+    bloques = {
+        "skills_obligatorios": [],
+        "experiencia": [],
+        "ingles": [],
+        "disponibilidad": [],
+        "modalidad": [],
+        "umbral": [],
+    }
+
+    for item in cercanos:
+        detalle = item["detalle"]
+        etiqueta = f"{item['id']} ({item['puntaje']:g} pts)"
+
+        if detalle["faltantes"]:
+            bloques["skills_obligatorios"].append(
+                f"{etiqueta}: le faltan {', '.join(detalle['faltantes'])}"
+            )
+        if detalle["experiencia"] < detalle["experiencia_requerida"]:
+            bloques["experiencia"].append(
+                f"{etiqueta}: {detalle['experiencia']} de "
+                f"{detalle['experiencia_requerida']} años"
+            )
+        if detalle["nivel_candidato_valor"] < detalle["nivel_requerido_valor"]:
+            bloques["ingles"].append(
+                f"{etiqueta}: {detalle['nivel_candidato'] or 'sin nivel'} "
+                f"frente a {detalle['nivel_requerido']}"
+            )
+        if not detalle["fecha_candidato"]:
+            bloques["disponibilidad"].append(f"{etiqueta}: sin fecha de disponibilidad")
+        elif not detalle["a_tiempo"]:
+            bloques["disponibilidad"].append(
+                f"{etiqueta}: disponible el {detalle['fecha_candidato']}, "
+                f"se requiere para el {detalle['fecha_requerida']}"
+            )
+        if not detalle["modalidad_ok"]:
+            bloques["modalidad"].append(
+                f"{etiqueta}: modalidad {detalle['modalidad_candidato'] or 'sin dato'}"
+            )
+        if item["cumple_requisitos"] and item["puntaje"] < umbral:
+            bloques["umbral"].append(
+                f"{etiqueta}: cumple los requisitos pero está {umbral - item['puntaje']:g} "
+                f"puntos bajo el umbral {umbral:g}"
+            )
+
+    puestos_libres = max(0, config.shortlist_size - len(shortlist))
+    bloqueantes = [
+        {"requisito": nombre, "casos": casos}
+        for nombre, casos in bloques.items()
+        if casos
+    ]
+    # El primer requisito con más casos es el que más impide completar la
+    # shortlist; el orden ya refleja skills -> experiencia -> inglés ->
+    # disponibilidad -> modalidad -> umbral.
+    bloqueantes.sort(key=lambda bloque: -len(bloque["casos"]))
+    principal = bloqueantes[0] if bloqueantes else None
+
+    if not calificados:
+        motivo = "No hay perfiles únicos que evaluar."
+    elif principal is None:
+        motivo = (
+            f"No se identificó un requisito bloqueante entre los {len(cercanos)} "
+            "perfiles cercanos al umbral."
+        )
+    elif ampliado:
+        motivo = (
+            f"Ningún perfil se acerca al umbral {umbral:g}; se explican los "
+            f"{len(cercanos)} mejores: {DESCRIPCIONES[principal['requisito']]}"
+        )
+    else:
+        motivo = DESCRIPCIONES[principal["requisito"]]
+
+    return {
+        "puestos_libres": puestos_libres,
+        "puestos_llenos": len(shortlist),
+        "candidatos_en_shortlist": [item["id"] for item in shortlist],
+        "perfiles_cercanos": len(cercanos),
+        "requisito_principal": principal["requisito"] if principal else "",
+        "motivo_principal": motivo,
+        "bloqueantes": bloqueantes,
     }

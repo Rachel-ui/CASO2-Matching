@@ -1,0 +1,3720 @@
+{
+  "vacante": {
+    "id": "V001",
+    "titulo": "Desarrollador Backend Python",
+    "escenario": "facil",
+    "estado": "finalizado",
+    "modo": "without_llm"
+  },
+  "vacante_original": {
+    "id": "V001",
+    "titulo": "Desarrollador Backend Python",
+    "descripcion": "Se busca desarrollador backend con experiencia en Python y construcción de APIs REST. La persona debe trabajar con bases de datos SQL, utilizar Git y contar con experiencia en desarrollo de aplicaciones backend.",
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API"
+    ],
+    "skills_deseables": [
+      "Docker",
+      "FastAPI",
+      "Django"
+    ],
+    "experience_required": 3,
+    "english_required": "B1",
+    "availability_required": "2026-10-25",
+    "modality": "remoto",
+    "scenario": "facil"
+  },
+  "criterios_vigentes": {
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API"
+    ],
+    "skills_deseables": [
+      "Docker",
+      "FastAPI",
+      "Django"
+    ],
+    "experience_required": 3,
+    "english_required": "B1",
+    "availability_required": "2026-11-08",
+    "modality": "remoto"
+  },
+  "criterios_originales": {
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API"
+    ],
+    "skills_deseables": [
+      "Docker",
+      "FastAPI",
+      "Django"
+    ],
+    "experience_required": 3,
+    "english_required": "B1",
+    "availability_required": "2026-10-25",
+    "modality": "remoto"
+  },
+  "configuracion": {
+    "umbral": 70.0,
+    "pesos": {
+      "mandatory_skills": 50.0,
+      "desirable_skills": 20.0,
+      "experience": 15.0,
+      "english": 10.0,
+      "availability": 5.0
+    },
+    "shortlist_size": 3,
+    "max_relajaciones": 3
+  },
+  "resultado": {
+    "exito": true,
+    "aptos": 17,
+    "minimo": 3,
+    "puestos_llenos": 3,
+    "puestos_libres": 0,
+    "requiere_revision_humana": false,
+    "requisito_bloqueante": "skills_obligatorios",
+    "motivo_incompleta": "Los skills obligatorios: ningún perfil cercano tiene todos los que pide la vacante y estos no se relajan nunca, así que el puesto no se puede cubrir ni después de las relajaciones.",
+    "bloqueantes": [
+      {
+        "requisito": "skills_obligatorios",
+        "casos": [
+          "C005 (80.83 pts): le faltan REST API",
+          "C011 (80.83 pts): le faltan REST API",
+          "C017 (80.83 pts): le faltan REST API",
+          "C019 (80.83 pts): le faltan REST API",
+          "C033 (80.83 pts): le faltan REST API",
+          "C007 (75.83 pts): le faltan REST API",
+          "C025 (75.83 pts): le faltan REST API",
+          "C035 (75.83 pts): le faltan REST API",
+          "C008 (74.17 pts): le faltan REST API",
+          "C027 (73.33 pts): le faltan REST API",
+          "C023 (69.17 pts): le faltan REST API",
+          "C038 (67.5 pts): le faltan REST API",
+          "C003 (62.5 pts): le faltan Python",
+          "C018 (62.5 pts): le faltan Python",
+          "C024 (62.5 pts): le faltan SQL",
+          "C028 (62.5 pts): le faltan Python",
+          "C034 (62.5 pts): le faltan Python",
+          "C037 (61.67 pts): le faltan REST API"
+        ]
+      },
+      {
+        "requisito": "modalidad",
+        "casos": [
+          "C013 (81.67 pts): modalidad hibrido",
+          "C007 (75.83 pts): modalidad hibrido",
+          "C035 (75.83 pts): modalidad hibrido",
+          "C002 (75 pts): modalidad hibrido",
+          "C023 (69.17 pts): modalidad hibrido",
+          "C010 (67.5 pts): modalidad hibrido",
+          "C003 (62.5 pts): modalidad presencial",
+          "C018 (62.5 pts): modalidad presencial",
+          "C028 (62.5 pts): modalidad presencial",
+          "C034 (62.5 pts): modalidad presencial",
+          "C037 (61.67 pts): modalidad hibrido"
+        ]
+      },
+      {
+        "requisito": "disponibilidad",
+        "casos": [
+          "C007 (75.83 pts): disponible el 2026-11-10, se requiere para el 2026-11-08",
+          "C025 (75.83 pts): sin fecha de disponibilidad",
+          "C029 (75 pts): disponible el 2026-11-15, se requiere para el 2026-11-08",
+          "C023 (69.17 pts): sin fecha de disponibilidad",
+          "C024 (62.5 pts): sin fecha de disponibilidad",
+          "C028 (62.5 pts): sin fecha de disponibilidad",
+          "C037 (61.67 pts): disponible el 2026-11-20, se requiere para el 2026-11-08"
+        ]
+      },
+      {
+        "requisito": "experiencia",
+        "casos": [
+          "C027 (73.33 pts): 2 de 3 años",
+          "C010 (67.5 pts): 2 de 3 años",
+          "C037 (61.67 pts): 2 de 3 años"
+        ]
+      }
+    ]
+  },
+  "shortlist": [
+    {
+      "posicion": 1,
+      "id": "C001",
+      "puntaje": 86.67,
+      "justificacion": "Ana Rodríguez: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: Django. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-20 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "desglose": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-20 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ]
+    },
+    {
+      "posicion": 2,
+      "id": "C021",
+      "puntaje": 86.67,
+      "justificacion": "Paula Jiménez: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: Django. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "desglose": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-30 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ]
+    },
+    {
+      "posicion": 3,
+      "id": "C040",
+      "puntaje": 86.67,
+      "justificacion": "Patricia Cordero: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: FastAPI. Experiencia: 5 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-27 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "desglose": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-27 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ]
+    }
+  ],
+  "candidatos": [
+    {
+      "id": "C001",
+      "puntaje": 86.67,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": true,
+      "en_shortlist": true,
+      "posicion": 1,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-20 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Ana Rodríguez: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: Django. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-20 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [
+          "Django"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-20",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C021",
+      "puntaje": 86.67,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": true,
+      "en_shortlist": true,
+      "posicion": 2,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-30 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Paula Jiménez: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: Django. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [
+          "Django"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-30",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C040",
+      "puntaje": 86.67,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": true,
+      "en_shortlist": true,
+      "posicion": 3,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-27 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Patricia Cordero: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: FastAPI. Experiencia: 5 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-27 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-27",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C013",
+      "puntaje": 81.67,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-19 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Isabella Arias: No cumple todos los requisitos obligatorios: modalidad hibrido no compatible. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: Django. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-19 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [
+          "Django"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-19",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C005",
+      "puntaje": 80.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-20 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Sofía Hernández: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, FastAPI. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-20 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Docker",
+          "Git",
+          "FastAPI"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "FastAPI"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-20",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C011",
+      "puntaje": 80.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-28 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Camila Soto: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, FastAPI. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-28 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "FastAPI"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-28",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C017",
+      "puntaje": 80.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-26 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Lucía Fernández: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, Django. Experiencia: 5 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-26 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "Django"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-26",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C019",
+      "puntaje": 80.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "7 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-17 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Natalia Campos: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, FastAPI. Experiencia: 7 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-17 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "FastAPI"
+        ],
+        "experiencia": 7,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-17",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C033",
+      "puntaje": 80.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "6 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-23 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Juan Quesada: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, FastAPI. Experiencia: 6 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-23 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker",
+          "FastAPI"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "FastAPI"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-23",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C015",
+      "puntaje": 80.0,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": true,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-02 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Daniela Pérez: Cumple todos los requisitos obligatorios. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-11-02 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-02",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C007",
+      "puntaje": 75.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-10 para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Valeria Mora: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, Django. Experiencia: 3 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-10 (después de lo requerido, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "Django"
+        ],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-10",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C025",
+      "puntaje": 75.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "6 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Emma Villalobos: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); disponibilidad sin confirmar. Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, FastAPI. Experiencia: 6 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "FastAPI"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C035",
+      "puntaje": 75.83,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-01 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Miguel Alfaro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); modalidad hibrido no compatible. Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, Django. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "Django"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-01",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C002",
+      "puntaje": 75.0,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-27 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Carlos Méndez: No cumple todos los requisitos obligatorios: modalidad hibrido no compatible. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-27 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-27",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C029",
+      "puntaje": 75.0,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-15 para 2026-11-08 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Gabriela Montero: No cumple todos los requisitos obligatorios: no disponible para la fecha requerida. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: ninguno. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-11-15 (después de lo requerido, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-15",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C008",
+      "puntaje": 74.17,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "6 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-18 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Andrés Solano: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker. Experiencia: 6 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-18 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-18",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C027",
+      "puntaje": 73.33,
+      "umbral": 70.0,
+      "supera_umbral": true,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 13.33,
+          "maximo": 20.0,
+          "valor": "Docker, Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "2 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-03 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Mariana Acosta: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); experiencia insuficiente (2 de 3 años, faltan 1). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker, Django. Experiencia: 2 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-03 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker",
+          "Django"
+        ],
+        "experiencia": 2,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-03",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C023",
+      "puntaje": 69.17,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Andrea Solís: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); disponibilidad sin confirmar; modalidad hibrido no compatible. Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker. Experiencia: 3 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C010",
+      "puntaje": 67.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 50.0,
+          "maximo": 50.0,
+          "valor": "4/4 (Python, SQL, Git, REST API)"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "2 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-05 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Mateo Rojas: No cumple todos los requisitos obligatorios: experiencia insuficiente (2 de 3 años, faltan 1); modalidad hibrido no compatible. Skills: 4/4 skills obligatorios (Python, SQL, Git, REST API). Deseables: ninguno. Experiencia: 2 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-05 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [],
+        "deseables_cumplidos": [],
+        "experiencia": 2,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-05",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C038",
+      "puntaje": 67.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "6 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-16 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Melissa Vargas: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API). Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: ninguno. Experiencia: 6 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-16 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 6,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-16",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C003",
+      "puntaje": 62.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (SQL, Git, REST API); faltan Python"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-15 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "María González: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python); modalidad presencial no compatible. Skills: 3/4 skills obligatorios (SQL, Git, REST API) (faltan: Python). Deseables: ninguno. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-15 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-15",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C018",
+      "puntaje": 62.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (SQL, Git, REST API); faltan Python"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-29 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Sebastián León: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python); modalidad presencial no compatible. Skills: 3/4 skills obligatorios (SQL, Git, REST API) (faltan: Python). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-29 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-29",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C024",
+      "puntaje": 62.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, Git, REST API); faltan SQL"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Luis Calderón: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL); disponibilidad sin confirmar. Skills: 3/4 skills obligatorios (Python, Git, REST API) (faltan: SQL). Deseables: ninguno. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "SQL"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C028",
+      "puntaje": 62.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (SQL, Git, REST API); faltan Python"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Esteban Porras: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python); disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 3/4 skills obligatorios (SQL, Git, REST API) (faltan: Python). Deseables: ninguno. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C034",
+      "puntaje": 62.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (SQL, Git, REST API); faltan Python"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-24 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Carolina Vega: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python); modalidad presencial no compatible. Skills: 3/4 skills obligatorios (SQL, Git, REST API) (faltan: Python). Deseables: ninguno. Experiencia: 5 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-24 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-24",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C037",
+      "puntaje": 61.67,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, SQL, Git); faltan REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "2 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Pablo Murillo: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API); experiencia insuficiente (2 de 3 años, faltan 1); no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 3/4 skills obligatorios (Python, SQL, Git) (faltan: REST API). Deseables: Docker. Experiencia: 2 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 2,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C009",
+      "puntaje": 56.67,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-22 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Laura Jiménez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); modalidad presencial no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: Docker. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-22 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-22",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C014",
+      "puntaje": 56.67,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "6 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-21 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Kevin Salazar: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); modalidad presencial no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: Docker. Experiencia: 6 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-21 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-21",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C022",
+      "puntaje": 56.67,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Felipe Herrera: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: Docker. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C039",
+      "puntaje": 56.67,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Docker"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "7 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-14 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Óscar Valverde: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); modalidad presencial no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: Docker. Experiencia: 7 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-14 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [
+          "Docker"
+        ],
+        "experiencia": 7,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-14",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C004",
+      "puntaje": 55.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 37.5,
+          "maximo": 50.0,
+          "valor": "3/4 (Python, Git, REST API); faltan SQL"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "2 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-03 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "José Vargas: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL); experiencia insuficiente (2 de 3 años, faltan 1); modalidad hibrido no compatible. Skills: 3/4 skills obligatorios (Python, Git, REST API) (faltan: SQL). Deseables: ninguno. Experiencia: 2 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-11-03 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "SQL"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 2,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-03",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C006",
+      "puntaje": 55.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-25 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Daniel Castro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API). Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: ninguno. Experiencia: 4 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-25 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-25",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C036",
+      "puntaje": 55.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (Git, REST API); faltan Python, SQL"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "5 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-31 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Rebeca Zúñiga: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL). Skills: 2/4 skills obligatorios (Git, REST API) (faltan: Python, SQL). Deseables: ninguno. Experiencia: 5 años (requiere 3). Inglés: C1 (requiere B1). Disponibilidad: disponible desde 2026-10-31 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-31",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C016",
+      "puntaje": 50.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (Python, Git); faltan SQL, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "4 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-12 para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Marco Ramírez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL, REST API); no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 2/4 skills obligatorios (Python, Git) (faltan: SQL, REST API). Deseables: ninguno. Experiencia: 4 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-12 (después de lo requerido, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "Node.js"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git"
+        ],
+        "faltantes": [
+          "SQL",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-12",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C026",
+      "puntaje": 50.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Ricardo Fuentes: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); disponibilidad sin confirmar; modalidad hibrido no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "Node.js",
+          "React",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C030",
+      "puntaje": 50.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (Python, Git); faltan SQL, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-18 para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Tomas Brenes: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL, REST API); no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 2/4 skills obligatorios (Python, Git) (faltan: SQL, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-18 (después de lo requerido, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "Node.js"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git"
+        ],
+        "faltantes": [
+          "SQL",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-18",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C012",
+      "puntaje": 42.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 12.5,
+          "maximo": 50.0,
+          "valor": "1/4 (Git); faltan Python, SQL, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-30 para 2026-11-08 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Diego Navarro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, REST API). Skills: 1/4 skills obligatorios (Git) (faltan: Python, SQL, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B2 (requiere B1). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "Node.js",
+          "React",
+          "Git",
+          "MongoDB"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-10-30",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C020",
+      "puntaje": 42.5,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 25.0,
+          "maximo": 50.0,
+          "valor": "2/4 (SQL, Git); faltan Python, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "2 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-08 para 2026-11-08 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Adrián Chaves: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API); experiencia insuficiente (2 de 3 años, faltan 1); modalidad hibrido no compatible. Skills: 2/4 skills obligatorios (SQL, Git) (faltan: Python, REST API). Deseables: ninguno. Experiencia: 2 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: disponible desde 2026-11-08 (a tiempo, se requiere para 2026-11-08). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 2,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "2026-11-08",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C041",
+      "puntaje": 25.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 0.0,
+          "maximo": 50.0,
+          "valor": "0/4; faltan Python, SQL, Git, REST API"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "3 de 3 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere B1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-08 (no cumple fecha, modalidad no compatible); modalidad sin dato"
+        }
+      ],
+      "justificacion": "Daniela quiros: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API); disponibilidad sin confirmar; modalidad  no compatible. Skills: 0/4 skills obligatorios (faltan: Python, SQL, Git, REST API). Deseables: ninguno. Experiencia: 3 años (requiere 3). Inglés: B1 (requiere B1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad sin dato (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "React",
+          "JavaScript",
+          "HTML"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "cumplidos": [],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 3,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "B1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 3,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-08",
+        "a_tiempo": false,
+        "modalidad_candidato": "",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    }
+  ],
+  "criterios_relajados": [
+    {
+      "orden": 1,
+      "tipo": "start_date",
+      "antes": "2026-10-25",
+      "despues": "2026-11-08",
+      "descripcion": "Se movió la fecha de inicio 2 semanas: 2026-10-25 -> 2026-11-08."
+    }
+  ],
+  "consultas_reclutador": [
+    {
+      "candidato_id": "C021",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C021?",
+      "respuesta": "2026-10-30",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-10-30."
+    },
+    {
+      "candidato_id": "C025",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C025?",
+      "respuesta": "no se sabe",
+      "resultado": "no_se_sabe",
+      "motivo": "El reclutador respondió \"no se sabe\"; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C027",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C027?",
+      "respuesta": "2026-11-03",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-11-03."
+    },
+    {
+      "candidato_id": "C023",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C023?",
+      "respuesta": "2026-10-28",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C024",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C024?",
+      "respuesta": "2026-11-10",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C028",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C028?",
+      "respuesta": "no se sabe",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C022",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C022?",
+      "respuesta": "2026-11-05",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C026",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C026?",
+      "respuesta": "2026-11-15",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C041",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C041?",
+      "respuesta": "",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    }
+  ],
+  "duplicados": [
+    {
+      "id": "C031",
+      "nombre": "Andrea Solís",
+      "email": "andrea.solis@example.com",
+      "telefono": "FICTICIO-023",
+      "posicion": 31,
+      "conservado_id": "C023",
+      "motivo": "Mismo correo, nombre y teléfono"
+    },
+    {
+      "id": "C032",
+      "nombre": "Ana Rodríguez",
+      "email": "ana.rodriguez@example.com",
+      "telefono": "FICTICIO-001",
+      "posicion": 32,
+      "conservado_id": "C001",
+      "motivo": "Mismo correo, nombre y teléfono"
+    }
+  ],
+  "limites": {
+    "horas_monitoreo": 3.0,
+    "relajaciones": 3,
+    "consultas_reclutador": 3,
+    "llamadas_llm": 30,
+    "pasos_grafo": 400,
+    "recursion_limit": 400
+  },
+  "pasos_grafo": 165,
+  "candidatos_por_componente": {
+    "Skills deseables": 39,
+    "Disponibilidad": 24,
+    "Skills obligatorios": 31,
+    "Experiencia": 5
+  },
+  "puntos_perdidos_por_componente": {
+    "Skills deseables": 586.66,
+    "Disponibilidad": 120.0,
+    "Skills obligatorios": 575.0,
+    "Experiencia": 37.5
+  },
+  "supuestos": [
+    {
+      "tema": "Umbral de puntaje",
+      "supuesto": "Un perfil entra a la shortlist con 70 puntos o más y cumpliendo todos los requisitos duros.",
+      "fuente": "data/config.yaml -> scoring.threshold (umbral 70)"
+    },
+    {
+      "tema": "Pesos del puntaje",
+      "supuesto": "El puntaje reparte 100 puntos así: skills obligatorios 50, skills deseables 20, experiencia 15, inglés 10, disponibilidad 5.",
+      "fuente": "data/config.yaml -> scoring.weights"
+    },
+    {
+      "tema": "Skills obligatorios",
+      "supuesto": "Los skills obligatorios no se relajan nunca; un perfil que no los tiene todos no entra, aunque el puesto quede libre.",
+      "fuente": "src/relajacion.py"
+    },
+    {
+      "tema": "Orden de relajación",
+      "supuesto": "Las relajaciones se aplican en orden: fecha de inicio (+2 semanas), experiencia (-1 año) e inglés (-1 nivel), hasta 3 en total.",
+      "fuente": "data/config.yaml -> relaxation"
+    },
+    {
+      "tema": "Mentalidad de modalidad",
+      "supuesto": "Un candidato remoto sirve para cualquier modalidad y uno híbrido cubre una vacante presencial; la modalidad no se relaja.",
+      "fuente": "src/scoring.py -> _modalidad_compatible"
+    },
+    {
+      "tema": "Datos faltantes",
+      "supuesto": "Si el reclutador no confirma un dato (\"no se sabe\" o se agotó el límite de 3 consultas), el campo queda vacío y se puntúa 0 en lugar de inventarlo.",
+      "fuente": "src/reclutador.py"
+    },
+    {
+      "tema": "Puntaje versus redacción",
+      "supuesto": "El puntaje siempre lo calcula el código; con LLM solo cambia la redacción de la justificación.",
+      "fuente": "AGENTE_MODO = without_llm"
+    }
+  ],
+  "observaciones": [
+    "Datos sin confirmar: 7 consulta(s) al reclutador quedaron sin respuesta (C022, C023, C024, C025, C026, C028, C041); esos perfiles se puntuaron sin la fecha de disponibilidad.",
+    "7 perfil(es) sin fecha de disponibilidad: C025, C023, C024, C028, C022, C026, C041. No se asumió una fecha por ellos.",
+    "La shortlist se armó con criterios relajados; sin esas relajaciones la cantidad de perfiles sería menor.",
+    "Se descartaron 2, que no se evaluaron dos veces."
+  ]
+}

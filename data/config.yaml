@@ -22,6 +22,11 @@ relaxation:
     - type: english
       levels: 1
 
+# Límites por corrida (RNF-04)
+limits:
+  max_monitoring_hours: 3   # horas simuladas por lectura de la bandeja (24 h reales)
+  recursion_limit: 400      # tope de pasos del grafo; corta una corrida desbocada
+
 recruiter:
   max_queries: 3
 

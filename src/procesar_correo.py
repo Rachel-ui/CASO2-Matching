@@ -15,9 +15,12 @@ from datetime import datetime
 from pathlib import Path
 
 from src.agentmail_cliente import AgentMailCliente, Correo
+from src.configuracion import cargar_configuracion
 from src.ejecutar_matching import (
     exportar_auditoria,
     exportar_shortlist,
+    invocar_con_limite,
+    texto_limites,
 )
 from src.grafo_matching import app_matching
 from src.solicitud_vacante import ErrorVacante, SolicitudVacante, extraer_vacante
@@ -44,8 +47,13 @@ def guardar_vacante(vacante: dict, correo: Correo, origen: str) -> str:
     vacantes = _leer_vacantes()
     identificador = vacante["id"]
 
-    renovada = [v for v in vacantes if v.get("id") == identificador]
-    if renovada:
+    actual = next((v for v in vacantes if v.get("id") == identificador), None)
+    if actual is not None and actual == vacante:
+        # Reenvío de una vacante ya guardada: no se modifica ni se reprocesa.
+        print(f"Vacante {identificador} ya estaba en {ARCHIVO_VACANTES.name} ({origen}).")
+        return "sin_cambios"
+
+    if actual is not None:
         vacantes = [v for v in vacantes if v.get("id") != identificador]
         accion = "actualizada"
     else:
@@ -70,17 +78,24 @@ def cargar_candidatos() -> list[dict]:
         return list(csv.DictReader(archivo))
 
 
-def procesar_correo(correo: Correo, cliente: AgentMailCliente | None = None) -> dict:
+def procesar_correo(
+    correo: Correo,
+    cliente: AgentMailCliente | None = None,
+    vacante: dict | None = None,
+) -> dict:
     """Convierte el correo en vacante, la guarda y ejecuta el matching.
 
     Si el correo no trae un JSON, el texto libre se interpreta primero
     (src/interpretar_texto.py) para extraer los campos de la vacante.
+    `vacante` permite entregar la vacante ya estructurada (bandeja simulada).
     """
 
     descargar = cliente.descargar_adjunto if cliente is not None else None
 
     try:
-        solicitud = extraer_vacante(correo, descargar_adjunto=descargar)
+        solicitud = extraer_vacante(
+            correo, descargar_adjunto=descargar, vacante_estructurada=vacante
+        )
     except ErrorVacante as error:
         from src.interpretar_texto import TIPO_VACANTE, interpretar
 
@@ -119,7 +134,8 @@ def procesar_correo(correo: Correo, cliente: AgentMailCliente | None = None) -> 
     from src.estado_agente import crear_estado_inicial
 
     estado_inicial = crear_estado_inicial(solicitud.vacante, cargar_candidatos())
-    resultado = app_matching.invoke(estado_inicial)
+    config = cargar_configuracion()
+    resultado = invocar_con_limite(estado_inicial, config)
 
     vacante_id = solicitud.vacante["id"]
     ruta_log = REPORTS / f"auditoria_{vacante_id}.csv"
@@ -144,6 +160,8 @@ def mostrar_resultado(procesado: dict) -> None:
     print(f"Candidatos únicos evaluados: {len(resultado['candidatos_filtrados'])}")
     print(f"Duplicados descartados: {len(resultado['duplicados'])}")
 
+    print(texto_limites(resultado.get("limites", {}), resultado.get("pasos_grafo", 0)))
+
     if not shortlist:
         print("\nNingún candidato cumplió todos los requisitos y el umbral.")
     else:
@@ -154,6 +172,21 @@ def mostrar_resultado(procesado: dict) -> None:
                 f" ({'cumple' if item['cumple_requisitos'] else 'no cumple'} requisitos)"
             )
             print(f"   {item['justificacion']}")
+
+    # Shortlist parcial: se entrega lo que hay y se explica el bloqueo (RF-07).
+    analisis = resultado.get("analisis_shortlist") or {}
+    if analisis.get("puestos_libres"):
+        print(
+            f"\nShortlist parcial (RF-07): {analisis['puestos_llenos']} de "
+            f"{analisis['puestos_llenos'] + analisis['puestos_libres']} puestos. "
+            f"Requisito que impide completarla: {analisis.get('requisito_principal', '')}. "
+            f"{analisis.get('motivo_principal', '')}"
+        )
+        for bloque in analisis.get("bloqueantes", []):
+            print(
+                f"  - {bloque['requisito']} ({len(bloque['casos'])} perfiles): "
+                f"{'; '.join(bloque['casos'])}"
+            )
 
     print(f"\nAuditoría: {procesado['ruta_auditoria']}")
     print(f"Shortlist: {procesado['ruta_shortlist']}")

@@ -30,6 +30,9 @@ class EstadoCorreo(TypedDict, total=False):
 
     correo: Correo
     texto: str
+    # Vacante ya estructurada (bandeja simulada): si viene, se guarda tal
+    # cual, sin reinterpretar el texto (RF-15).
+    vacante: dict
     tipo: str
     datos: dict
     pistas: list[str]
@@ -48,7 +51,27 @@ def _evento(estado: EstadoCorreo, nodo: str, decision: str, motivo: str) -> list
 
 
 def interpretar_correo(estado: EstadoCorreo) -> dict:
-    """Detecta si el correo es vacante o candidato y extrae sus campos."""
+    """Detecta si el correo es vacante o candidato y extrae sus campos.
+
+    Si el correo ya trae la vacante estructurada, se usa esa: es el disparador
+    del matching aunque el texto no alcance para reconstruirla.
+    """
+
+    vacante = estado.get("vacante") or {}
+    if vacante.get("id") and vacante.get("skills_obligatorios"):
+        return {
+            "tipo": TIPO_VACANTE,
+            "datos": vacante,
+            "pistas": [],
+            "advertencias": [],
+            "interpretado": None,
+            "auditoria": _evento(
+                estado,
+                "interpretar_correo",
+                TIPO_VACANTE,
+                f"El correo trae la vacante estructurada {vacante['id']}; se usa tal cual.",
+            ),
+        }
 
     interpretado: TextoInterpretado = interpretar(estado["texto"])
 
@@ -84,6 +107,21 @@ def _registrar(estado: EstadoCorreo, accion: str, identificador: str = "") -> No
 
     from src.registro_correos import registrar_correo
 
+    if estado.get("interpretado") is None:
+        # La vacante venía estructurada: se registra con un texto mínimo.
+        from src.interpretar_texto import TextoInterpretado
+
+        estado = {
+            **estado,
+            "interpretado": TextoInterpretado(
+                tipo=TIPO_VACANTE,
+                datos=estado["datos"],
+                pistas=[],
+                advertencias=[],
+                evidencia={},
+            ),
+        }
+
     try:
         registrar_correo(
             estado["correo"],
@@ -118,7 +156,11 @@ def guardar_vacante_nodo(estado: EstadoCorreo) -> dict:
         }
 
     try:
-        procesado = procesar_correo(estado["correo"], estado.get("cliente"))
+        procesado = procesar_correo(
+            estado["correo"],
+            estado.get("cliente"),
+            estado.get("vacante") or None,
+        )
     except (ErrorVacante, OSError, ValueError, KeyError) as error:
         _registrar(estado, "error", vacante.get("id", ""))
         return {
@@ -217,12 +259,18 @@ def interpretar_y_guardar(
     texto: str,
     correo: Correo,
     cliente=None,
+    vacante: dict | None = None,
 ) -> EstadoCorreo:
-    """Ejecuta el grafo completo para un correo."""
+    """Ejecuta el grafo completo para un correo.
+
+    Si `vacante` viene armada (bandeja simulada), se usa tal cual en vez de
+    reconstruirla desde el texto (RF-15).
+    """
 
     estado_inicial: EstadoCorreo = {
         "correo": correo,
         "texto": texto,
+        "vacante": vacante or {},
         "tipo": TIPO_DESCONOCIDO,
         "datos": {},
         "pistas": [],

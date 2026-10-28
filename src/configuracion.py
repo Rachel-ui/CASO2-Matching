@@ -41,10 +41,30 @@ class Configuracion:
     orden_relajacion: tuple[dict, ...] = ()
     max_consultas_reclutador: int = 3
     max_llamadas_llm: int = 30
+    max_horas_monitoreo: float = 3
+    max_pasos_grafo: int = 400
 
     @property
     def sin_llm(self) -> bool:
         return self.modo == MODO_SIN_LLM
+
+    @property
+    def recursion_limit(self) -> int:
+        """Tope de ejecución de nodos que se pasa al grafo (RNF-04)."""
+
+        return self.max_pasos_grafo
+
+    def limites(self) -> dict:
+        """Límites de la corrida, para la respuesta del agente (RNF-04)."""
+
+        return {
+            "horas_monitoreo": self.max_horas_monitoreo,
+            "relajaciones": self.max_relajaciones,
+            "consultas_reclutador": self.max_consultas_reclutador,
+            "llamadas_llm": self.max_llamadas_llm,
+            "pasos_grafo": self.max_pasos_grafo,
+            "recursion_limit": self.recursion_limit,
+        }
 
 
 def normalizar_modo(valor: Any) -> str:
@@ -82,6 +102,7 @@ def cargar_configuracion(ruta: Path | None = None) -> Configuracion:
     relajacion = datos.get("relaxation", {})
     recruiter = datos.get("recruiter", {})
     llm = datos.get("llm", {})
+    limites = datos.get("limits", {})
 
     return Configuracion(
         modo=normalizar_modo(modo),
@@ -93,4 +114,6 @@ def cargar_configuracion(ruta: Path | None = None) -> Configuracion:
         orden_relajacion=tuple(relajacion.get("order") or ()),
         max_consultas_reclutador=int(recruiter.get("max_queries", 3)),
         max_llamadas_llm=int(llm.get("max_calls_per_job", 30)),
+        max_horas_monitoreo=float(limites.get("max_monitoring_hours", 3)),
+        max_pasos_grafo=int(limites.get("recursion_limit", 400)),
     )

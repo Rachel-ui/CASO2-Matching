@@ -10,7 +10,13 @@ from src.reclutador import (
     consultar_candidato,
 )
 from src.relajacion import aplicar_relajacion
-from src.scoring import construir_shortlist, evaluar_candidato, evaluar_resultado
+from src.scoring import (
+    ajustar_a_shortlist,
+    construir_shortlist,
+    evaluar_candidato,
+    evaluar_resultado,
+    explicar_shortlist_incompleta,
+)
 
 
 def registrar_auditoria(
@@ -36,6 +42,23 @@ def registrar_auditoria(
     }
 
     return estado["auditoria"] + [evento]
+
+
+def contar_paso(estado: EstadoAgente) -> dict:
+    """Suma un paso del grafo a `pasos_grafo` (RNF-04)."""
+
+    return {"pasos_grafo": 1}
+
+
+def _contando_pasos(nodo, paso_actual):
+    """Envuelve un nodo para que sume un paso del grafo (RNF-04)."""
+
+    def envuelto(estado: EstadoAgente) -> dict:
+        resultado = nodo(estado)
+        # Cada ejecución del nodo aporta un paso al contador sumable.
+        return {**(resultado or {}), **paso_actual(estado)}
+
+    return envuelto
 
 
 def validar_estado(estado: EstadoAgente) -> dict:
@@ -99,6 +122,7 @@ def validar_estado(estado: EstadoAgente) -> dict:
         "estado": "datos_validados",
         "indice_candidato": 0,
         "configuracion": config,
+        "limites": {**config.limites(), "recursion_limit": config.recursion_limit},
         "auditoria": auditoria,
     }
 
@@ -148,6 +172,20 @@ def depurar_duplicados_nodo(estado: EstadoAgente) -> dict:
     }
 
 
+def _puntaje_sin_fecha(candidato: dict, vacante: dict, config: Configuracion) -> float:
+    """Puntaje que tendría el perfil si el reclutador diera la fecha.
+
+    Sirve para ordenar a quién preguntar primero cuando hay más perfiles con
+    datos faltantes que consultas disponibles (RNF-04).
+    """
+
+    supuesto = dict(candidato)
+    supuesto["availability_date"] = str(
+        vacante.get("availability_required") or "9999-12-31"
+    )
+    return evaluar_candidato(supuesto, vacante, config)["puntaje"]
+
+
 def consultar_reclutador_nodo(estado: EstadoAgente) -> dict:
     """Pregunta al reclutador simulado los datos faltantes (RF-04).
 
@@ -164,28 +202,41 @@ def consultar_reclutador_nodo(estado: EstadoAgente) -> dict:
     consultas: list[dict] = []
     auditoria = estado["auditoria"]
 
-    for candidato in estado["candidatos_filtrados"]:
+    # La fecha pesa solo 5 puntos, pero sin ella el perfil no cumple los
+    # requisitos duros. Por eso se pregunta primero a los perfiles que más
+    # se acercan al puesto: si el límite de consultas se gastara en perfiles
+    # que no cumplen skills o experiencia, se perderían los candidatos que
+    # sí podrían entrar.
+    candidatos_por_prioridad = sorted(
+        estado["candidatos_filtrados"],
+        key=lambda candidato: (
+            -_puntaje_sin_fecha(candidato, estado["vacante_actual"], config),
+            candidato.get("id", ""),
+        ),
+    )
+
+    for candidato in candidatos_por_prioridad:
         _, preguntas = consultar_candidato(candidato, respuestas)
         if not preguntas:
             continue
 
+        preguntas_por_candidato[candidato.get("id", "")] = []
         for pregunta in preguntas:
             if len(consultas) < config.max_consultas_reclutador:
                 consultas.append(pregunta)
+                preguntas_por_candidato[candidato.get("id", "")].append(pregunta)
             else:
                 consultas.append(
                     {
                         **pregunta,
                         "resultado": "limite_alcanzado",
                         "motivo": (
-                            f"No se preguntó: se alcanzó el máximo de "
+                            "No se preguntó: se alcanzó el máximo de "
                             f"{config.max_consultas_reclutador} consultas al "
                             "reclutador; el dato sigue desconocido."
                         ),
                     }
                 )
-
-        preguntas_por_candidato[candidato.get("id", "")] = consultas[-len(preguntas):]
 
     candidatos = [
         _candidato_actualizado(
@@ -367,7 +418,11 @@ def evaluar_resultado_nodo(estado: EstadoAgente) -> dict:
     """
 
     config: Configuracion = estado["configuracion"]
-    evaluacion = evaluar_resultado(estado["calificados"], config)
+    evaluacion = ajustar_a_shortlist(
+        evaluar_resultado(estado["calificados"], config),
+        estado["shortlist"],
+        config.shortlist_size,
+    )
     decision = "exito" if evaluacion["exito"] else "insuficientes"
 
     # Hay éxito, pero la shortlist todavía tiene puestos libres: se relaja
@@ -399,6 +454,12 @@ def evaluar_resultado_nodo(estado: EstadoAgente) -> dict:
 
     return {
         "evaluacion": evaluacion,
+        "analisis_shortlist": explicar_shortlist_incompleta(
+            estado["calificados"],
+            estado["vacante_actual"],
+            estado["shortlist"],
+            config,
+        ),
         "decision_actual": decision,
         "auditoria": registrar_auditoria(
             estado,
@@ -426,13 +487,21 @@ def relajar_criterios(estado: EstadoAgente) -> dict:
 
     if relajacion is None:
         motivo = (
-            "No quedan criterios por relajar o se alcanzó el máximo de "
+            f"No quedan criterios por relajar o se alcanzó el máximo de "
             f"{config.max_relajaciones} relajaciones. La vacante queda incompleta."
         )
+        evaluacion = estado.get("evaluacion") or {}
+        if evaluacion.get("puestos_libres"):
+            motivo += (
+                f" Se entregan los {evaluacion.get('cubiertos', 0)} perfiles que "
+                f"sí cumplen y quedan {evaluacion['puestos_libres']} puestos sin cubrir "
+                "(RF-07)."
+            )
         return {
             "estado": "incompleta",
             "requiere_revision_humana": True,
-            "decision_actual": "sin_relajaciones",
+            # "sin_relajaciones" cierra la corrida: no vuelve al loop.
+            "decision_actual": "finalizar",
             "auditoria": registrar_auditoria(
                 estado,
                 nodo="relajar_criterios",
@@ -497,26 +566,25 @@ def decidir_siguiente_paso(estado: EstadoAgente) -> dict:
 
 
 def finalizar(estado: EstadoAgente) -> dict:
-    """Finaliza el recorrido de candidatos."""
+    """Finaliza el recorrido de candidatos.
+
+    Si tras las relajaciones la shortlist no se completa, se entregan los
+    perfiles que sí cumplen y se explica qué requisito lo impide (RF-07).
+    """
 
     evaluacion = estado.get("evaluacion") or {}
+    analisis = estado.get("analisis_shortlist") or {}
 
     if estado["errores"]:
         motivo = "El flujo terminó con errores."
     elif estado["estado"] == "incompleta":
-        if evaluacion.get("exito"):
-            motivo = (
-                f"Hay {evaluacion['aptos']} candidatos sobre el umbral (condición "
-                f"RF-05 cumplida), pero solo {len(estado['shortlist'])} ocupan "
-                f"puesto tras {len(estado['relajaciones_aplicadas'])} "
-                "relajaciones. Falta cubrir puestos: van a revisión humana."
-            )
-        else:
-            motivo = (
-                f"La vacante no se completa: {evaluacion.get('aptos', 0)} candidatos "
-                f"sobre el umbral tras {len(estado['relajaciones_aplicadas'])} "
-                "relajaciones. Queda para revisión humana."
-            )
+        entregados = analisis.get("puestos_llenos", len(estado["shortlist"]))
+        motivo = (
+            f"Tras {len(estado['relajaciones_aplicadas'])} relajaciones la shortlist "
+            f"no se completa: se entregan {entregados} de "
+            f"{entregados + analisis.get('puestos_libres', 0)} perfiles. "
+            f"{analisis.get('motivo_principal', '')}"
+        ).strip()
     else:
         motivo = (
             f"Terminó el recorrido con {len(estado['candidatos_filtrados'])} "
@@ -560,16 +628,23 @@ def construir_grafo():
 
     grafo = StateGraph(EstadoAgente)
 
-    grafo.add_node("validar_estado", validar_estado)
-    grafo.add_node("depurar_duplicados", depurar_duplicados_nodo)
-    grafo.add_node("consultar_reclutador", consultar_reclutador_nodo)
-    grafo.add_node("procesar_candidato", procesar_candidato)
-    grafo.add_node("decidir_siguiente_paso", decidir_siguiente_paso)
-    grafo.add_node("generar_shortlist", generar_shortlist_nodo)
-    grafo.add_node("evaluar_resultado", evaluar_resultado_nodo)
-    grafo.add_node("relajar_criterios", relajar_criterios)
-    grafo.add_node("finalizar", finalizar)
+    # `pasos_grafo` es un canal sumable: cada nodo aporta 1 al contador real de
+    # LangGraph, así se puede comparar con `recursion_limit` (RNF-04).
+    for nombre, nodo in (
+        ("validar_estado", validar_estado),
+        ("depurar_duplicados", depurar_duplicados_nodo),
+        ("consultar_reclutador", consultar_reclutador_nodo),
+        ("procesar_candidato", procesar_candidato),
+        ("decidir_siguiente_paso", decidir_siguiente_paso),
+        ("generar_shortlist", generar_shortlist_nodo),
+        ("evaluar_resultado", evaluar_resultado_nodo),
+        ("relajar_criterios", relajar_criterios),
+        ("finalizar", finalizar),
+    ):
+        grafo.add_node(nombre, _contando_pasos(nodo, contar_paso))
 
+    # `pasos_grafo` arranca en 0 (estado inicial), igual que el contador de
+    # LangGraph en la primera ejecución.
     grafo.add_edge(START, "validar_estado")
 
     grafo.add_conditional_edges(
@@ -608,12 +683,14 @@ def construir_grafo():
         },
     )
 
+    # Si ya no cabe otra relajación, `relajar_criterios` deja `finalizar` y
+    # la corrida cierra con la shortlist parcial y su explicación (RF-07).
     grafo.add_conditional_edges(
         "relajar_criterios",
         lambda estado: estado["decision_actual"],
         {
             "relajar": "procesar_candidato",
-            "sin_relajaciones": "finalizar",
+            "finalizar": "finalizar",
         },
     )
 

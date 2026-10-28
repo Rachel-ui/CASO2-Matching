@@ -170,8 +170,13 @@ def _desde_csv(contenido: bytes) -> dict | None:
 def extraer_vacante(
     correo: Correo,
     descargar_adjunto=None,
+    vacante_estructurada: dict | None = None,
 ) -> SolicitudVacante:
     """Busca la vacante en el cuerpo del correo y, si falla, en sus adjuntos.
+
+    En la bandeja simulada la vacante ya viene armada (`vacante_estructurada`)
+    y tiene prioridad sobre el texto, así un correo reenviado guarda la misma
+    vacante y no una reconstruida (RF-15).
 
     `descargar_adjunto` es una función (message_id, attachment_id) -> bytes;
     se pasa como argumento para poder probar sin red.
@@ -180,7 +185,12 @@ def extraer_vacante(
     advertencias = []
     problemas = []
 
-    for datos in _candidatos_json(correo.cuerpo):
+    if isinstance(vacante_estructurada, dict):
+        vacante = vacante_estructurada
+    else:
+        vacante = None
+
+    for datos in ([] if vacante else _candidatos_json(correo.cuerpo)):
         vacante = _vacante_desde_json(datos)
         if vacante is None:
             continue
@@ -189,6 +199,16 @@ def extraer_vacante(
             return SolicitudVacante(vacante, "cuerpo del correo", correo, advertencias)
         raise ErrorVacante(
             f"La vacante del cuerpo del correo no es válida: {'; '.join(problemas)}"
+        )
+
+    if vacante is not None:
+        problemas = validar_vacante(vacante)
+        if problemas:
+            raise ErrorVacante(
+                "La vacante estructurada del correo no es válida: " + "; ".join(problemas)
+            )
+        return SolicitudVacante(
+            vacante, "vacante estructurada de la bandeja simulada", correo, advertencias
         )
 
     for adjunto in correo.adjuntos:

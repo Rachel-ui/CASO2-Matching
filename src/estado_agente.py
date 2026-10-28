@@ -1,5 +1,6 @@
 
-from typing import TypedDict
+import operator
+from typing import Annotated, TypedDict
 
 
 class EventoAuditoria(TypedDict, total=False):
@@ -39,6 +40,12 @@ class EstadoAgente(TypedDict):
     vacante_original: dict
     calificados: list[dict]
     evaluacion: dict
+    # Límites de la corrida y pasos del grafo (RNF-04), y la explicación de
+    # qué requisito impide completar la shortlist (RF-07).
+    limites: dict
+    # Canal sumable: cada nodo del grafo aporta su paso y LangGraph los suma.
+    pasos_grafo: Annotated[int, operator.add]
+    analisis_shortlist: dict
 
 
 def crear_estado_inicial(
@@ -77,4 +84,7 @@ def crear_estado_inicial(
         "vacante_original": dict(vacante),
         "calificados": [],
         "evaluacion": {},
+        "limites": {},
+        "pasos_grafo": 0,
+        "analisis_shortlist": {},
     }
