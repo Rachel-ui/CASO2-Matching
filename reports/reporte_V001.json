@@ -9,7 +9,7 @@
   "vacante_original": {
     "id": "V001",
     "titulo": "Desarrollador Backend Python",
-    "descripcion": "Se busca desarrollador backend con experiencia en Python y construcción de APIs REST. La persona debe trabajar con bases de datos SQL, utilizar Git y contar con experiencia en desarrollo de aplicaciones backend.",
+    "descripcion": "Se busca desarrollador backend con experiencia en Python y construccion de APIs REST, SQL y Git.",
     "skills_obligatorios": [
       "Python",
       "SQL",
@@ -278,6 +278,7 @@
   "candidatos": [
     {
       "id": "C001",
+      "puntaje_absoluto": 86.67,
       "puntaje": 86.67,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -362,6 +363,7 @@
     },
     {
       "id": "C021",
+      "puntaje_absoluto": 86.67,
       "puntaje": 86.67,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -446,6 +448,7 @@
     },
     {
       "id": "C040",
+      "puntaje_absoluto": 86.67,
       "puntaje": 86.67,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -530,6 +533,7 @@
     },
     {
       "id": "C013",
+      "puntaje_absoluto": 81.67,
       "puntaje": 81.67,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -614,6 +618,7 @@
     },
     {
       "id": "C005",
+      "puntaje_absoluto": 80.83,
       "puntaje": 80.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -700,6 +705,7 @@
     },
     {
       "id": "C011",
+      "puntaje_absoluto": 80.83,
       "puntaje": 80.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -786,6 +792,7 @@
     },
     {
       "id": "C017",
+      "puntaje_absoluto": 80.83,
       "puntaje": 80.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -872,6 +879,7 @@
     },
     {
       "id": "C019",
+      "puntaje_absoluto": 80.83,
       "puntaje": 80.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -958,6 +966,7 @@
     },
     {
       "id": "C033",
+      "puntaje_absoluto": 80.83,
       "puntaje": 80.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1044,6 +1053,7 @@
     },
     {
       "id": "C015",
+      "puntaje_absoluto": 80.0,
       "puntaje": 80.0,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1126,6 +1136,7 @@
     },
     {
       "id": "C007",
+      "puntaje_absoluto": 75.83,
       "puntaje": 75.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1212,6 +1223,7 @@
     },
     {
       "id": "C025",
+      "puntaje_absoluto": 75.83,
       "puntaje": 75.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1298,6 +1310,7 @@
     },
     {
       "id": "C035",
+      "puntaje_absoluto": 75.83,
       "puntaje": 75.83,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1384,6 +1397,7 @@
     },
     {
       "id": "C002",
+      "puntaje_absoluto": 75.0,
       "puntaje": 75.0,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1466,6 +1480,7 @@
     },
     {
       "id": "C029",
+      "puntaje_absoluto": 75.0,
       "puntaje": 75.0,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1548,6 +1563,7 @@
     },
     {
       "id": "C008",
+      "puntaje_absoluto": 74.17,
       "puntaje": 74.17,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1633,6 +1649,7 @@
     },
     {
       "id": "C027",
+      "puntaje_absoluto": 73.33,
       "puntaje": 73.33,
       "umbral": 70.0,
       "supera_umbral": true,
@@ -1719,6 +1736,7 @@
     },
     {
       "id": "C023",
+      "puntaje_absoluto": 69.17,
       "puntaje": 69.17,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -1804,6 +1822,7 @@
     },
     {
       "id": "C010",
+      "puntaje_absoluto": 67.5,
       "puntaje": 67.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -1886,6 +1905,7 @@
     },
     {
       "id": "C038",
+      "puntaje_absoluto": 67.5,
       "puntaje": 67.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -1967,6 +1987,7 @@
     },
     {
       "id": "C003",
+      "puntaje_absoluto": 62.5,
       "puntaje": 62.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2050,6 +2071,7 @@
     },
     {
       "id": "C018",
+      "puntaje_absoluto": 62.5,
       "puntaje": 62.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2133,6 +2155,7 @@
     },
     {
       "id": "C024",
+      "puntaje_absoluto": 62.5,
       "puntaje": 62.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2216,6 +2239,7 @@
     },
     {
       "id": "C028",
+      "puntaje_absoluto": 62.5,
       "puntaje": 62.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2299,6 +2323,7 @@
     },
     {
       "id": "C034",
+      "puntaje_absoluto": 62.5,
       "puntaje": 62.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2382,6 +2407,7 @@
     },
     {
       "id": "C037",
+      "puntaje_absoluto": 61.67,
       "puntaje": 61.67,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2467,6 +2493,7 @@
     },
     {
       "id": "C009",
+      "puntaje_absoluto": 56.67,
       "puntaje": 56.67,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2552,6 +2579,7 @@
     },
     {
       "id": "C014",
+      "puntaje_absoluto": 56.67,
       "puntaje": 56.67,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2637,6 +2665,7 @@
     },
     {
       "id": "C022",
+      "puntaje_absoluto": 56.67,
       "puntaje": 56.67,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2722,6 +2751,7 @@
     },
     {
       "id": "C039",
+      "puntaje_absoluto": 56.67,
       "puntaje": 56.67,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2807,6 +2837,7 @@
     },
     {
       "id": "C004",
+      "puntaje_absoluto": 55.0,
       "puntaje": 55.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2890,6 +2921,7 @@
     },
     {
       "id": "C006",
+      "puntaje_absoluto": 55.0,
       "puntaje": 55.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -2973,6 +3005,7 @@
     },
     {
       "id": "C036",
+      "puntaje_absoluto": 55.0,
       "puntaje": 55.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3056,6 +3089,7 @@
     },
     {
       "id": "C016",
+      "puntaje_absoluto": 50.0,
       "puntaje": 50.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3139,6 +3173,7 @@
     },
     {
       "id": "C026",
+      "puntaje_absoluto": 50.0,
       "puntaje": 50.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3222,6 +3257,7 @@
     },
     {
       "id": "C030",
+      "puntaje_absoluto": 50.0,
       "puntaje": 50.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3305,6 +3341,7 @@
     },
     {
       "id": "C012",
+      "puntaje_absoluto": 42.5,
       "puntaje": 42.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3388,6 +3425,7 @@
     },
     {
       "id": "C020",
+      "puntaje_absoluto": 42.5,
       "puntaje": 42.5,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3471,6 +3509,7 @@
     },
     {
       "id": "C041",
+      "puntaje_absoluto": 25.0,
       "puntaje": 25.0,
       "umbral": 70.0,
       "supera_umbral": false,
@@ -3696,7 +3735,7 @@
       "fuente": "data/config.yaml -> relaxation"
     },
     {
-      "tema": "Mentalidad de modalidad",
+      "tema": "Compatibilidad de modalidad",
       "supuesto": "Un candidato remoto sirve para cualquier modalidad y uno híbrido cubre una vacante presencial; la modalidad no se relaja.",
       "fuente": "src/scoring.py -> _modalidad_compatible"
     },
@@ -3715,6 +3754,7 @@
     "Datos sin confirmar: 7 consulta(s) al reclutador quedaron sin respuesta (C022, C023, C024, C025, C026, C028, C041); esos perfiles se puntuaron sin la fecha de disponibilidad.",
     "7 perfil(es) sin fecha de disponibilidad: C025, C023, C024, C028, C022, C026, C041. No se asumió una fecha por ellos.",
     "La shortlist se armó con criterios relajados; sin esas relajaciones la cantidad de perfiles sería menor.",
-    "Se descartaron 2, que no se evaluaron dos veces."
+    "Se descartaron 2 perfil(es) duplicado(s): cada persona se evaluó una sola vez.",
+    "La disponibilidad se comparó contra la fecha ya relajada (2026-11-08); la vacante pedía 2026-10-25. Algunos perfiles aparecen \"a tiempo\" solo por esa relajación."
   ]
 }

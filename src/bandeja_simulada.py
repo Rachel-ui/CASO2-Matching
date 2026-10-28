@@ -123,14 +123,34 @@ def procesar_correo_bandeja(
     cola: dict | None = None,
     modo: str | None = None,
 ) -> dict:
-    """Procesa un correo simulado y devuelve qué hizo con él (RF-15/RF-16).
+    """Clasifica un correo simulado y lo encola si es vacante nueva (RF-15/RF-16).
 
     Delega en `src.interpretar_correo_bandeja` para no tocar el dataset real.
+    El matching no corre aquí: se hace por cola en `procesar_cola_de_vacantes`
+    (RF-13).
     """
 
     from src.interpretar_correo_bandeja import procesar_correo
 
     return procesar_correo(correo, vacantes, estado_simulado, cola=cola, modo=modo)
+
+
+def procesar_cola_de_vacantes(
+    cola: dict,
+    vacantes: list[dict],
+    estado_simulado: dict,
+    modo: str | None = None,
+) -> list[dict]:
+    """Procesa las vacantes en cola una por una (RF-13).
+
+    Se llama al cerrar cada ciclo de la bandeja; las vacantes salen de la
+    cola en el orden en que llegaron y cada una deja su resultado para el
+    reporte por vacante.
+    """
+
+    from src.interpretar_correo_bandeja import procesar_cola
+
+    return procesar_cola(cola, vacantes, estado_simulado, modo=modo)
 
 
 def ejecutar_bandeja(
@@ -140,6 +160,7 @@ def ejecutar_bandeja(
     reiniciar: bool = False,
     pausa: float = 0.0,
     al_avanzar=None,
+    en_silencio: bool = False,
 ) -> dict:
     """Corre la bandeja hora simulada por hora hasta la hora máxima.
 
@@ -195,10 +216,11 @@ def ejecutar_bandeja(
             "correos_nuevos": [str(c.get("message_id")) for c in nuevos],
             "acciones": [],
             "matching_disparado": [],
-            # Vacantes que ocuparían la cola al cerrar el ciclo. Cada vacante
-            # dispara su matching en el mismo ciclo en que llega, así que la
-            # cola queda vacía salvo que un matching haya fallado.
+            # Vacantes que entraron a la cola en este ciclo (RF-13); se
+            # procesan al cerrarlo, una por una y en orden de llegada.
             "vacantes_en_cola": [],
+            "vacantes_pendientes": 0,
+            "errores_matching": [],
         }
 
         for correo in nuevos:
@@ -211,18 +233,31 @@ def ejecutar_bandeja(
                     "errores": accion["errores"],
                 }
             )
-            if accion["disparo_matching"]:
-                ciclo["matching_disparado"].append(accion["vacante_id"])
-            elif accion["vacante_id"] and accion["accion"] == "revision_humana":
+            if accion.get("en_cola"):
                 ciclo["vacantes_en_cola"].append(accion["vacante_id"])
             procesados.append(accion["message_id"])
+
+        # RF-13: las vacantes que entraron a la cola se procesan una por una
+        # al cerrar el ciclo, en el orden en que llegaron.
+        for procesada in procesar_cola_de_vacantes(cola, vacantes, estado_simulado):
+            ciclo["matching_disparado"].append(procesada["vacante_id"])
+            if procesada["errores"]:
+                ciclo["errores_matching"].append(
+                    {
+                        "vacante_id": procesada["vacante_id"],
+                        "errores": procesada["errores"],
+                    }
+                )
+        # Al terminar la pasada la cola quedó drenada: lo que aparece en
+        # `vacantes_en_cola` es lo que se procesó en este ciclo.
+        ciclo["vacantes_pendientes"] = 0
 
         # Los IDs se guardan al cerrar cada ciclo: si la corrida se corta, lo
         # ya procesado no se repite en la siguiente corrida (RF-15).
         guardar_procesados(procesados, ruta_procesados)
         ciclos.append(ciclo)
 
-        if al_avanzar is not None:
+        if al_avanzar is not None and not en_silencio:
             al_avanzar(ciclo)
         if pausa:
             time.sleep(pausa)
@@ -242,8 +277,19 @@ def ejecutar_bandeja(
         "correos_pendientes": [str(c.get("message_id")) for c in pendientes],
         "matching_disparado": [v for ciclo in ciclos for v in ciclo["matching_disparado"]],
         "vacantes": [v.get("id", "") for v in vacantes],
+        # Vacantes que pasaron por la cola en orden de llegada (RF-13) y las
+        # que todavía quedaran pendientes al cortar la corrida.
         "vacantes_en_cola": [
             v for ciclo in ciclos for v in ciclo["vacantes_en_cola"]
+        ],
+        "vacantes_pendientes": [
+            r["vacante"].get("id", "")
+            for r in cola["vacantes"]
+            if not r.get("procesada")
+        ],
+        "orden_procesamiento": [v.get("id", "") for v in vacantes],
+        "errores_matching": [
+            error for ciclo in ciclos for error in ciclo["errores_matching"]
         ],
         "resultados": {
             clave.removeprefix("salida_"): resultado
@@ -305,10 +351,17 @@ def main() -> int:
         )
         for accion in ciclo["acciones"]:
             print(f"   {accion['message_id']}: {accion['accion']}")
+        if ciclo["vacantes_en_cola"]:
+            print(f"   van a la cola: {', '.join(ciclo['vacantes_en_cola'])}")
         if ciclo["matching_disparado"]:
-            print(f"   matching disparado: {', '.join(ciclo['matching_disparado'])}")
+            print(
+                "   cola procesada en orden: "
+                f"{', '.join(ciclo['matching_disparado'])}"
+            )
         else:
             print("   sin vacante: no se dispara el matching")
+        for error in ciclo["errores_matching"]:
+            print(f"   error en {error['vacante_id']}: {'; '.join(error['errores'])}")
 
     resultado = ejecutar_bandeja(
         hora_maxima=argumentos.horas,
@@ -323,8 +376,17 @@ def main() -> int:
     )
     print(f"Correos procesados: {len(resultado['correos_procesados'])}")
     print(f"Matchings disparados: {', '.join(resultado['matching_disparado']) or 'ninguno'}")
-    print(f"Vacantes procesadas: {', '.join(resultado['vacantes']) or 'ninguna'}")
-    print(f"Vacantes en cola al terminar: {len(resultado['vacantes_en_cola'])}")
+    print(
+        "Vacantes procesadas en orden (RF-13): "
+        f"{', '.join(resultado['orden_procesamiento']) or 'ninguna'}"
+    )
+    print(f"Vacantes que pasaron por la cola: {len(resultado['vacantes_en_cola'])}")
+    print(
+        "Vacantes que quedaron en cola al terminar: "
+        f"{', '.join(resultado['vacantes_pendientes']) or 'ninguna'}"
+    )
+    if resultado["errores_matching"]:
+        print(f"Vacantes con error: {len(resultado['errores_matching'])}")
     clasificacion = resultado["clasificacion"]
     print(
         "Clasificación (RF-16): "
@@ -344,6 +406,8 @@ def main() -> int:
             f"   {vacante_id}: {estado['estado']}, {len(estado['shortlist'])} en shortlist, "
             f"{estado.get('pasos_grafo', 0)} pasos"
         )
+    if resultado["resultados"]:
+        print("   (cada vacante tiene su reporte en reports/reporte_<id>.md)")
     print(f"Correos sin leer al cerrar: {', '.join(resultado['correos_pendientes']) or 'ninguno'}")
     print(f"La corrida terminó por: {resultado['motivo_fin']}")
 

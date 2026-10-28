@@ -126,7 +126,7 @@ Los skills obligatorios **no se relajan**. Se aplicaron 1 de 3 relajaciones perm
 | Pesos del puntaje | El puntaje reparte 100 puntos así: skills obligatorios 50, skills deseables 20, experiencia 15, inglés 10, disponibilidad 5. | data/config.yaml -> scoring.weights |
 | Skills obligatorios | Los skills obligatorios no se relajan nunca; un perfil que no los tiene todos no entra, aunque el puesto quede libre. | src/relajacion.py |
 | Orden de relajación | Las relajaciones se aplican en orden: fecha de inicio (+2 semanas), experiencia (-1 año) e inglés (-1 nivel), hasta 3 en total. | data/config.yaml -> relaxation |
-| Mentalidad de modalidad | Un candidato remoto sirve para cualquier modalidad y uno híbrido cubre una vacante presencial; la modalidad no se relaja. | src/scoring.py -> _modalidad_compatible |
+| Compatibilidad de modalidad | Un candidato remoto sirve para cualquier modalidad y uno híbrido cubre una vacante presencial; la modalidad no se relaja. | src/scoring.py -> _modalidad_compatible |
 | Datos faltantes | Si el reclutador no confirma un dato ("no se sabe" o se agotó el límite de 3 consultas), el campo queda vacío y se puntúa 0 en lugar de inventarlo. | src/reclutador.py |
 | Puntaje versus redacción | El puntaje siempre lo calcula el código; con LLM solo cambia la redacción de la justificación. | AGENTE_MODO = without_llm |
 
@@ -135,7 +135,8 @@ Los skills obligatorios **no se relajan**. Se aplicaron 1 de 3 relajaciones perm
 - Datos sin confirmar: 7 consulta(s) al reclutador quedaron sin respuesta (C022, C023, C024, C025, C026, C028, C041); esos perfiles se puntuaron sin la fecha de disponibilidad.
 - 7 perfil(es) sin fecha de disponibilidad: C025, C023, C024, C028, C022, C026, C041. No se asumió una fecha por ellos.
 - La shortlist se armó con criterios relajados; sin esas relajaciones la cantidad de perfiles sería menor.
-- Se descartaron 2, que no se evaluaron dos veces.
+- Se descartaron 2 perfil(es) duplicado(s): cada persona se evaluó una sola vez.
+- La disponibilidad se comparó contra la fecha ya relajada (2026-11-08); la vacante pedía 2026-10-25. Algunos perfiles aparecen "a tiempo" solo por esa relajación.
 
 ## Consultas al reclutador (RF-04)
 

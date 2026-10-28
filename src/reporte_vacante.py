@@ -631,6 +631,61 @@ def generar_reporte(resultado: dict, config, directorio: Path | None = None) -> 
     return {"reporte": reporte, "rutas": rutas}
 
 
+def generar_reportes_bandeja(
+    resultado_bandeja: dict,
+    config,
+    directorio: Path | None = None,
+) -> list[dict]:
+    """Un reporte por cada vacante procesada en la corrida (RF-13).
+
+    `resultado_bandeja` es lo que devuelve `src.bandeja_simulada.ejecutar_bandeja`:
+    sus `resultados` traen el estado final de cada vacante, con el catálogo
+    de la simulación. Los reportes se generan en el orden en que la cola
+    procesó las vacantes.
+    """
+
+    directorio = Path(directorio) if directorio else REPORTS
+    resultados = resultado_bandeja.get("resultados") or {}
+
+    generados = []
+    for vacante_id in resultado_bandeja.get("orden_procesamiento", list(resultados)):
+        estado = resultados.get(vacante_id)
+        if not estado:
+            continue
+        generado = generar_reporte(estado, config, directorio)
+        generado["vacante_id"] = vacante_id
+        generados.append(generado)
+
+    if generados:
+        indice = directorio / "reportes_bandeja.md"
+        lineas = [
+            "# Reportes de la bandeja simulada (RF-13)",
+            "",
+            f"Inicio: {resultado_bandeja.get('inicio', '')} - "
+            f"{resultado_bandeja.get('ciclos_ejecutados', 0)} ciclo(s)",
+            "",
+            "Las vacantes se procesaron una por una desde la cola, en el orden "
+            "en que llegaron los correos.",
+            "",
+            "| Orden | Vacante | Estado | Puestos | Reporte |",
+            "|---|---|---|---|---|",
+        ]
+        for posicion, generado in enumerate(generados, start=1):
+            reporte = generado["reporte"]
+            lineas.append(
+                f"| {posicion} | {reporte['vacante']['id']} | "
+                f"{reporte['vacante']['estado']} | "
+                f"{reporte['resultado']['puestos_llenos']}/"
+                f"{reporte['resultado']['puestos_llenos'] + reporte['resultado']['puestos_libres']} | "
+                f"[reporte_{reporte['vacante']['id']}.md]"
+                f"(reporte_{reporte['vacante']['id']}.md) |"
+            )
+        lineas.append("")
+        indice.write_text("\n".join(lineas), encoding="utf-8")
+
+    return generados
+
+
 def main() -> int:
     """Corre el matching de una vacante y genera su reporte (RF-11)."""
 
@@ -646,11 +701,36 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Genera el reporte por vacante con shortlist, puntajes y supuestos."
     )
-    parser.add_argument("vacante", nargs="?", default="V001", help="ID de la vacante")
+    parser.add_argument(
+        "vacante",
+        nargs="?",
+        default=None,
+        help="ID de la vacante (sin ID: corre la bandeja y reporta cada vacante, RF-13)",
+    )
     argumentos = parser.parse_args()
 
+    config = cargar_configuracion()
+
+    if argumentos.vacante is None:
+        # Sin ID: se procesa la bandeja completa y se deja un reporte por
+        # vacante en el orden en que salieron de la cola (RF-13).
+        from src.bandeja_simulada import ejecutar_bandeja
+
+        corrida = ejecutar_bandeja(hora_maxima=24, reiniciar=True, en_silencio=True)
+        generados = generar_reportes_bandeja(corrida, config)
+        print(f"Vacantes procesadas: {len(generados)}")
+        for generado in generados:
+            reporte = generado["reporte"]
+            print(
+                f"   {reporte['vacante']['id']}: {reporte['vacante']['estado']}, "
+                f"{reporte['resultado']['puestos_llenos']} puesto(s) - "
+                f"{generado['rutas']['markdown']}"
+            )
+        print(f"Índice: {generados[0]['rutas']['markdown'].parent / 'reportes_bandeja.md'}" if generados else "")
+        return 0
+
     resultado = ejecutar_vacante(argumentos.vacante)
-    generado = generar_reporte(resultado, cargar_configuracion())
+    generado = generar_reporte(resultado, config)
     reporte = generado["reporte"]
 
     print(f"Reporte de {reporte['vacante']['id']} ({reporte['vacante']['titulo']})")

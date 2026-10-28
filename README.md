@@ -215,6 +215,35 @@ despacha todo en las primeras horas. Lo procesado de esta bandeja:
 | 8 | b4 reenvío de V001 | **duplicado** de b1, no repite el matching |
 | 9–24 | b5 perfil sin skills, b6 perfil, b7–b9 boletines y factura | b5 a revisión humana; el resto no relacionado (sin leer al cerrar) |
 
+### Varias vacantes en una corrida (RF-13)
+
+La bandeja trae más de una vacante y la corrida las procesa **todas**, no solo
+la primera. El orden es:
+
+1. En cada ciclo se clasifican los correos y las **vacantes nuevas se encolan**.
+2. Al cerrar el ciclo se drena la cola: cada vacante corre su matching
+   completo, **una por vez** y en el orden en que llegó el correo.
+3. Cada vacante sale de la cola con su resultado guardado, listo para su
+   reporte.
+
+En esta bandeja el orden real es `V001 → V002 → V004 → V003` (V004 llega
+antes que V003 aunque su ID sea mayor). Si una vacante falla (por ejemplo, por
+el `recursion_limit`), se registra el error y **la cola sigue con la
+siguiente**: una vacante rota no frena a las demás.
+
+```powershell
+# Corre la bandeja y deja un reporte por cada vacante + un índice
+python -m src.reporte_vacante
+```
+
+Eso genera `reports/reporte_<id>.md|json` y `puntajes_<id>.csv` para V001,
+V002, V004 y V003, más `reports/reportes_bandeja.md` con la tabla de orden,
+estado y puestos cubiertos de cada una.
+
+Al terminar, la corrida informa `orden_procesamiento` (el orden de la cola),
+`vacantes_en_cola` (las que pasaron por ella) y `vacantes_pendientes` (las que
+quedaron si se cortó por hora máxima, normalmente ninguna).
+
 La simulación **no toca el dataset real**: sus candidatos y su catálogo de
 vacantes viven en memoria durante la corrida, para no contar dos veces al
 mismo candidato en el siguiente matching. Hay una prueba que verifica que

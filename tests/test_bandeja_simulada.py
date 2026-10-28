@@ -105,7 +105,9 @@ def test_termina_con_la_cola_vacia(bandeja_temporal):
         reiniciar=True,
     )
 
-    assert resultado["vacantes_en_cola"] == []
+    # `vacantes_en_cola` son las que pasaron por la cola (RF-13); lo que tiene
+    # que quedar vacío al cerrar es la cola en sí.
+    assert resultado["vacantes_pendientes"] == []
     # Ninguna vacante queda sin leer cuando la corrida cierra.
     assert set(resultado["matching_disparado"]) >= {"V001", "V002", "V003"}
 

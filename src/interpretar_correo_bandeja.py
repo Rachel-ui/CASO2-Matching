@@ -197,24 +197,84 @@ def procesar_correo(
     if decision["clase"] != VACANTE_NUEVA:
         return {**base, "accion": decision["clase"]}
 
-    # Vacante nueva: ya está en la cola y dispara el matching en este mismo
-    # ciclo; al cerrar el matching sale de la cola.
-    vacante = decision["vacante"]
-    vacantes.append(vacante)
-    resultado = invocar_con_limite(
-        crear_estado_inicial(vacante, cargar_candidatos()),
-        cargar_configuracion(),
-    )
-    estado_simulado[vacante["id"]] = resultado
-    marcar_procesada(cola, vacante["id"])
+    # Vacante nueva: ya está en la cola. Aquí solo se encola; el matching lo
+    # corre `procesar_cola` al cerrar el ciclo, una vacante por vez y en el
+    # orden en que llegaron (RF-13).
     guardar_cola(cola)
 
     return {
         **base,
-        "accion": VACANTE_GUARDADA,
-        "vacante_id": vacante["id"],
-        "shortlist": len(resultado["shortlist"]),
-        "disparo_matching": True,
+        "accion": "en_cola",
+        "vacante_id": decision["vacante"]["id"],
+        "en_cola": True,
         "clase": decision["clase"],
         "fuente": decision.get("fuente", ""),
     }
+
+
+def procesar_cola(
+    cola: dict,
+    vacantes: list[dict],
+    estado_simulado: dict,
+    modo: str | None = None,
+) -> list[dict]:
+    """Procesa la cola de vacantes una por una, en orden de llegada (RF-13).
+
+    Cada vacante pendiente corre su matching completo, se guarda en el
+    catálogo y los resultados de la simulación, y sale de la cola. Si una
+    vacante falla, se registra el error y se sigue con la siguiente: una
+    vacante rota no puede frenar a las demás.
+
+    Devuelve la lista de resultados de esta pasada, en el mismo orden.
+    """
+
+    from src.clasificar_correos import guardar_cola, marcar_procesada, siguiente_de_cola
+    from src.configuracion import cargar_configuracion
+    from src.estado_agente import crear_estado_inicial
+    from src.ejecutar_matching import invocar_con_limite
+    from src.procesar_correo import cargar_candidatos
+
+    procesadas = []
+    candidatos = cargar_candidatos()
+    config = cargar_configuracion()
+
+    while True:
+        registrada = siguiente_de_cola(cola)
+        if registrada is None:
+            break
+
+        vacante = registrada.get("vacante") or {}
+        vacante_id = vacante.get("id", "")
+        try:
+            resultado = invocar_con_limite(
+                crear_estado_inicial(vacante, candidatos), config
+            )
+        except RecursionError as error:
+            marcar_procesada(cola, vacante_id, {"estado": "error", "error": str(error)})
+            procesadas.append(
+                {
+                    "vacante_id": vacante_id,
+                    "estado": "error",
+                    "shortlist": 0,
+                    "errores": [
+                        f"Se alcanzó el recursion_limit del grafo: {error}"
+                    ],
+                }
+            )
+            guardar_cola(cola)
+            continue
+
+        vacantes.append(vacante)
+        estado_simulado[vacante_id] = resultado
+        marcar_procesada(cola, vacante_id)
+        guardar_cola(cola)
+        procesadas.append(
+            {
+                "vacante_id": vacante_id,
+                "estado": resultado.get("estado", ""),
+                "shortlist": len(resultado.get("shortlist") or []),
+                "errores": [],
+            }
+        )
+
+    return procesadas
