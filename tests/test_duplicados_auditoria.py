@@ -69,9 +69,12 @@ def test_conserva_solo_un_perfil_por_persona():
 
     # El dataset puede crecer con candidatos que llegan por correo.
     assert len(validos) + len(duplicados) == len(candidatos)
-    assert len(duplicados) == 2
+    # Los dos duplicados conocidos del dataset (C031, C032).
+    assert {"C031", "C032"} <= {d["id"] for d in duplicados}
 
-    correos = [c["email"].casefold() for c in validos]
+    # Varios perfiles traen el correo vacío (llegan por correo sin ese dato):
+    # vacío no es un valor que se pueda compartir.
+    correos = [c["email"].casefold() for c in validos if c["email"].strip()]
     assert len(correos) == len(set(correos))
 
     personas = {(c["nombre"].casefold(), c["telefono"]) for c in validos}

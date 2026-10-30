@@ -94,7 +94,6 @@ def test_la_bandeja_se_clasifica_en_las_tres_clases():
     assert clases["b1"] == VACANTE_NUEVA
     assert clases["b2"] == VACANTE_NUEVA
     assert clases["b3"] == VACANTE_NUEVA
-    assert clases["b11"] == VACANTE_NUEVA
     assert clases["b5"] == REVISION_HUMANA
     assert clases["b6"] == NO_RELACIONADO
     assert clases["b7"] == NO_RELACIONADO
@@ -192,7 +191,7 @@ def test_una_vacante_nueva_entra_a_la_cola():
     assert decision["disparo_matching"] is True
     assert decision["en_cola"] is True
     assert estado_cola(cola)["vacantes"] == 1
-    assert siguiente_de_cola(cola)["vacante"]["id"] == "V001"
+    assert siguiente_de_cola(cola)["vacante"]["id"] == "B001"
 
 
 def test_un_reenvio_es_duplicado_y_no_entra_a_la_cola():
@@ -218,13 +217,13 @@ def test_la_misma_vacante_con_otro_id_y_mensaje_es_duplicado():
     copia = dict(correo(bandeja, "b1"))
     copia["message_id"] = "b1-copia"
     copia["asunto"] = "Otra vez la vacante"
-    copia["vacante_estructurada"] = {**copia["vacante_estructurada"], "id": "V001-BIS"}
+    copia["vacante_estructurada"] = {**copia["vacante_estructurada"], "id": "B001-BIS"}
 
     decision = encolar(copia, cola)
 
     assert decision["clase"] == DUPLICADO
     # Apunta a la vacante original, no a la copia con ID nuevo.
-    assert decision["vacante_id"] == "V001"
+    assert decision["vacante_id"] == "B001"
 
 
 def test_la_huella_cambia_si_cambian_los_criterios():
@@ -265,7 +264,7 @@ def test_la_vacante_sale_de_la_cola_al_procesarla():
     encolar(correo(cargar_bandeja(), "b1"), cola)
 
     assert siguiente_de_cola(cola) is not None
-    marcar_procesada(cola, "V001")
+    marcar_procesada(cola, "B001")
 
     assert siguiente_de_cola(cola) is None
     assert estado_cola(cola)["pendientes"] == 0
@@ -280,7 +279,7 @@ def test_la_cola_se_guarda_y_se_recupera(tmp_path):
     recuperada = cargar_cola(ruta)
 
     assert recuperada == cola
-    assert json.loads(ruta.read_text(encoding="utf-8"))["vacantes"][0]["vacante"]["id"] == "V001"
+    assert json.loads(ruta.read_text(encoding="utf-8"))["vacantes"][0]["vacante"]["id"] == "B001"
 
 
 def test_la_cola_inexistente_se_lee_vacia(tmp_path):
@@ -297,7 +296,7 @@ def test_la_cola_respeta_el_orden_de_llegada():
 
     ids = [r["vacante"]["id"] for r in cola["vacantes"]]
 
-    assert ids == ["V001", "V002", "V003"]
+    assert ids == ["B001", "B002", "B003"]
 
 
 # --- fase 2: LLM ---

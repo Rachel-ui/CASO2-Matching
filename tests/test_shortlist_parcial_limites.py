@@ -47,9 +47,38 @@ def modo_sin_llm(monkeypatch):
 
 
 def vacante_dificil(**cambios):
-    vacante = dict(cargar_vacantes()[2])
-    vacante.update(cambios)
-    return vacante
+    """Vacante que ningún perfil puede cubrir: pide un stack que no existe en
+    el dataset. Los skills obligatorios no se relajan, así que siempre queda
+    incompleta y sirve para probar la shortlist parcial (RF-07)."""
+
+    vacante = {
+        "id": "V-IMPOSIBLE",
+        "titulo": "Ingeniero Cobol CICS (control de prueba)",
+        "descripcion": "Vacante de control: ningún perfil tiene el stack.",
+        "skills_obligatorios": ["Cobol CICS", "JCL", "IMS DB"],
+        "skills_deseables": [],
+        "experience_required": 10,
+        "english_required": "C1",
+        "availability_required": "2026-11-01",
+        "modality": "remoto",
+    }
+    return {**vacante, **cambios}
+
+
+def vacante_python():
+    """Vacante de control que el dataset de prueba sí puede cubrir."""
+
+    return {
+        "id": "V-FACIL",
+        "titulo": "Desarrollador Backend Python (control de prueba)",
+        "descripcion": "Vacante de control para el camino de éxito.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
+        "skills_deseables": ["Docker", "FastAPI", "Django"],
+        "experience_required": 3,
+        "english_required": "B1",
+        "availability_required": "2026-10-25",
+        "modality": "remoto",
+    }
 
 
 # --- RF-07 ---
@@ -101,7 +130,7 @@ def test_sin_perfiles_no_hay_bloqueantes():
 
 
 def test_vacante_completa_no_tiene_puestos_libres():
-    resultado = ejecutar(cargar_vacantes()[0])
+    resultado = ejecutar(vacante_python())
 
     assert resultado["analisis_shortlist"]["puestos_libres"] == 0
     assert len(resultado["shortlist"]) == 3
@@ -125,13 +154,13 @@ def test_limites_configurados():
 
 
 def test_nunca_pasa_de_tres_relajaciones():
-    resultado = ejecutar(cargar_vacantes()[2])
+    resultado = ejecutar(vacante_dificil())
 
     assert len(resultado["relajaciones_aplicadas"]) <= 3
 
 
 def test_nunca_pasa_de_tres_consultas_respondidas():
-    resultado = ejecutar(cargar_vacantes()[2])
+    resultado = ejecutar(vacante_dificil())
 
     respondidas = [
         consulta for consulta in resultado["consultas_reclutador"]
@@ -153,7 +182,7 @@ def test_monitoreo_no_pasa_de_24_horas_simuladas():
 
 
 def test_los_limites_quedan_en_el_estado():
-    resultado = ejecutar(cargar_vacantes()[0])
+    resultado = ejecutar(vacante_python())
 
     assert resultado["limites"]["relajaciones"] == 3
     assert resultado["limites"]["consultas_reclutador"] == 3

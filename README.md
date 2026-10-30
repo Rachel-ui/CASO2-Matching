@@ -21,7 +21,7 @@ OPENROUTER_API_KEY=...        # solo si AGENTE_MODO usa LLM
 ```powershell
 # Ejecuta una vacante y deja shortlist, auditoría y respuesta en reports/
 python -m src.ejecutar_matching V001
-python -m src.ejecutar_matching V002 --salida reports/salida_V002.json
+python -m src.ejecutar_matching V003 --salida reports/salida_V003.json
 ```
 
 Cada corrida deja:
@@ -140,12 +140,64 @@ completa, termina con `estado: incompleta` y `requiere_revision_humana`.
 | Archivo | Contenido |
 |---|---|
 | `data/candidatos.csv` | 40 perfiles ficticios (+ duplicados como control de RF-09) |
-| `data/vacantes.json` | Las 3 vacantes de prueba: fácil, media y difícil |
-| `data/bandeja.json` | 12 correos simulados en 24 h, con `vacante_estructurada` |
+| `data/vacantes.json` | El catálogo real: solo las 3 vacantes del lote (V001–V003, ver abajo) |
+| `data/bandeja.json` | 11 correos simulados en 24 h, con `vacante_estructurada` (sus vacantes B001–B003 viven solo aquí) |
 | `data/cola_vacantes.json` | Cola de vacantes clasificadas (RF-16), con sus duplicados y revisiones |
 | `data/reclutador.json` | Respuestas del reclutador, incluida una "no se sabe" |
 | `data/config.yaml` | Pesos, umbral, orden de relajación, límites (`limits`) y modo |
 | `data/salida.json` | Bandeja de salida donde el agente deja la respuesta (RF-17) |
+
+## Catálogo de vacantes: las 3 del lote (V001–V003)
+
+`data/vacantes.json` contiene **solo** estas tres vacantes, numeradas desde
+V001. La bandeja simulada conserva las suyas en `data/bandeja.json` con IDs
+`B001`–`B003`, que no chocan con el catálogo (hay una prueba que lo verifica).
+
+Las solicitudes que llegan del reclutador se guardan **siempre como vacante
+estructurada en `data/vacantes.json`**: el sistema no se conecta a la base de
+datos de la empresa ni a su ATS (por seguridad), así que el JSON es el único
+contrato de entrada. El correo / mensaje original queda como contexto en
+`descripcion` y lo que el esquema no puede expresar (requisito de país,
+seniority, cuántas personas se piden) va en campos extra o en `supuestos`:
+
+| Campo | Uso | Ejemplo |
+|---|---|---|
+| `seniority` | `junior`, `junior_senior`, `mid_senior`, `senior` | el correo de Java pide "JR and Senior" |
+| `vacantes_disponibles` | Cuántas personas pide la vacante | 4 a 8 ingenieros RPG |
+| `requisitos_pais` | Restricción de país (no se puntúa, se reporta) | "solamente candidatos de Costa Rica", "US-based; Dallas, TX" |
+| `supuestos` | Lo que se dedujo y debe confirmar el reclutador | años, fecha de inicio, modalidad |
+
+| ID | Vacante | Obligatorios | Experiencia | Notas |
+|---|---|---|---|---|
+| V001 | Ingeniero Java Supply Chain (JR y Senior) | Java, Spring Boot, Kafka, REST API, microservicios, GitLab, CI/CD, Terraform, pruebas automatizadas, New Relic, Splunk, AWS, Kubernetes | 7 | Solo Costa Rica; GCP, bases relacionales y Supply Chain como deseables |
+| V002 | Pod EMR: ingeniero Mid-Senior con Claude | Next.js, TypeScript, Claude, arquitectura full-stack escalable, agentes de IA | 5 | 4 puestos; se registra 1 por vacante (ver abajo) |
+| V003 | Ingeniero iSeries RPG | IBM i (AS/400), RPG III/IV/ILE/Free, CL, SQL, DB2, integración de sistemas | 10 | 4–8 puestos; **US-based, Dallas TX**, con modalidad presencial: el dataset de Costa Rica no puede cubrirlo |
+
+```powershell
+python -m src.ejecutar_matching V001 --salida reports/salida_V001.json
+python -m src.reporte_vacante V001
+```
+
+Resultado con el dataset actual (39 perfiles únicos, todos backend Python,
+Java o JavaScript): **las tres quedan `incompleta`** y explican el bloqueo
+por `skills_obligatorios` — nadie tiene el stack completo que pide el correo,
+y los skills obligatorios no se relajan. Ese es el comportamiento esperado:
+el agente entrega la explicación en vez de inventar candidatos.
+
+Dos cosas que el esquema todavía no modela y se manejan a mano:
+
+- **Varios puestos por vacante** (4 ingenieros EMR, 4–8 RPG). El matching
+  arma una shortlist de 3 (`agent.shortlist_size`) y se puede correr una vez
+  por posición; `vacantes_disponibles` deja constancia del total.
+- **Requisito de país**. Se guarda en `requisitos_pais` pero el puntaje no lo
+  evalúa: el reporte debe revisarse a mano antes de enviar el perfil (V003
+  pide Dallas, TX).
+
+Para que estos correos se puedan clasificar también desde **texto libre**
+(sin `vacante_estructurada`), el catálogo de skills de `src/interpretar_texto.py`
+reconoce el vocabulario de este lote: Kafka, Terraform, GitLab, Spring Boot,
+New Relic, Splunk, Claude, agentes de IA, infraestructura como código, IBM i,
+RPG III/IV/ILE/Free, CL, DB2 y COBOL. "RPG ILE" cuenta también como RPG IV.
 
 ## Bandeja simulada: un ciclo por hora (RF-15)
 
@@ -210,10 +262,10 @@ despacha todo en las primeras horas. Lo procesado de esta bandeja:
 | 3 | b1 vacante V001 | **vacante nueva**, dispara matching (3 en shortlist) |
 | 4 | b10 perfil de Carlos | no relacionado (candidato) |
 | 5 | b2 vacante V002 | **vacante nueva**, dispara matching (queda incompleta) |
-| 6 | b11 vacante V004 | **vacante nueva**, dispara matching (3 en shortlist) |
+
 | 8 | b3 vacante V003 | **vacante nueva**, dispara matching (incompleta, RF-07) |
 | 8 | b4 reenvío de V001 | **duplicado** de b1, no repite el matching |
-| 9–24 | b5 perfil sin skills, b6 perfil, b7–b9 boletines y factura | b5 a revisión humana; el resto no relacionado (sin leer al cerrar) |
+| 9–24 | b5 perfil sin skills, b6 y b10 perfiles, b7–b9 boletines y factura | b5 a revisión humana; el resto no relacionado (sin leer al cerrar) |
 
 ### Varias vacantes en una corrida (RF-13)
 
@@ -226,8 +278,8 @@ la primera. El orden es:
 3. Cada vacante sale de la cola con su resultado guardado, listo para su
    reporte.
 
-En esta bandeja el orden real es `V001 → V002 → V004 → V003` (V004 llega
-antes que V003 aunque su ID sea mayor). Si una vacante falla (por ejemplo, por
+En esta bandeja el orden real es `V001 → V002 → V003`, el orden de llegada
+de los correos. Si una vacante falla (por ejemplo, por
 el `recursion_limit`), se registra el error y **la cola sigue con la
 siguiente**: una vacante rota no frena a las demás.
 
@@ -236,9 +288,11 @@ siguiente**: una vacante rota no frena a las demás.
 python -m src.reporte_vacante
 ```
 
-Eso genera `reports/reporte_<id>.md|json` y `puntajes_<id>.csv` para V001,
-V002, V004 y V003, más `reports/reportes_bandeja.md` con la tabla de orden,
-estado y puestos cubiertos de cada una.
+Eso genera `reports/bandeja/reporte_<id>.md|json` y `puntajes_<id>.csv` para
+B001, B002 y B003, más `reports/bandeja/reportes_bandeja.md` con la tabla de
+orden, estado y puestos cubiertos de cada una. Van en su propia carpeta para
+no pisar los reportes del catálogo real (`reports/reporte_V001.md`, etc.), que
+se llaman igual.
 
 Al terminar, la corrida informa `orden_procesamiento` (el orden de la cola),
 `vacantes_en_cola` (las que pasaron por ella) y `vacantes_pendientes` (las que
@@ -308,6 +362,7 @@ Formato esperado en el correo (cuerpo o adjunto):
 {
   "id": "V004",
   "titulo": "Desarrollador React",
+  "_nota": "Ejemplo de vacante nueva que llegue por correo; se agrega al catálogo con el ID que traiga.",
   "descripcion": "Texto libre del puesto",
   "skills_obligatorios": ["React", "JavaScript"],
   "skills_deseables": ["TypeScript"],

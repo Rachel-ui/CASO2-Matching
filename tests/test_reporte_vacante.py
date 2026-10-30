@@ -19,18 +19,51 @@ from pathlib import Path
 import pytest
 
 from src.configuracion import cargar_configuracion
-from src.ejecutar_matching import ejecutar_vacante
+from src.estado_agente import crear_estado_inicial
+from src.ejecutar_matching import cargar_candidatos, ejecutar_vacante, invocar_con_limite
 from src.reporte_vacante import (
     COMPONENTES,
     construir_reporte,
     generar_reporte,
     renderizar_markdown,
 )
+from src.reporte_vacante import REPORTS as DIRECTORIO_REPORTES
 
 
 @pytest.fixture(scope="module")
 def config():
     return cargar_configuracion()
+
+
+@pytest.fixture(autouse=True)
+def reports_temporal(tmp_path, monkeypatch):
+    """Que ninguna prueba escriba en `reports/` salvo cuando lo pide a propósito."""
+
+    for modulo in ("src.reporte_vacante", "src.ejecutar_matching", "src.procesar_correo"):
+        monkeypatch.setattr(f"{modulo}.REPORTS", tmp_path, raising=False)
+
+
+@pytest.fixture(scope="module")
+def directorio_reports_real():
+    return DIRECTORIO_REPORTES
+
+
+# Catálogo real: V001 (Java Supply Chain) y V003 (iSeries RPG). El dataset trae
+# perfiles que sí cumplen, así que las dos se completan; para probar el
+# reporte de una vacante incompleta se usa una vacante de control imposible
+# (skills que no tiene ningún perfil y skills obligatorios que no se relajan).
+
+VACANTE_IMPOSIBLE = {
+    "id": "V-IMPOSIBLE",
+    "titulo": "Ingeniero Cobol CICS (control de prueba)",
+    "descripcion": "Vacante de control: ningún perfil tiene el stack.",
+    "skills_obligatorios": ["Cobol CICS", "JCL", "IMS DB"],
+    "skills_deseables": [],
+    "experience_required": 10,
+    "english_required": "C1",
+    "availability_required": "2026-11-01",
+    "modality": "remoto",
+}
 
 
 @pytest.fixture(scope="module")
@@ -40,7 +73,11 @@ def resultado_v001():
 
 @pytest.fixture(scope="module")
 def resultado_v003():
-    return ejecutar_vacante("V003")
+    # Es una vacante de prueba (no está en el catálogo): se ejecuta por el
+    # camino completo del grafo, igual que haría `ejecutar_vacante`.
+    return invocar_con_limite(
+        crear_estado_inicial(VACANTE_IMPOSIBLE, cargar_candidatos()), cargar_configuracion()
+    )
 
 
 @pytest.fixture(scope="module")
@@ -55,18 +92,14 @@ def reporte_v003(resultado_v003, config):
 
 # --- shortlist ---
 
-def test_el_reporte_trae_la_shortlist(reporte_v001):
-    assert reporte_v001["shortlist"]
-    for item in reporte_v001["shortlist"]:
-        assert item["id"]
-        assert item["puntaje"] >= reporte_v001["configuracion"]["umbral"]
-        assert item["justificacion"]
-
-
 def test_la_shortlist_coincide_con_los_puestos_del_matching(reporte_v001):
     puestos = [item["posicion"] for item in reporte_v001["shortlist"]]
 
     assert puestos == list(range(1, len(puestos) + 1))
+    for item in reporte_v001["shortlist"]:
+        assert item["id"]
+        assert item["puntaje"] >= reporte_v001["configuracion"]["umbral"]
+        assert item["justificacion"]
 
 
 # --- puntaje desglosado ---
@@ -125,7 +158,7 @@ def test_las_relajaciones_van_con_antes_y_despues(reporte_v001):
         assert relajacion["descripcion"]
 
 
-def test_la_vacante_dificil_relaja_los_tres_criterios(reporte_v003):
+def test_la_vacante_imposible_relaja_los_tres_criterios(reporte_v003):
     tipos = [relajacion["tipo"] for relajacion in reporte_v003["criterios_relajados"]]
 
     assert tipos == ["start_date", "experience", "english"]
@@ -144,7 +177,7 @@ def test_los_criterios_originales_no_se_pisan(reporte_v001):
     original = reporte_v001["criterios_originales"]["availability_required"]
     vigente = reporte_v001["criterios_vigentes"]["availability_required"]
 
-    assert original == "2026-10-25"
+    assert original == "2026-11-15"
     assert vigente != original
 
 
@@ -179,7 +212,7 @@ def test_las_notas_avisan_de_datos_no_confirmados(reporte_v001):
 def test_las_notas_avisan_de_la_fecha_relajada(reporte_v001):
     notas = " ".join(reporte_v001["observaciones"])
 
-    assert "2026-11-08" in notas
+    assert "2026-11-29" in notas
 
 
 # --- vacante incompleta ---
@@ -197,6 +230,13 @@ def test_una_vacante_incompleta_explica_el_bloqueo(reporte_v003):
 def test_una_vacante_incompleta_no_tiene_shortlist(reporte_v003, resultado_v003):
     assert reporte_v003["shortlist"] == []
     assert resultado_v003["requiere_revision_humana"] is True
+
+
+def test_una_vacante_del_catalogo_si_se_completa(reporte_v001, config):
+    """Con el dataset actual, V001 cubre sus 3 puestos."""
+
+    assert len(reporte_v001["shortlist"]) == config.shortlist_size
+    assert reporte_v001["resultado"]["exito"] is True
 
 
 # --- archivos generados ---
@@ -229,7 +269,6 @@ def test_el_json_es_legible_y_completo(tmp_path, resultado_v001, config):
     datos = json.loads(generado["rutas"]["json"].read_text(encoding="utf-8"))
 
     assert datos["vacante"]["id"] == "V001"
-    assert datos["shortlist"]
     assert datos["candidatos"]
     assert datos["supuestos"]
     assert datos["criterios_relajados"]

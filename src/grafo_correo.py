@@ -136,7 +136,7 @@ def _registrar(estado: EstadoCorreo, accion: str, identificador: str = "") -> No
 def guardar_vacante_nodo(estado: EstadoCorreo) -> dict:
     """Guarda la vacante y ejecuta el matching para actualizar los 3 puestos."""
 
-    from src.procesar_correo import procesar_correo
+    from src import procesar_correo as modulo_procesar_correo
     from src.solicitud_vacante import ErrorVacante, validar_vacante
 
     vacante = estado["datos"]
@@ -156,7 +156,7 @@ def guardar_vacante_nodo(estado: EstadoCorreo) -> dict:
         }
 
     try:
-        procesado = procesar_correo(
+        procesado = modulo_procesar_correo.procesar_correo(
             estado["correo"],
             estado.get("cliente"),
             estado.get("vacante") or None,

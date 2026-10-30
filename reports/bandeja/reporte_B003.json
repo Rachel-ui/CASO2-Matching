@@ -1,0 +1,3950 @@
+{
+  "vacante": {
+    "id": "B003",
+    "titulo": "Especialista Backend Python",
+    "escenario": "dificil",
+    "estado": "incompleta",
+    "modo": "without_llm"
+  },
+  "vacante_original": {
+    "id": "B003",
+    "titulo": "Especialista Backend Python",
+    "descripcion": "Se busca especialista backend altamente experimentado en Python, SQL, Git e infraestructura avanzada.",
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API",
+      "Docker",
+      "Kubernetes",
+      "AWS"
+    ],
+    "skills_deseables": [
+      "FastAPI",
+      "Django",
+      "CI/CD"
+    ],
+    "experience_required": 10,
+    "english_required": "C2",
+    "availability_required": "2026-10-30",
+    "modality": "remoto",
+    "scenario": "dificil"
+  },
+  "criterios_vigentes": {
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API",
+      "Docker",
+      "Kubernetes",
+      "AWS"
+    ],
+    "skills_deseables": [
+      "FastAPI",
+      "Django",
+      "CI/CD"
+    ],
+    "experience_required": 9,
+    "english_required": "C1",
+    "availability_required": "2026-11-13",
+    "modality": "remoto"
+  },
+  "criterios_originales": {
+    "skills_obligatorios": [
+      "Python",
+      "SQL",
+      "Git",
+      "REST API",
+      "Docker",
+      "Kubernetes",
+      "AWS"
+    ],
+    "skills_deseables": [
+      "FastAPI",
+      "Django",
+      "CI/CD"
+    ],
+    "experience_required": 10,
+    "english_required": "C2",
+    "availability_required": "2026-10-30",
+    "modality": "remoto"
+  },
+  "configuracion": {
+    "umbral": 70.0,
+    "pesos": {
+      "mandatory_skills": 50.0,
+      "desirable_skills": 20.0,
+      "experience": 15.0,
+      "english": 10.0,
+      "availability": 5.0
+    },
+    "shortlist_size": 3,
+    "max_relajaciones": 3
+  },
+  "resultado": {
+    "exito": false,
+    "aptos": 0,
+    "minimo": 3,
+    "puestos_llenos": 0,
+    "puestos_libres": 3,
+    "requiere_revision_humana": true,
+    "requisito_bloqueante": "skills_obligatorios",
+    "motivo_incompleta": "Ningún perfil se acerca al umbral 70; se explican los 5 mejores: Los skills obligatorios: ningún perfil cercano tiene todos los que pide la vacante y estos no se relajan nunca, así que el puesto no se puede cubrir ni después de las relajaciones.",
+    "bloqueantes": [
+      {
+        "requisito": "skills_obligatorios",
+        "casos": [
+          "C004 (58.1 pts): le faltan Python, SQL, Git, Docker",
+          "C018 (58.1 pts): le faltan Python, SQL, Git, Docker",
+          "C005 (57.38 pts): le faltan Kubernetes, AWS",
+          "C019 (57.38 pts): le faltan Kubernetes, AWS",
+          "C033 (57.38 pts): le faltan Kubernetes, AWS"
+        ]
+      },
+      {
+        "requisito": "experiencia",
+        "casos": [
+          "C005 (57.38 pts): 5 de 9 años",
+          "C019 (57.38 pts): 7 de 9 años",
+          "C033 (57.38 pts): 6 de 9 años"
+        ]
+      }
+    ]
+  },
+  "shortlist": [],
+  "candidatos": [
+    {
+      "id": "C004",
+      "puntaje_absoluto": 58.1,
+      "puntaje": 58.1,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (REST API, Kubernetes, AWS); faltan Python, SQL, Git, Docker"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "9 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-05 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "José Vargas: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker). Skills: 3/7 skills obligatorios (REST API, Kubernetes, AWS) (faltan: Python, SQL, Git, Docker). Deseables: CI/CD. Experiencia: 9 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-11-05 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "Automatizacion de pruebas",
+          "New Relic",
+          "Splunk",
+          "AWS",
+          "Kubernetes",
+          "Supply Chain",
+          "Gestion de bodegas"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 9,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-05",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C018",
+      "puntaje_absoluto": 58.1,
+      "puntaje": 58.1,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (REST API, Kubernetes, AWS); faltan Python, SQL, Git, Docker"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "10 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-01 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Sebastián León: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker). Skills: 3/7 skills obligatorios (REST API, Kubernetes, AWS) (faltan: Python, SQL, Git, Docker). Deseables: CI/CD. Experiencia: 10 años (requiere 9). Inglés: C2 (requiere C1). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "Automatizacion de pruebas",
+          "New Relic",
+          "Splunk",
+          "AWS",
+          "Kubernetes",
+          "GCP"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 10,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 6,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-01",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C005",
+      "puntaje_absoluto": 57.38,
+      "puntaje": 57.38,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 35.71,
+          "maximo": 50.0,
+          "valor": "5/7 (Python, SQL, Git, REST API, Docker); faltan Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-20 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Sofía Hernández: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4). Skills: 5/7 skills obligatorios (Python, SQL, Git, REST API, Docker) (faltan: Kubernetes, AWS). Deseables: FastAPI. Experiencia: 5 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-10-20 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Docker",
+          "Git",
+          "FastAPI",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker"
+        ],
+        "faltantes": [
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C019",
+      "puntaje_absoluto": 57.38,
+      "puntaje": 57.38,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 35.71,
+          "maximo": 50.0,
+          "valor": "5/7 (Python, SQL, Git, REST API, Docker); faltan Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "7 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-17 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Natalia Campos: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Kubernetes, AWS); experiencia insuficiente (7 de 9 años, faltan 2). Skills: 5/7 skills obligatorios (Python, SQL, Git, REST API, Docker) (faltan: Kubernetes, AWS). Deseables: FastAPI. Experiencia: 7 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-10-17 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker"
+        ],
+        "faltantes": [
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 7,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-17",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C033",
+      "puntaje_absoluto": 57.38,
+      "puntaje": 57.38,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 35.71,
+          "maximo": 50.0,
+          "valor": "5/7 (Python, SQL, Git, REST API, Docker); faltan Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-23 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Juan Quesada: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3). Skills: 5/7 skills obligatorios (Python, SQL, Git, REST API, Docker) (faltan: Kubernetes, AWS). Deseables: FastAPI. Experiencia: 6 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-10-23 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker",
+          "FastAPI",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker"
+        ],
+        "faltantes": [
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-23",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C011",
+      "puntaje_absoluto": 52.38,
+      "puntaje": 52.38,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 35.71,
+          "maximo": 50.0,
+          "valor": "5/7 (Python, SQL, Git, REST API, Docker); faltan Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-28 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Camila Soto: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Kubernetes, AWS); experiencia insuficiente (4 de 9 años, faltan 5); inglés B2 por debajo de C1. Skills: 5/7 skills obligatorios (Python, SQL, Git, REST API, Docker) (faltan: Kubernetes, AWS). Deseables: FastAPI. Experiencia: 4 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-10-28 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker"
+        ],
+        "faltantes": [
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-28",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C017",
+      "puntaje_absoluto": 52.38,
+      "puntaje": 52.38,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 35.71,
+          "maximo": 50.0,
+          "valor": "5/7 (Python, SQL, Git, REST API, Docker); faltan Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-26 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Lucía Fernández: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4); inglés B2 por debajo de C1. Skills: 5/7 skills obligatorios (Python, SQL, Git, REST API, Docker) (faltan: Kubernetes, AWS). Deseables: Django. Experiencia: 5 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-10-26 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker"
+        ],
+        "faltantes": [
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "Django"
+        ],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-26",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C025",
+      "puntaje_absoluto": 45.24,
+      "puntaje": 45.24,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 28.57,
+          "maximo": 50.0,
+          "valor": "4/7 (Python, SQL, Git, Docker); faltan REST API, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "FastAPI"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Emma Villalobos: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API, Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3); disponibilidad sin confirmar. Skills: 4/7 skills obligatorios (Python, SQL, Git, Docker) (faltan: REST API, Kubernetes, AWS). Deseables: FastAPI. Experiencia: 6 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "FastAPI",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "faltantes": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "FastAPI"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C002",
+      "puntaje_absoluto": 40.6,
+      "puntaje": 40.6,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (REST API, Kubernetes, AWS); faltan Python, SQL, Git, Docker"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "8 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Carlos Méndez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker); experiencia insuficiente (8 de 9 años, faltan 1); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 3/7 skills obligatorios (REST API, Kubernetes, AWS) (faltan: Python, SQL, Git, Docker). Deseables: CI/CD. Experiencia: 8 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "Automatizacion de pruebas",
+          "New Relic",
+          "Splunk",
+          "AWS",
+          "Kubernetes",
+          "GCP",
+          "Bases de datos relacionales"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 8,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C027",
+      "puntaje_absoluto": 40.24,
+      "puntaje": 40.24,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 28.57,
+          "maximo": 50.0,
+          "valor": "4/7 (Python, SQL, Git, Docker); faltan REST API, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "Django"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "2 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-03 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Mariana Acosta: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API, Kubernetes, AWS); experiencia insuficiente (2 de 9 años, faltan 7); inglés B1 por debajo de C1. Skills: 4/7 skills obligatorios (Python, SQL, Git, Docker) (faltan: REST API, Kubernetes, AWS). Deseables: Django. Experiencia: 2 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-11-03 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Django",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "faltantes": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "Django"
+        ],
+        "experiencia": 2,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-03",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C003",
+      "puntaje_absoluto": 38.1,
+      "puntaje": 38.1,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (REST API, Kubernetes, AWS); faltan Python, SQL, Git, Docker"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "7 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "María González: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker); experiencia insuficiente (7 de 9 años, faltan 2); disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 3/7 skills obligatorios (REST API, Kubernetes, AWS) (faltan: Python, SQL, Git, Docker). Deseables: CI/CD. Experiencia: 7 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "New Relic",
+          "Splunk",
+          "AWS",
+          "Kubernetes"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 7,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C039",
+      "puntaje_absoluto": 33.45,
+      "puntaje": 33.45,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (REST API, AWS); faltan Python, SQL, Git, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "8 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Óscar Valverde: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker, Kubernetes); experiencia insuficiente (8 de 9 años, faltan 1); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 2/7 skills obligatorios (REST API, AWS) (faltan: Python, SQL, Git, Docker, Kubernetes). Deseables: CI/CD. Experiencia: 8 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "New Relic",
+          "Splunk",
+          "AWS"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 8,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C014",
+      "puntaje_absoluto": 32.14,
+      "puntaje": 32.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "12 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-15 para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Kevin Salazar: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); no disponible para la fecha requerida; modalidad presencial no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 12 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-11-15 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2",
+          "Integracion de sistemas"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 12,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-15",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C015",
+      "puntaje_absoluto": 32.14,
+      "puntaje": 32.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "13 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-01 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Daniela Pérez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); modalidad presencial no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 13 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG ILE",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2",
+          "Integracion de sistemas",
+          "COBOL 400/ILE",
+          "FTP",
+          "Secure FTP",
+          "PGP",
+          "Industria financiera"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 13,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-01",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C035",
+      "puntaje_absoluto": 32.14,
+      "puntaje": 32.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "14 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-30 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Miguel Alfaro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); modalidad presencial no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 14 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG ILE",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2",
+          "Integracion de sistemas",
+          "LSAMS Mortgage Servicing System",
+          "Servicios hipotecarios",
+          "Industria financiera"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 14,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-30",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C022",
+      "puntaje_absoluto": 31.43,
+      "puntaje": 31.43,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (SQL, Git, Docker); faltan Python, REST API, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Felipe Herrera: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API, Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4); disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 3/7 skills obligatorios (SQL, Git, Docker) (faltan: Python, REST API, Kubernetes, AWS). Deseables: ninguno. Experiencia: 5 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C038",
+      "puntaje_absoluto": 31.43,
+      "puntaje": 31.43,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (Python, SQL, Git); faltan REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-16 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Melissa Vargas: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API, Docker, Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1. Skills: 3/7 skills obligatorios (Python, SQL, Git) (faltan: REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-10-16 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-16",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C036",
+      "puntaje_absoluto": 29.29,
+      "puntaje": 29.29,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (Git, REST API); faltan Python, SQL, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-31 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Rebeca Zúñiga: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Docker, Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4). Skills: 2/7 skills obligatorios (Git, REST API) (faltan: Python, SQL, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 5 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: disponible desde 2026-10-31 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-31",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C023",
+      "puntaje_absoluto": 28.57,
+      "puntaje": 28.57,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 28.57,
+          "maximo": 50.0,
+          "valor": "4/7 (Python, SQL, Git, Docker); faltan REST API, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "3 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Andrea Solís: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API, Kubernetes, AWS); experiencia insuficiente (3 de 9 años, faltan 6); inglés B1 por debajo de C1; disponibilidad sin confirmar; modalidad hibrido no compatible. Skills: 4/7 skills obligatorios (Python, SQL, Git, Docker) (faltan: REST API, Kubernetes, AWS). Deseables: ninguno. Experiencia: 3 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "faltantes": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C037",
+      "puntaje_absoluto": 28.57,
+      "puntaje": 28.57,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 28.57,
+          "maximo": 50.0,
+          "valor": "4/7 (Python, SQL, Git, Docker); faltan REST API, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "2 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Pablo Murillo: No cumple todos los requisitos obligatorios: faltan skills obligatorios (REST API, Kubernetes, AWS); experiencia insuficiente (2 de 9 años, faltan 7); inglés B1 por debajo de C1; no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 4/7 skills obligatorios (Python, SQL, Git, Docker) (faltan: REST API, Kubernetes, AWS). Deseables: ninguno. Experiencia: 2 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "SQL",
+          "Git",
+          "Flask",
+          "Docker"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker"
+        ],
+        "faltantes": [
+          "REST API",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 2,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C013",
+      "puntaje_absoluto": 27.14,
+      "puntaje": 27.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 15.0,
+          "maximo": 15.0,
+          "valor": "11 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-10 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Isabella Arias: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); inglés B2 por debajo de C1; modalidad presencial no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 11 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-10 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG ILE",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2",
+          "Integracion de sistemas"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 11,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-10",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C024",
+      "puntaje_absoluto": 26.43,
+      "puntaje": 26.43,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (Python, Git, REST API); faltan SQL, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Luis Calderón: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL, Docker, Kubernetes, AWS); experiencia insuficiente (4 de 9 años, faltan 5); inglés B2 por debajo de C1; disponibilidad sin confirmar. Skills: 3/7 skills obligatorios (Python, Git, REST API) (faltan: SQL, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 4 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "SQL",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C028",
+      "puntaje_absoluto": 26.43,
+      "puntaje": 26.43,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (SQL, Git, REST API); faltan Python, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Esteban Porras: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Docker, Kubernetes, AWS); experiencia insuficiente (4 de 9 años, faltan 5); inglés B2 por debajo de C1; disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 3/7 skills obligatorios (SQL, Git, REST API) (faltan: Python, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 4 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C034",
+      "puntaje_absoluto": 26.43,
+      "puntaje": 26.43,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 21.43,
+          "maximo": 50.0,
+          "valor": "3/7 (SQL, Git, REST API); faltan Python, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-24 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Carolina Vega: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Docker, Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4); inglés B2 por debajo de C1; modalidad presencial no compatible. Skills: 3/7 skills obligatorios (SQL, Git, REST API) (faltan: Python, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 5 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-10-24 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "SQL",
+          "Git",
+          "Spring",
+          "REST API"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git",
+          "REST API"
+        ],
+        "faltantes": [
+          "Python",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-24",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C001",
+      "puntaje_absoluto": 25.95,
+      "puntaje": 25.95,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (REST API, AWS); faltan Python, SQL, Git, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Ana Rodríguez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker, Kubernetes); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 2/7 skills obligatorios (REST API, AWS) (faltan: Python, SQL, Git, Docker, Kubernetes). Deseables: CI/CD. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "Automatizacion de pruebas",
+          "New Relic",
+          "Splunk",
+          "AWS"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API",
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C006",
+      "puntaje_absoluto": 24.29,
+      "puntaje": 24.29,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (SQL, Git); faltan Python, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-10-25 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Daniel Castro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (4 de 9 años, faltan 5); inglés B2 por debajo de C1. Skills: 2/7 skills obligatorios (SQL, Git) (faltan: Python, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 4 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-10-25 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-10-25",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C012",
+      "puntaje_absoluto": 19.64,
+      "puntaje": 19.64,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 7.5,
+          "maximo": 15.0,
+          "valor": "8 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Diego Navarro: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (8 de 9 años, faltan 1); inglés B2 por debajo de C1; no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 8 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2",
+          "Integracion de sistemas"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 8,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C026",
+      "puntaje_absoluto": 19.29,
+      "puntaje": 19.29,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (SQL, Git); faltan Python, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "3 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Ricardo Fuentes: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (3 de 9 años, faltan 6); inglés B2 por debajo de C1; disponibilidad sin confirmar; modalidad hibrido no compatible. Skills: 2/7 skills obligatorios (SQL, Git) (faltan: Python, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 3 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "Node.js",
+          "React",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C008",
+      "puntaje_absoluto": 18.81,
+      "puntaje": 18.81,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (REST API); faltan Python, SQL, Git, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-22 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Andrés Solano: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, Docker, Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 1/7 skills obligatorios (REST API) (faltan: Python, SQL, Git, Docker, Kubernetes, AWS). Deseables: CI/CD. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-22 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "REST API",
+          "Microservicios",
+          "GitLab",
+          "CI/CD",
+          "Terraform",
+          "Automatizacion de pruebas",
+          "Splunk",
+          "Bases de datos relacionales",
+          "GCP"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "REST API"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-22",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C020",
+      "puntaje_absoluto": 14.29,
+      "puntaje": 14.29,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (SQL, Git); faltan Python, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "2 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-08 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Adrián Chaves: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (2 de 9 años, faltan 7); inglés B1 por debajo de C1; modalidad hibrido no compatible. Skills: 2/7 skills obligatorios (SQL, Git) (faltan: Python, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 2 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-11-08 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Git",
+          "SQL"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL",
+          "Git"
+        ],
+        "faltantes": [
+          "Python",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 2,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-08",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C030",
+      "puntaje_absoluto": 14.29,
+      "puntaje": 14.29,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 14.29,
+          "maximo": 50.0,
+          "valor": "2/7 (Python, Git); faltan SQL, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "3 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-18 para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Tomas Brenes: No cumple todos los requisitos obligatorios: faltan skills obligatorios (SQL, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (3 de 9 años, faltan 6); inglés B1 por debajo de C1; no disponible para la fecha requerida; modalidad hibrido no compatible. Skills: 2/7 skills obligatorios (Python, Git) (faltan: SQL, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 3 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-11-18 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Python",
+          "JavaScript",
+          "Git",
+          "React",
+          "Node.js"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "Python",
+          "Git"
+        ],
+        "faltantes": [
+          "SQL",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-18",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C040",
+      "puntaje_absoluto": 13.81,
+      "puntaje": 13.81,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (AWS); faltan Python, SQL, Git, REST API, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 6.67,
+          "maximo": 20.0,
+          "valor": "CI/CD"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-12-01 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Patricia Cordero: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes); experiencia insuficiente (4 de 9 años, faltan 5); inglés B1 por debajo de C1; no disponible para la fecha requerida. Skills: 1/7 skills obligatorios (AWS) (faltan: Python, SQL, Git, REST API, Docker, Kubernetes). Deseables: CI/CD. Experiencia: 4 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-12-01 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Java",
+          "Spring Boot",
+          "Kafka",
+          "GitLab",
+          "CI/CD",
+          "AWS",
+          "GCP",
+          "Bases de datos relacionales"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [
+          "CI/CD"
+        ],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-12-01",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C009",
+      "puntaje_absoluto": 12.14,
+      "puntaje": 12.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (AWS); faltan Python, SQL, Git, REST API, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "4 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-12 para 2026-11-13 (a tiempo, modalidad no compatible); modalidad hibrido"
+        }
+      ],
+      "justificacion": "Laura Jiménez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes); experiencia insuficiente (4 de 9 años, faltan 5); inglés B2 por debajo de C1; modalidad hibrido no compatible. Skills: 1/7 skills obligatorios (AWS) (faltan: Python, SQL, Git, REST API, Docker, Kubernetes). Deseables: ninguno. Experiencia: 4 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-12 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad hibrido (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Next.js",
+          "TypeScript",
+          "Claude",
+          "Agentes de IA",
+          "AWS",
+          "CLI"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 4,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-12",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "hibrido",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C010",
+      "puntaje_absoluto": 12.14,
+      "puntaje": 12.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (AWS); faltan Python, SQL, Git, REST API, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "7 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Mateo Rojas: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes); experiencia insuficiente (7 de 9 años, faltan 2); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 1/7 skills obligatorios (AWS) (faltan: Python, SQL, Git, REST API, Docker, Kubernetes). Deseables: ninguno. Experiencia: 7 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Next.js",
+          "TypeScript",
+          "Claude",
+          "Arquitectura full-stack escalable",
+          "Agentes de IA",
+          "Productos comerciales",
+          "Caché",
+          "Balanceo de carga",
+          "AWS",
+          "CLI",
+          "GitHub"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 7,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C016",
+      "puntaje_absoluto": 12.14,
+      "puntaje": 12.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (SQL); faltan Python, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha, modalidad no compatible); modalidad presencial"
+        }
+      ],
+      "justificacion": "Marco Ramírez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, Git, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1; disponibilidad sin confirmar; modalidad presencial no compatible. Skills: 1/7 skills obligatorios (SQL) (faltan: Python, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad presencial (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "IBM i (AS/400)",
+          "RPG III",
+          "RPG IV",
+          "RPG ILE",
+          "RPG Free",
+          "CL",
+          "SQL",
+          "DB2"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "SQL"
+        ],
+        "faltantes": [
+          "Python",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "presencial",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": false
+      }
+    },
+    {
+      "id": "C029",
+      "puntaje_absoluto": 12.14,
+      "puntaje": 12.14,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 7.14,
+          "maximo": 50.0,
+          "valor": "1/7 (AWS); faltan Python, SQL, Git, REST API, Docker, Kubernetes"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-18 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Gabriela Montero: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1; no disponible para la fecha requerida. Skills: 1/7 skills obligatorios (AWS) (faltan: Python, SQL, Git, REST API, Docker, Kubernetes). Deseables: ninguno. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-18 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Next.js",
+          "TypeScript",
+          "Claude",
+          "Agentes de IA",
+          "Arquitectura full-stack escalable",
+          "Balanceo de carga",
+          "AWS",
+          "CLI"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [
+          "AWS"
+        ],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-18",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C007",
+      "puntaje_absoluto": 10.0,
+      "puntaje": 10.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 0.0,
+          "maximo": 50.0,
+          "valor": "0/7; faltan Python, SQL, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "6 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 5.0,
+          "maximo": 10.0,
+          "valor": "B2 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 5.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-10 para 2026-11-13 (a tiempo); modalidad remoto"
+        }
+      ],
+      "justificacion": "Valeria Mora: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (6 de 9 años, faltan 3); inglés B2 por debajo de C1. Skills: 0/7 skills obligatorios (faltan: Python, SQL, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 6 años (requiere 9). Inglés: B2 (requiere C1). Disponibilidad: disponible desde 2026-11-10 (a tiempo, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Next.js",
+          "TypeScript",
+          "Claude",
+          "Agentes de IA",
+          "GitHub",
+          "CLI",
+          "Productos comerciales",
+          "Caché"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 6,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B2",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 4,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-10",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": true,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C021",
+      "puntaje_absoluto": 10.0,
+      "puntaje": 10.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 0.0,
+          "maximo": 50.0,
+          "valor": "0/7; faltan Python, SQL, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "5 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 10.0,
+          "maximo": 10.0,
+          "valor": "C1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible sin fecha para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Paula Jiménez: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (5 de 9 años, faltan 4); disponibilidad sin confirmar. Skills: 0/7 skills obligatorios (faltan: Python, SQL, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 5 años (requiere 9). Inglés: C1 (requiere C1). Disponibilidad: sin fecha de disponibilidad (dato faltante). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "Next.js",
+          "TypeScript",
+          "Claude",
+          "Agentes de IA",
+          "Arquitectura full-stack escalable",
+          "Productos comerciales",
+          "Caché"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 5,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "C1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 5,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    },
+    {
+      "id": "C041",
+      "puntaje_absoluto": 0.0,
+      "puntaje": 0.0,
+      "umbral": 70.0,
+      "supera_umbral": false,
+      "cumple_requisitos": false,
+      "en_shortlist": false,
+      "posicion": null,
+      "componentes": [
+        {
+          "componente": "mandatory_skills",
+          "etiqueta": "Skills obligatorios",
+          "puntos": 0.0,
+          "maximo": 50.0,
+          "valor": "0/7; faltan Python, SQL, Git, REST API, Docker, Kubernetes, AWS"
+        },
+        {
+          "componente": "desirable_skills",
+          "etiqueta": "Skills deseables",
+          "puntos": 0.0,
+          "maximo": 20.0,
+          "valor": "ninguno"
+        },
+        {
+          "componente": "experience",
+          "etiqueta": "Experiencia",
+          "puntos": 0.0,
+          "maximo": 15.0,
+          "valor": "3 de 9 años"
+        },
+        {
+          "componente": "english",
+          "etiqueta": "Inglés",
+          "puntos": 0.0,
+          "maximo": 10.0,
+          "valor": "B1 (requiere C1)"
+        },
+        {
+          "componente": "availability",
+          "etiqueta": "Disponibilidad",
+          "puntos": 0.0,
+          "maximo": 5.0,
+          "valor": "disponible 2026-11-20 para 2026-11-13 (no cumple fecha); modalidad remoto"
+        }
+      ],
+      "justificacion": "Daniela Quirós: No cumple todos los requisitos obligatorios: faltan skills obligatorios (Python, SQL, Git, REST API, Docker, Kubernetes, AWS); experiencia insuficiente (3 de 9 años, faltan 6); inglés B1 por debajo de C1; no disponible para la fecha requerida. Skills: 0/7 skills obligatorios (faltan: Python, SQL, Git, REST API, Docker, Kubernetes, AWS). Deseables: ninguno. Experiencia: 3 años (requiere 9). Inglés: B1 (requiere C1). Disponibilidad: disponible desde 2026-11-20 (después de lo requerido, se requiere para 2026-11-13). Modalidad: modalidad remoto (vacante remoto).",
+      "detalle": {
+        "skills_candidato": [
+          "React",
+          "JavaScript",
+          "HTML"
+        ],
+        "obligatorios": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "cumplidos": [],
+        "faltantes": [
+          "Python",
+          "SQL",
+          "Git",
+          "REST API",
+          "Docker",
+          "Kubernetes",
+          "AWS"
+        ],
+        "deseables_cumplidos": [],
+        "experiencia": 3,
+        "experiencia_requerida": 9,
+        "nivel_candidato": "B1",
+        "nivel_requerido": "C1",
+        "nivel_candidato_valor": 3,
+        "nivel_requerido_valor": 5,
+        "fecha_candidato": "2026-11-20",
+        "fecha_requerida": "2026-11-13",
+        "a_tiempo": false,
+        "modalidad_candidato": "remoto",
+        "modalidad_vacante": "remoto",
+        "modalidad_ok": true
+      }
+    }
+  ],
+  "criterios_relajados": [
+    {
+      "orden": 1,
+      "tipo": "start_date",
+      "antes": "2026-10-30",
+      "despues": "2026-11-13",
+      "descripcion": "Se movió la fecha de inicio 2 semanas: 2026-10-30 -> 2026-11-13."
+    },
+    {
+      "orden": 2,
+      "tipo": "experience",
+      "antes": 10,
+      "despues": 9,
+      "descripcion": "Se acepta 1 año menos de experiencia: 10 -> 9 años."
+    },
+    {
+      "orden": 3,
+      "tipo": "english",
+      "antes": "C2",
+      "despues": "C1",
+      "descripcion": "Se acepta un nivel menos de inglés: C2 -> C1."
+    }
+  ],
+  "consultas_reclutador": [
+    {
+      "candidato_id": "C025",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C025?",
+      "respuesta": "no se sabe",
+      "resultado": "no_se_sabe",
+      "motivo": "El reclutador respondió \"no se sabe\"; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C027",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C027?",
+      "respuesta": "2026-11-03",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-11-03."
+    },
+    {
+      "candidato_id": "C003",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C003?",
+      "respuesta": "",
+      "resultado": "sin_respuesta",
+      "motivo": "El reclutador no tiene una respuesta registrada para este dato."
+    },
+    {
+      "candidato_id": "C023",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C023?",
+      "respuesta": "2026-10-28",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C022",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C022?",
+      "respuesta": "2026-11-05",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C024",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C024?",
+      "respuesta": "2026-11-10",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C028",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C028?",
+      "respuesta": "no se sabe",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C026",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C026?",
+      "respuesta": "2026-11-15",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C021",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C021?",
+      "respuesta": "2026-10-30",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C016",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C016?",
+      "respuesta": "",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    }
+  ],
+  "duplicados": [
+    {
+      "id": "C031",
+      "nombre": "Andrea Solís",
+      "email": "andrea.solis@example.com",
+      "telefono": "FICTICIO-023",
+      "posicion": 31,
+      "conservado_id": "C023",
+      "motivo": "Mismo correo, nombre y teléfono"
+    },
+    {
+      "id": "C032",
+      "nombre": "Ana Rodríguez",
+      "email": "ana.rodriguez@example.com",
+      "telefono": "FICTICIO-001",
+      "posicion": 32,
+      "conservado_id": "C001",
+      "motivo": "Mismo correo, nombre y teléfono"
+    }
+  ],
+  "limites": {
+    "horas_monitoreo": 3.0,
+    "relajaciones": 3,
+    "consultas_reclutador": 3,
+    "llamadas_llm": 30,
+    "pasos_grafo": 400,
+    "recursion_limit": 400
+  },
+  "pasos_grafo": 328,
+  "candidatos_por_componente": {
+    "Skills obligatorios": 39,
+    "Skills deseables": 39,
+    "Experiencia": 33,
+    "Inglés": 26,
+    "Disponibilidad": 27
+  },
+  "puntos_perdidos_por_componente": {
+    "Skills obligatorios": 1285.73,
+    "Skills deseables": 679.95,
+    "Experiencia": 472.5,
+    "Inglés": 165.0,
+    "Disponibilidad": 135.0
+  },
+  "supuestos": [
+    {
+      "tema": "Umbral de puntaje",
+      "supuesto": "Un perfil entra a la shortlist con 70 puntos o más y cumpliendo todos los requisitos duros.",
+      "fuente": "data/config.yaml -> scoring.threshold (umbral 70)"
+    },
+    {
+      "tema": "Pesos del puntaje",
+      "supuesto": "El puntaje reparte 100 puntos así: skills obligatorios 50, skills deseables 20, experiencia 15, inglés 10, disponibilidad 5.",
+      "fuente": "data/config.yaml -> scoring.weights"
+    },
+    {
+      "tema": "Skills obligatorios",
+      "supuesto": "Los skills obligatorios no se relajan nunca; un perfil que no los tiene todos no entra, aunque el puesto quede libre.",
+      "fuente": "src/relajacion.py"
+    },
+    {
+      "tema": "Orden de relajación",
+      "supuesto": "Las relajaciones se aplican en orden: fecha de inicio (+2 semanas), experiencia (-1 año) e inglés (-1 nivel), hasta 3 en total.",
+      "fuente": "data/config.yaml -> relaxation"
+    },
+    {
+      "tema": "Compatibilidad de modalidad",
+      "supuesto": "Un candidato remoto sirve para cualquier modalidad y uno híbrido cubre una vacante presencial; la modalidad no se relaja.",
+      "fuente": "src/scoring.py -> _modalidad_compatible"
+    },
+    {
+      "tema": "Datos faltantes",
+      "supuesto": "Si el reclutador no confirma un dato (\"no se sabe\" o se agotó el límite de 3 consultas), el campo queda vacío y se puntúa 0 en lugar de inventarlo.",
+      "fuente": "src/reclutador.py"
+    },
+    {
+      "tema": "Puntaje versus redacción",
+      "supuesto": "El puntaje siempre lo calcula el código; con LLM solo cambia la redacción de la justificación.",
+      "fuente": "AGENTE_MODO = without_llm"
+    }
+  ],
+  "observaciones": [
+    "Datos sin confirmar: 9 consulta(s) al reclutador quedaron sin respuesta (C003, C016, C021, C022, C023, C024, C025, C026, C028); esos perfiles se puntuaron sin la fecha de disponibilidad.",
+    "9 perfil(es) sin fecha de disponibilidad: C025, C003, C022, C023, C024, C028, C026, C016, C021. No se asumió una fecha por ellos.",
+    "La shortlist se armó con criterios relajados; sin esas relajaciones la cantidad de perfiles sería menor.",
+    "Se descartaron 2 perfil(es) duplicado(s): cada persona se evaluó una sola vez.",
+    "La disponibilidad se comparó contra la fecha ya relajada (2026-11-13); la vacante pedía 2026-10-30. Algunos perfiles aparecen \"a tiempo\" solo por esa relajación."
+  ]
+}

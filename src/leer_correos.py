@@ -91,6 +91,14 @@ def main() -> int:
         help="Muestra también los correos que no parecen solicitudes de vacante.",
     )
     parser.add_argument(
+        "--completo",
+        action="store_true",
+        help=(
+            "Con --todas: trae el cuerpo completo de cada correo (el listado solo "
+            "trae un preview corto)."
+        ),
+    )
+    parser.add_argument(
         "--vigilar",
         action="store_true",
         help=(
@@ -152,7 +160,9 @@ def main() -> int:
                 return 0
 
             if argumentos.todas:
-                correos = cliente.listar_mensajes(limite=argumentos.limite)
+                correos = cliente.listar_mensajes(
+                    limite=argumentos.limite, con_cuerpo=argumentos.completo
+                )
                 titulo = "Correos de la bandeja"
             else:
                 correos = cliente.buscar_solicitudes_vacante(limite=argumentos.limite)

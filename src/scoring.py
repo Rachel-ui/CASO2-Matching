@@ -10,6 +10,7 @@ from datetime import date
 
 from src.configuracion import Configuracion
 from src.duplicados import normalizar_texto
+from src.interpretar_texto import EQUIVALENCIAS_SKILLS
 
 
 NIVELES_INGLES = ("A1", "A2", "B1", "B2", "C1", "C2")
@@ -39,8 +40,11 @@ def _normalizar_skills(valores) -> list[str]:
 
 
 def _contiene(skills: list[str], skill: str) -> bool:
-    buscado = normalizar_texto(skill)
-    return any(normalizar_texto(actual) == buscado for actual in skills)
+    """Si el perfil tiene la skill; "RPG ILE" también cubre "RPG IV"."""
+
+    buscadas = EQUIVALENCIAS_SKILLS.get(skill, (skill,))
+    buscadas = {normalizar_texto(buscada) for buscada in buscadas}
+    return any(normalizar_texto(actual) in buscadas for actual in skills)
 
 
 def _modalidad_compatible(modalidad_candidato: str, modalidad_vacante: str) -> bool:

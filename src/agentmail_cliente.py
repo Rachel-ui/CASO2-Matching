@@ -67,6 +67,17 @@ def _texto(valor: Any) -> str:
     return str(valor or "").strip()
 
 
+def _asunto_de_headers(headers: Any) -> str:
+    """Saca el asunto de `headers` cuando la API no trae el campo `subject`."""
+
+    if not isinstance(headers, dict):
+        return ""
+    for clave, valor in headers.items():
+        if str(clave).lower() == "subject":
+            return _texto(valor)
+    return ""
+
+
 def _a_correo(datos: dict, cuerpo_detallado: bool = False) -> Correo:
     adjuntos = [
         Adjunto(
@@ -93,7 +104,8 @@ def _a_correo(datos: dict, cuerpo_detallado: bool = False) -> Correo:
         thread_id=_texto(datos.get("thread_id")),
         remitente=_texto(datos.get("from")),
         destinatarios=[_texto(d) for d in (datos.get("to") or [])],
-        asunto=_texto(datos.get("subject")),
+        # La API no siempre devuelve `subject`: en ese caso queda en los headers.
+        asunto=_texto(datos.get("subject")) or _asunto_de_headers(datos.get("headers")),
         fecha=_texto(datos.get("timestamp")),
         cuerpo=cuerpo,
         adjuntos=adjuntos,
@@ -157,8 +169,15 @@ class AgentMailCliente:
         limite: int = 10,
         remitente: str | None = None,
         asunto: str | None = None,
+        con_cuerpo: bool = False,
     ) -> list[Correo]:
-        """Lista los mensajes más recientes de la bandeja (sin cuerpo completo)."""
+        """Lista los mensajes más recientes de la bandeja.
+
+        El listado solo trae un `preview` corto del cuerpo. Con `con_cuerpo=True`
+        se pide el detalle de cada mensaje, que es lo que hace falta para
+        interpretar el texto libre de un correo. Son N+1 peticiones: se usa solo
+        con listas cortas.
+        """
 
         parametros: dict[str, Any] = {"limit": limite}
         if remitente:
@@ -167,7 +186,10 @@ class AgentMailCliente:
             parametros["subject"] = asunto
 
         datos = self._get(f"/inboxes/{self.inbox_id}/messages", **parametros)
-        return [_a_correo(item) for item in datos.get("messages", [])]
+        correos = [_a_correo(item) for item in datos.get("messages", [])]
+        if con_cuerpo:
+            correos = [self.obtener_mensaje(correo.message_id) for correo in correos]
+        return correos
 
     def obtener_mensaje(self, message_id: str) -> Correo:
         """Devuelve un mensaje con su cuerpo completo (texto extraído)."""
@@ -299,8 +321,7 @@ class AgentMailCliente:
 
         candidatos = []
 
-        for mensaje in self.listar_mensajes(limite=limite):
-            detalle = self.obtener_mensaje(mensaje.message_id)
+        for detalle in self.listar_mensajes(limite=limite, con_cuerpo=True):
             cuerpo = (detalle.cuerpo or "").lower()
             extensiones = {adj.filename.rsplit(".", 1)[-1].lower() for adj in detalle.adjuntos if "." in adj.filename}
 

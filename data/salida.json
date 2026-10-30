@@ -1,47 +1,38 @@
 {
   "vacante_id": "V003",
-  "titulo": "Especialista Backend Python",
-  "escenario": "dificil",
-  "estado": "incompleta",
-  "exito": false,
-  "aptos": 0,
+  "titulo": "Ingeniero de Software iSeries RPG",
+  "escenario": "lote_real",
+  "estado": "finalizado",
+  "exito": true,
+  "aptos": 4,
   "minimo": 3,
-  "shortlist": 0,
-  "shortlist_parcial": true,
-  "puestos_libres": 3,
-  "requiere_revision_humana": true,
-  "motivo_incompleta": "Ningún perfil se acerca al umbral 70; se explican los 5 mejores: Los skills obligatorios: ningún perfil cercano tiene todos los que pide la vacante y estos no se relajan nunca, así que el puesto no se puede cubrir ni después de las relajaciones.",
-  "requisito_bloqueante": "skills_obligatorios",
-  "bloqueantes": [
+  "shortlist": 3,
+  "shortlist_parcial": false,
+  "puestos_libres": 0,
+  "requiere_revision_humana": false,
+  "motivo_incompleta": "",
+  "requisito_bloqueante": "",
+  "bloqueantes": [],
+  "perfiles_entregados": [
     {
-      "requisito": "skills_obligatorios",
-      "casos": [
-        "C005 (50.24 pts): le faltan REST API, Kubernetes, AWS",
-        "C019 (50.24 pts): le faltan REST API, Kubernetes, AWS",
-        "C033 (50.24 pts): le faltan REST API, Kubernetes, AWS",
-        "C001 (45.24 pts): le faltan Docker, Kubernetes, AWS",
-        "C011 (45.24 pts): le faltan REST API, Kubernetes, AWS"
-      ]
+      "posicion": 1,
+      "id": "C015",
+      "puntaje": 92.5,
+      "justificacion": "Daniela Pérez: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: COBOL 400/ILE, FTP, Secure FTP, PGP, Industria financiera. Experiencia: 13 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
     },
     {
-      "requisito": "experiencia",
-      "casos": [
-        "C005 (50.24 pts): 5 de 9 años",
-        "C019 (50.24 pts): 7 de 9 años",
-        "C033 (50.24 pts): 6 de 9 años",
-        "C001 (45.24 pts): 4 de 9 años",
-        "C011 (45.24 pts): 4 de 9 años"
-      ]
+      "posicion": 2,
+      "id": "C035",
+      "puntaje": 87.5,
+      "justificacion": "Miguel Alfaro: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: LSAMS Mortgage Servicing System, Servicios hipotecarios, Industria financiera. Experiencia: 14 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
     },
     {
-      "requisito": "ingles",
-      "casos": [
-        "C001 (45.24 pts): B2 frente a C1",
-        "C011 (45.24 pts): B2 frente a C1"
-      ]
+      "posicion": 3,
+      "id": "C013",
+      "puntaje": 80.0,
+      "justificacion": "Isabella Arias: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: ninguno. Experiencia: 11 años (requiere 10). Inglés: B2 (requiere B2). Disponibilidad: disponible desde 2026-11-10 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
     }
   ],
-  "perfiles_entregados": [],
   "limites": {
     "horas_monitoreo": 3.0,
     "relajaciones": 3,
@@ -50,13 +41,25 @@
     "pasos_grafo": 400,
     "recursion_limit": 400
   },
-  "pasos_grafo": 328,
-  "relajaciones": [
-    "Se movió la fecha de inicio 2 semanas: 2026-10-15 -> 2026-10-29.",
-    "Se acepta 1 año menos de experiencia: 10 -> 9 años.",
-    "Se acepta un nivel menos de inglés: C2 -> C1."
-  ],
+  "pasos_grafo": 84,
+  "relajaciones": [],
   "consultas_reclutador": [
+    {
+      "candidato_id": "C016",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C016?",
+      "respuesta": "",
+      "resultado": "sin_respuesta",
+      "motivo": "El reclutador no tiene una respuesta registrada para este dato."
+    },
+    {
+      "candidato_id": "C022",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C022?",
+      "respuesta": "2026-11-05",
+      "resultado": "respondida",
+      "motivo": "El reclutador confirmó availability_date = 2026-11-05."
+    },
     {
       "candidato_id": "C025",
       "campo": "availability_date",
@@ -66,42 +69,10 @@
       "motivo": "El reclutador respondió \"no se sabe\"; el dato sigue desconocido."
     },
     {
-      "candidato_id": "C021",
+      "candidato_id": "C026",
       "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C021?",
-      "respuesta": "2026-10-30",
-      "resultado": "respondida",
-      "motivo": "El reclutador confirmó availability_date = 2026-10-30."
-    },
-    {
-      "candidato_id": "C027",
-      "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C027?",
-      "respuesta": "2026-11-03",
-      "resultado": "respondida",
-      "motivo": "El reclutador confirmó availability_date = 2026-11-03."
-    },
-    {
-      "candidato_id": "C023",
-      "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C023?",
-      "respuesta": "2026-10-28",
-      "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
-    },
-    {
-      "candidato_id": "C022",
-      "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C022?",
-      "respuesta": "2026-11-05",
-      "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
-    },
-    {
-      "candidato_id": "C024",
-      "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C024?",
-      "respuesta": "2026-11-10",
+      "pregunta": "¿Cuál es la availability_date del candidato C026?",
+      "respuesta": "2026-11-15",
       "resultado": "limite_alcanzado",
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
@@ -114,32 +85,66 @@
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
-      "candidato_id": "C026",
+      "candidato_id": "C023",
       "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C026?",
-      "respuesta": "2026-11-15",
+      "pregunta": "¿Cuál es la availability_date del candidato C023?",
+      "respuesta": "2026-10-28",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C027",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C027?",
+      "respuesta": "2026-11-03",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C003",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C003?",
+      "respuesta": "",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C021",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C021?",
+      "respuesta": "2026-10-30",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C024",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C024?",
+      "respuesta": "2026-11-10",
       "resultado": "limite_alcanzado",
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     }
   ],
   "criterios_vigentes": {
     "skills_obligatorios": [
-      "Python",
+      "IBM i (AS/400)",
+      "RPG III",
+      "RPG IV",
+      "RPG ILE",
+      "RPG Free",
+      "CL",
       "SQL",
-      "Git",
-      "REST API",
-      "Docker",
-      "Kubernetes",
-      "AWS"
+      "DB2",
+      "Integracion de sistemas"
     ],
-    "experience_required": 9,
-    "english_required": "C1",
-    "availability_required": "2026-10-29",
-    "modality": "remoto"
+    "experience_required": 10,
+    "english_required": "B2",
+    "availability_required": "2026-11-15",
+    "modality": "presencial"
   },
   "criterios_originales": {
     "experience_required": 10,
-    "english_required": "C2",
-    "availability_required": "2026-10-15"
+    "english_required": "B2",
+    "availability_required": "2026-11-15"
   }
 }

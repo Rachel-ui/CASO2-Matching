@@ -1,24 +1,48 @@
-# Reporte de la vacante V003: Especialista Backend Python
+# Reporte de la vacante V003: Ingeniero de Software iSeries RPG
 
-- **Escenario:** dificil
-- **Estado:** incompleta (sin éxito pleno)
+- **Escenario:** lote_real
+- **Estado:** finalizado (éxito)
 - **Modo:** without_llm
-- **Puestos:** 0 cubiertos, 3 libres
-- **Revisión humana:** sí
-
-## Shortlist parcial (RF-07)
-
-Requisito bloqueante: **skills_obligatorios**.
-
-Ningún perfil se acerca al umbral 70; se explican los 5 mejores: Los skills obligatorios: ningún perfil cercano tiene todos los que pide la vacante y estos no se relajan nunca, así que el puesto no se puede cubrir ni después de las relajaciones.
-
-- **skills_obligatorios**: C005 (50.24 pts): le faltan REST API, Kubernetes, AWS; C019 (50.24 pts): le faltan REST API, Kubernetes, AWS; C033 (50.24 pts): le faltan REST API, Kubernetes, AWS; C001 (45.24 pts): le faltan Docker, Kubernetes, AWS; C011 (45.24 pts): le faltan REST API, Kubernetes, AWS
-- **experiencia**: C005 (50.24 pts): 5 de 9 años; C019 (50.24 pts): 7 de 9 años; C033 (50.24 pts): 6 de 9 años; C001 (45.24 pts): 4 de 9 años; C011 (45.24 pts): 4 de 9 años
-- **ingles**: C001 (45.24 pts): B2 frente a C1; C011 (45.24 pts): B2 frente a C1
+- **Puestos:** 3 cubiertos, 0 libres
+- **Revisión humana:** no
 
 ## Shortlist
 
-_Ningún candidato ocupa puesto._
+### 1. C015 - 92.5 puntos
+
+Daniela Pérez: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: COBOL 400/ILE, FTP, Secure FTP, PGP, Industria financiera. Experiencia: 13 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial).
+
+| Componente | Puntos | Máximo | Datos |
+|---|---|---|---|
+| Skills obligatorios | 50 | 50 | 9/9 (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas) |
+| Skills deseables | 12.5 | 20 | COBOL 400/ILE, FTP, Secure FTP, PGP, Industria financiera |
+| Experiencia | 15 | 15 | 13 de 10 años |
+| Inglés | 10 | 10 | C1 (requiere B2) |
+| Disponibilidad | 5 | 5 | disponible 2026-11-01 para 2026-11-15 (a tiempo); modalidad presencial |
+
+### 2. C035 - 87.5 puntos
+
+Miguel Alfaro: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: LSAMS Mortgage Servicing System, Servicios hipotecarios, Industria financiera. Experiencia: 14 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial).
+
+| Componente | Puntos | Máximo | Datos |
+|---|---|---|---|
+| Skills obligatorios | 50 | 50 | 9/9 (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas) |
+| Skills deseables | 7.5 | 20 | LSAMS Mortgage Servicing System, Servicios hipotecarios, Industria financiera |
+| Experiencia | 15 | 15 | 14 de 10 años |
+| Inglés | 10 | 10 | C1 (requiere B2) |
+| Disponibilidad | 5 | 5 | disponible 2026-10-30 para 2026-11-15 (a tiempo); modalidad presencial |
+
+### 3. C013 - 80 puntos
+
+Isabella Arias: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: ninguno. Experiencia: 11 años (requiere 10). Inglés: B2 (requiere B2). Disponibilidad: disponible desde 2026-11-10 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial).
+
+| Componente | Puntos | Máximo | Datos |
+|---|---|---|---|
+| Skills obligatorios | 50 | 50 | 9/9 (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas) |
+| Skills deseables | 0 | 20 | ninguno |
+| Experiencia | 15 | 15 | 11 de 10 años |
+| Inglés | 10 | 10 | B2 (requiere B2) |
+| Disponibilidad | 5 | 5 | disponible 2026-11-10 para 2026-11-15 (a tiempo); modalidad presencial |
 
 ## Puntaje desglosado de todos los candidatos
 
@@ -26,76 +50,72 @@ Ordenado de mayor a menor puntaje. La columna *Puesto* dice si entró a la short
 
 | Candidato | Total | Skills obligatorios | Skills deseables | Experiencia | Inglés | Disponibilidad | En shortlist | Cumple requisitos | Puesto |
 |---|---|---|---|---|---|---|---|---|---|
-| C005 | 50.24 | 28.57 | 6.67 | 0 | 10 | 5 | no | no |  |
-| C019 | 50.24 | 28.57 | 6.67 | 0 | 10 | 5 | no | no |  |
-| C033 | 50.24 | 28.57 | 6.67 | 0 | 10 | 5 | no | no |  |
-| C001 | 45.24 | 28.57 | 6.67 | 0 | 5 | 5 | no | no |  |
-| C011 | 45.24 | 28.57 | 6.67 | 0 | 5 | 5 | no | no |  |
-| C013 | 45.24 | 28.57 | 6.67 | 0 | 10 | 0 | no | no |  |
-| C017 | 45.24 | 28.57 | 6.67 | 0 | 5 | 5 | no | no |  |
-| C021 | 45.24 | 28.57 | 6.67 | 0 | 5 | 5 | no | no |  |
-| C025 | 45.24 | 28.57 | 6.67 | 0 | 10 | 0 | no | no |  |
-| C040 | 45.24 | 28.57 | 6.67 | 0 | 5 | 5 | no | no |  |
-| C008 | 43.57 | 28.57 | 0 | 0 | 10 | 5 | no | no |  |
-| C027 | 40.24 | 28.57 | 6.67 | 0 | 0 | 5 | no | no |  |
-| C035 | 40.24 | 28.57 | 6.67 | 0 | 5 | 0 | no | no |  |
-| C015 | 38.57 | 28.57 | 0 | 0 | 5 | 5 | no | no |  |
-| C029 | 38.57 | 28.57 | 0 | 0 | 10 | 0 | no | no |  |
-| C007 | 35.24 | 28.57 | 6.67 | 0 | 0 | 0 | no | no |  |
-| C002 | 33.57 | 28.57 | 0 | 0 | 5 | 0 | no | no |  |
-| C003 | 31.43 | 21.43 | 0 | 0 | 10 | 0 | no | no |  |
-| C014 | 31.43 | 21.43 | 0 | 0 | 10 | 0 | no | no |  |
-| C022 | 31.43 | 21.43 | 0 | 0 | 10 | 0 | no | no |  |
-| C038 | 31.43 | 21.43 | 0 | 0 | 5 | 5 | no | no |  |
-| C039 | 31.43 | 21.43 | 0 | 0 | 10 | 0 | no | no |  |
-| C036 | 29.29 | 14.29 | 0 | 0 | 10 | 5 | no | no |  |
-| C010 | 28.57 | 28.57 | 0 | 0 | 0 | 0 | no | no |  |
-| C023 | 28.57 | 28.57 | 0 | 0 | 0 | 0 | no | no |  |
-| C037 | 28.57 | 28.57 | 0 | 0 | 0 | 0 | no | no |  |
-| C004 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C009 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C018 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C024 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C028 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C034 | 26.43 | 21.43 | 0 | 0 | 5 | 0 | no | no |  |
-| C006 | 24.29 | 14.29 | 0 | 0 | 5 | 5 | no | no |  |
-| C026 | 19.29 | 14.29 | 0 | 0 | 5 | 0 | no | no |  |
-| C012 | 17.14 | 7.14 | 0 | 0 | 5 | 5 | no | no |  |
-| C016 | 14.29 | 14.29 | 0 | 0 | 0 | 0 | no | no |  |
-| C020 | 14.29 | 14.29 | 0 | 0 | 0 | 0 | no | no |  |
-| C030 | 14.29 | 14.29 | 0 | 0 | 0 | 0 | no | no |  |
-| C041 | 0 | 0 | 0 | 0 | 0 | 0 | no | no |  |
+| C015 | 92.5 | 50 | 12.5 | 15 | 10 | 5 | sí | sí | 1 |
+| C035 | 87.5 | 50 | 7.5 | 15 | 10 | 5 | sí | sí | 2 |
+| C013 | 80 | 50 | 0 | 15 | 10 | 5 | sí | sí | 3 |
+| C014 | 80 | 50 | 0 | 15 | 10 | 5 | no | sí |  |
+| C012 | 60 | 50 | 0 | 0 | 10 | 0 | no | no |  |
+| C016 | 54.44 | 44.44 | 0 | 0 | 10 | 0 | no | no |  |
+| C018 | 30 | 0 | 0 | 15 | 10 | 5 | no | no |  |
+| C004 | 22.5 | 0 | 0 | 7.5 | 10 | 5 | no | no |  |
+| C005 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C006 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C011 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C017 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C019 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C022 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C033 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C034 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C038 | 20.56 | 5.56 | 0 | 0 | 10 | 5 | no | no |  |
+| C020 | 15.56 | 5.56 | 0 | 0 | 5 | 5 | no | no |  |
+| C025 | 15.56 | 5.56 | 0 | 0 | 10 | 0 | no | no |  |
+| C026 | 15.56 | 5.56 | 0 | 0 | 10 | 0 | no | no |  |
+| C028 | 15.56 | 5.56 | 0 | 0 | 10 | 0 | no | no |  |
+| C007 | 15 | 0 | 0 | 0 | 10 | 5 | no | no |  |
+| C009 | 15 | 0 | 0 | 0 | 10 | 5 | no | no |  |
+| C036 | 15 | 0 | 0 | 0 | 10 | 5 | no | no |  |
+| C023 | 10.56 | 5.56 | 0 | 0 | 5 | 0 | no | no |  |
+| C027 | 10.56 | 5.56 | 0 | 0 | 5 | 0 | no | no |  |
+| C037 | 10.56 | 5.56 | 0 | 0 | 5 | 0 | no | no |  |
+| C001 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C002 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C003 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C008 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C010 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C021 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C024 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C029 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C039 | 10 | 0 | 0 | 0 | 10 | 0 | no | no |  |
+| C030 | 5 | 0 | 0 | 0 | 5 | 0 | no | no |  |
+| C040 | 5 | 0 | 0 | 0 | 5 | 0 | no | no |  |
+| C041 | 5 | 0 | 0 | 0 | 5 | 0 | no | no |  |
 
 ### Qué criterio dejó fuera a más perfiles
 
 | Componente | Candidatos con pérdida | Puntos perdidos |
 |---|---|---|
-| Skills obligatorios | 39 | 1049.99 |
-| Skills deseables | 39 | 693.29 |
-| Experiencia | 39 | 585 |
-| Inglés | 27 | 180 |
-| Disponibilidad | 24 | 120 |
+| Skills obligatorios | 34 | 1566.6 |
+| Skills deseables | 39 | 760 |
+| Experiencia | 34 | 502.5 |
+| Disponibilidad | 20 | 100 |
+| Inglés | 7 | 35 |
 
 ## Criterios relajados (RF-06)
 
-| # | Criterio | Antes | Después | Descripción |
-|---|---|---|---|---|
-| 1 | start_date | 2026-10-30 | 2026-11-13 | Se movió la fecha de inicio 2 semanas: 2026-10-30 -> 2026-11-13. |
-| 2 | experience | 10 | 9 | Se acepta 1 año menos de experiencia: 10 -> 9 años. |
-| 3 | english | C2 | C1 | Se acepta un nivel menos de inglés: C2 -> C1. |
+_No se relajó ningún criterio._
 
-Los skills obligatorios **no se relajan**. Se aplicaron 3 de 3 relajaciones permitidas.
+Los skills obligatorios **no se relajan**. Se aplicaron 0 de 3 relajaciones permitidas.
 
 ### Criterios originales y vigentes
 
 | Criterio | Original | Vigente |
 |---|---|---|
-| skills_obligatorios | ['Python', 'SQL', 'Git', 'REST API', 'Docker', 'Kubernetes', 'AWS'] | ['Python', 'SQL', 'Git', 'REST API', 'Docker', 'Kubernetes', 'AWS'] |
-| skills_deseables | ['FastAPI', 'Django', 'CI/CD'] | ['FastAPI', 'Django', 'CI/CD'] |
-| experience_required | 10 | 9 |
-| english_required | C2 | C1 |
-| availability_required | 2026-10-30 | 2026-11-13 |
-| modality | remoto | remoto |
+| skills_obligatorios | ['IBM i (AS/400)', 'RPG III', 'RPG IV', 'RPG ILE', 'RPG Free', 'CL', 'SQL', 'DB2', 'Integracion de sistemas'] | ['IBM i (AS/400)', 'RPG III', 'RPG IV', 'RPG ILE', 'RPG Free', 'CL', 'SQL', 'DB2', 'Integracion de sistemas'] |
+| skills_deseables | ['LSAMS Mortgage Servicing System', 'COBOL 400/ILE', 'FTP', 'Secure FTP', 'PGP', 'Servicios hipotecarios', 'Industria financiera', 'Aseguramiento de calidad'] | ['LSAMS Mortgage Servicing System', 'COBOL 400/ILE', 'FTP', 'Secure FTP', 'PGP', 'Servicios hipotecarios', 'Industria financiera', 'Aseguramiento de calidad'] |
+| experience_required | 10 | 10 |
+| english_required | B2 | B2 |
+| availability_required | 2026-11-15 | 2026-11-15 |
+| modality | presencial | presencial |
 
 ## Supuestos
 
@@ -111,29 +131,29 @@ Los skills obligatorios **no se relajan**. Se aplicaron 3 de 3 relajaciones perm
 
 ### Notas de esta corrida
 
-- Datos sin confirmar: 7 consulta(s) al reclutador quedaron sin respuesta (C022, C023, C024, C025, C026, C028, C041); esos perfiles se puntuaron sin la fecha de disponibilidad.
-- 7 perfil(es) sin fecha de disponibilidad: C025, C022, C023, C024, C028, C026, C041. No se asumió una fecha por ellos.
-- La shortlist se armó con criterios relajados; sin esas relajaciones la cantidad de perfiles sería menor.
+- Datos sin confirmar: 9 consulta(s) al reclutador quedaron sin respuesta (C003, C016, C021, C023, C024, C025, C026, C027, C028); esos perfiles se puntuaron sin la fecha de disponibilidad.
+- 9 perfil(es) sin fecha de disponibilidad: C016, C025, C026, C028, C023, C027, C003, C021, C024. No se asumió una fecha por ellos.
+- No se relajó ningún criterio: la shortlist se armó con los criterios originales de la vacante.
 - Se descartaron 2 perfil(es) duplicado(s): cada persona se evaluó una sola vez.
-- La disponibilidad se comparó contra la fecha ya relajada (2026-11-13); la vacante pedía 2026-10-30. Algunos perfiles aparecen "a tiempo" solo por esa relajación.
 
 ## Consultas al reclutador (RF-04)
 
 | Candidato | Campo | Respuesta | Resultado | Motivo |
 |---|---|---|---|---|
+| C016 | availability_date |  | sin_respuesta | El reclutador no tiene una respuesta registrada para este dato. |
+| C022 | availability_date | 2026-11-05 | respondida | El reclutador confirmó availability_date = 2026-11-05. |
 | C025 | availability_date | no se sabe | no_se_sabe | El reclutador respondió "no se sabe"; el dato sigue desconocido. |
-| C021 | availability_date | 2026-10-30 | respondida | El reclutador confirmó availability_date = 2026-10-30. |
-| C027 | availability_date | 2026-11-03 | respondida | El reclutador confirmó availability_date = 2026-11-03. |
-| C023 | availability_date | 2026-10-28 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
-| C022 | availability_date | 2026-11-05 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
-| C024 | availability_date | 2026-11-10 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
-| C028 | availability_date | no se sabe | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
 | C026 | availability_date | 2026-11-15 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
-| C041 | availability_date |  | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C028 | availability_date | no se sabe | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C023 | availability_date | 2026-10-28 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C027 | availability_date | 2026-11-03 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C003 | availability_date |  | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C021 | availability_date | 2026-10-30 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
+| C024 | availability_date | 2026-11-10 | limite_alcanzado | No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido. |
 
 ## Límites de la corrida (RNF-04)
 
-- Pasos del grafo usados: 328
+- Pasos del grafo usados: 84
 - horas_monitoreo: 3.0
 - relajaciones: 3
 - consultas_reclutador: 3

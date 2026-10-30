@@ -5,174 +5,176 @@ iteracion,nodo,decision,motivo
 0,depurar_duplicados,descartar_duplicado,"C031 (Andrea Solís) se descarta por: Mismo correo, nombre y teléfono con el perfil único C023 (posición 31)."
 0,depurar_duplicados,descartar_duplicado,"C032 (Ana Rodríguez) se descarta por: Mismo correo, nombre y teléfono con el perfil único C001 (posición 32)."
 0,depurar_duplicados,continuar,Se conservan 39 de 41 perfiles; se descartaron 2 duplicados.
-0,consultar_reclutador,respondida,Candidato C021: El reclutador confirmó availability_date = 2026-10-30.
+0,consultar_reclutador,sin_respuesta,Candidato C003: El reclutador no tiene una respuesta registrada para este dato.
 0,consultar_reclutador,no_se_sabe,"Candidato C025: El reclutador respondió ""no se sabe""; el dato sigue desconocido."
-0,consultar_reclutador,respondida,Candidato C027: El reclutador confirmó availability_date = 2026-11-03.
-0,consultar_reclutador,limite_alcanzado,Candidato C023: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
-0,consultar_reclutador,limite_alcanzado,Candidato C024: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
+0,consultar_reclutador,respondida,Candidato C024: El reclutador confirmó availability_date = 2026-11-10.
 0,consultar_reclutador,limite_alcanzado,Candidato C028: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
+0,consultar_reclutador,limite_alcanzado,Candidato C016: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
+0,consultar_reclutador,limite_alcanzado,Candidato C021: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
 0,consultar_reclutador,limite_alcanzado,Candidato C022: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
 0,consultar_reclutador,limite_alcanzado,Candidato C026: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
-0,consultar_reclutador,continuar,2 datos faltantes respondidos por el reclutador; se evaluarán 39 perfiles.
-1,procesar_candidato,evaluar_candidato,Candidato C001: 86.67 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+0,consultar_reclutador,limite_alcanzado,Candidato C027: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
+0,consultar_reclutador,limite_alcanzado,Candidato C023: No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido.
+0,consultar_reclutador,continuar,1 datos faltantes respondidos por el reclutador; se evaluarán 39 perfiles.
+1,procesar_candidato,evaluar_candidato,Candidato C001: 63.65 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 1,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (1 de 39).
-2,procesar_candidato,evaluar_candidato,Candidato C002: 75 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+2,procesar_candidato,evaluar_candidato,Candidato C002: 85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 2,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (2 de 39).
-3,procesar_candidato,evaluar_candidato,Candidato C003: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+3,procesar_candidato,evaluar_candidato,Candidato C003: 67.31 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 3,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (3 de 39).
-4,procesar_candidato,evaluar_candidato,Candidato C004: 55 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+4,procesar_candidato,evaluar_candidato,Candidato C004: 90 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 4,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (4 de 39).
-5,procesar_candidato,evaluar_candidato,Candidato C005: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+5,procesar_candidato,evaluar_candidato,Candidato C005: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 5,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (5 de 39).
-6,procesar_candidato,evaluar_candidato,Candidato C006: 55 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+6,procesar_candidato,evaluar_candidato,Candidato C006: 15 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 6,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (6 de 39).
-7,procesar_candidato,evaluar_candidato,Candidato C007: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+7,procesar_candidato,evaluar_candidato,Candidato C007: 22.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 7,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (7 de 39).
-8,procesar_candidato,evaluar_candidato,Candidato C008: 74.17 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+8,procesar_candidato,evaluar_candidato,Candidato C008: 65.96 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 8,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (8 de 39).
-9,procesar_candidato,evaluar_candidato,Candidato C009: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+9,procesar_candidato,evaluar_candidato,Candidato C009: 13.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 9,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (9 de 39).
-10,procesar_candidato,evaluar_candidato,Candidato C010: 67.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+10,procesar_candidato,evaluar_candidato,Candidato C010: 28.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 10,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (10 de 39).
-11,procesar_candidato,evaluar_candidato,Candidato C011: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+11,procesar_candidato,evaluar_candidato,Candidato C011: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 11,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (11 de 39).
-12,procesar_candidato,evaluar_candidato,Candidato C012: 37.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+12,procesar_candidato,evaluar_candidato,Candidato C012: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 12,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (12 de 39).
-13,procesar_candidato,evaluar_candidato,Candidato C013: 81.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+13,procesar_candidato,evaluar_candidato,Candidato C013: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 13,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (13 de 39).
-14,procesar_candidato,evaluar_candidato,Candidato C014: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+14,procesar_candidato,evaluar_candidato,Candidato C014: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 14,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (14 de 39).
-15,procesar_candidato,evaluar_candidato,Candidato C015: 75 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+15,procesar_candidato,evaluar_candidato,Candidato C015: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 15,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (15 de 39).
-16,procesar_candidato,evaluar_candidato,Candidato C016: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+16,procesar_candidato,evaluar_candidato,Candidato C016: 17.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 16,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (16 de 39).
-17,procesar_candidato,evaluar_candidato,Candidato C017: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+17,procesar_candidato,evaluar_candidato,Candidato C017: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 17,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (17 de 39).
-18,procesar_candidato,evaluar_candidato,Candidato C018: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+18,procesar_candidato,evaluar_candidato,Candidato C018: 85 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 18,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (18 de 39).
-19,procesar_candidato,evaluar_candidato,Candidato C019: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+19,procesar_candidato,evaluar_candidato,Candidato C019: 33.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 19,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (19 de 39).
-20,procesar_candidato,evaluar_candidato,Candidato C020: 42.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+20,procesar_candidato,evaluar_candidato,Candidato C020: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 20,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (20 de 39).
-21,procesar_candidato,evaluar_candidato,Candidato C021: 81.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+21,procesar_candidato,evaluar_candidato,Candidato C021: 10 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 21,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (21 de 39).
-22,procesar_candidato,evaluar_candidato,Candidato C022: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+22,procesar_candidato,evaluar_candidato,Candidato C022: 13.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 22,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (22 de 39).
-23,procesar_candidato,evaluar_candidato,Candidato C023: 69.17 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+23,procesar_candidato,evaluar_candidato,Candidato C023: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 23,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (23 de 39).
-24,procesar_candidato,evaluar_candidato,Candidato C024: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+24,procesar_candidato,evaluar_candidato,Candidato C024: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 24,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (24 de 39).
-25,procesar_candidato,evaluar_candidato,Candidato C025: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+25,procesar_candidato,evaluar_candidato,Candidato C025: 17.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 25,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (25 de 39).
-26,procesar_candidato,evaluar_candidato,Candidato C026: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+26,procesar_candidato,evaluar_candidato,Candidato C026: 10 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 26,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (26 de 39).
-27,procesar_candidato,evaluar_candidato,Candidato C027: 68.33 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+27,procesar_candidato,evaluar_candidato,Candidato C027: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 27,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (27 de 39).
-28,procesar_candidato,evaluar_candidato,Candidato C028: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+28,procesar_candidato,evaluar_candidato,Candidato C028: 17.69 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 28,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (28 de 39).
-29,procesar_candidato,evaluar_candidato,Candidato C029: 75 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+29,procesar_candidato,evaluar_candidato,Candidato C029: 21.35 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 29,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (29 de 39).
-30,procesar_candidato,evaluar_candidato,Candidato C030: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+30,procesar_candidato,evaluar_candidato,Candidato C030: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 30,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (30 de 39).
-31,procesar_candidato,evaluar_candidato,Candidato C033: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+31,procesar_candidato,evaluar_candidato,Candidato C033: 26.35 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 31,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (31 de 39).
-32,procesar_candidato,evaluar_candidato,Candidato C034: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+32,procesar_candidato,evaluar_candidato,Candidato C034: 17.69 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 32,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (32 de 39).
-33,procesar_candidato,evaluar_candidato,Candidato C035: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+33,procesar_candidato,evaluar_candidato,Candidato C035: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 33,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (33 de 39).
-34,procesar_candidato,evaluar_candidato,Candidato C036: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+34,procesar_candidato,evaluar_candidato,Candidato C036: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 34,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (34 de 39).
-35,procesar_candidato,evaluar_candidato,Candidato C037: 61.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+35,procesar_candidato,evaluar_candidato,Candidato C037: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 35,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (35 de 39).
-36,procesar_candidato,evaluar_candidato,Candidato C038: 67.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+36,procesar_candidato,evaluar_candidato,Candidato C038: 22.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 36,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (36 de 39).
-37,procesar_candidato,evaluar_candidato,Candidato C039: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+37,procesar_candidato,evaluar_candidato,Candidato C039: 67.31 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 37,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (37 de 39).
-38,procesar_candidato,evaluar_candidato,Candidato C040: 81.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+38,procesar_candidato,evaluar_candidato,Candidato C040: 38.08 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 38,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (38 de 39).
-39,procesar_candidato,evaluar_candidato,Candidato C041: 30 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+39,procesar_candidato,evaluar_candidato,Candidato C041: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 39,decidir_siguiente_paso,finalizar,Se revisaron los 39 candidatos únicos disponibles.
-39,generar_shortlist,shortlist_generada,"Se evaluaron 39 candidatos únicos; la shortlist queda con 1 perfiles (umbral 70, orden por puntaje y luego por ID)."
-39,evaluar_resultado,exito_parcial,"Éxito: 16 candidatos superan el umbral 70, pero solo 1 ocupan puesto; quedan 2 sin cubrir. Se intentan relajaciones."
-39,relajar_criterios,relajar_start_date,Relajación 1/3: Se movió la fecha de inicio 2 semanas: 2026-10-25 -> 2026-11-08. Los skills obligatorios no se relajan.
-40,procesar_candidato,evaluar_candidato,Candidato C001: 86.67 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+39,generar_shortlist,shortlist_generada,"Se evaluaron 39 candidatos únicos; la shortlist queda con 2 perfiles (umbral 70, orden por puntaje y luego por ID)."
+39,evaluar_resultado,exito_parcial,"Éxito: 3 candidatos superan el umbral 70, pero solo 2 ocupan puesto; quedan 1 sin cubrir. Se intentan relajaciones."
+39,relajar_criterios,relajar_start_date,Relajación 1/3: Se movió la fecha de inicio 2 semanas: 2026-11-15 -> 2026-11-29. Los skills obligatorios no se relajan.
+40,procesar_candidato,evaluar_candidato,Candidato C001: 68.65 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 40,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (1 de 39).
-41,procesar_candidato,evaluar_candidato,Candidato C002: 75 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+41,procesar_candidato,evaluar_candidato,Candidato C002: 90 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 41,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (2 de 39).
-42,procesar_candidato,evaluar_candidato,Candidato C003: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+42,procesar_candidato,evaluar_candidato,Candidato C003: 67.31 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 42,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (3 de 39).
-43,procesar_candidato,evaluar_candidato,Candidato C004: 55 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+43,procesar_candidato,evaluar_candidato,Candidato C004: 90 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 43,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (4 de 39).
-44,procesar_candidato,evaluar_candidato,Candidato C005: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+44,procesar_candidato,evaluar_candidato,Candidato C005: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 44,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (5 de 39).
-45,procesar_candidato,evaluar_candidato,Candidato C006: 55 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+45,procesar_candidato,evaluar_candidato,Candidato C006: 15 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 45,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (6 de 39).
-46,procesar_candidato,evaluar_candidato,Candidato C007: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+46,procesar_candidato,evaluar_candidato,Candidato C007: 22.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 46,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (7 de 39).
-47,procesar_candidato,evaluar_candidato,Candidato C008: 74.17 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+47,procesar_candidato,evaluar_candidato,Candidato C008: 70.96 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 47,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (8 de 39).
-48,procesar_candidato,evaluar_candidato,Candidato C009: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+48,procesar_candidato,evaluar_candidato,Candidato C009: 13.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 48,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (9 de 39).
-49,procesar_candidato,evaluar_candidato,Candidato C010: 67.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+49,procesar_candidato,evaluar_candidato,Candidato C010: 33.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 49,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (10 de 39).
-50,procesar_candidato,evaluar_candidato,Candidato C011: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+50,procesar_candidato,evaluar_candidato,Candidato C011: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 50,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (11 de 39).
-51,procesar_candidato,evaluar_candidato,Candidato C012: 42.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+51,procesar_candidato,evaluar_candidato,Candidato C012: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 51,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (12 de 39).
-52,procesar_candidato,evaluar_candidato,Candidato C013: 81.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+52,procesar_candidato,evaluar_candidato,Candidato C013: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 52,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (13 de 39).
-53,procesar_candidato,evaluar_candidato,Candidato C014: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+53,procesar_candidato,evaluar_candidato,Candidato C014: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 53,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (14 de 39).
-54,procesar_candidato,evaluar_candidato,Candidato C015: 80 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+54,procesar_candidato,evaluar_candidato,Candidato C015: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 54,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (15 de 39).
-55,procesar_candidato,evaluar_candidato,Candidato C016: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+55,procesar_candidato,evaluar_candidato,Candidato C016: 17.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 55,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (16 de 39).
-56,procesar_candidato,evaluar_candidato,Candidato C017: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+56,procesar_candidato,evaluar_candidato,Candidato C017: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 56,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (17 de 39).
-57,procesar_candidato,evaluar_candidato,Candidato C018: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+57,procesar_candidato,evaluar_candidato,Candidato C018: 85 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 57,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (18 de 39).
-58,procesar_candidato,evaluar_candidato,Candidato C019: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+58,procesar_candidato,evaluar_candidato,Candidato C019: 33.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 58,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (19 de 39).
-59,procesar_candidato,evaluar_candidato,Candidato C020: 42.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+59,procesar_candidato,evaluar_candidato,Candidato C020: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 59,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (20 de 39).
-60,procesar_candidato,evaluar_candidato,Candidato C021: 86.67 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+60,procesar_candidato,evaluar_candidato,Candidato C021: 10 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 60,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (21 de 39).
-61,procesar_candidato,evaluar_candidato,Candidato C022: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+61,procesar_candidato,evaluar_candidato,Candidato C022: 13.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 61,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (22 de 39).
-62,procesar_candidato,evaluar_candidato,Candidato C023: 69.17 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+62,procesar_candidato,evaluar_candidato,Candidato C023: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 62,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (23 de 39).
-63,procesar_candidato,evaluar_candidato,Candidato C024: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+63,procesar_candidato,evaluar_candidato,Candidato C024: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 63,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (24 de 39).
-64,procesar_candidato,evaluar_candidato,Candidato C025: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+64,procesar_candidato,evaluar_candidato,Candidato C025: 17.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 64,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (25 de 39).
-65,procesar_candidato,evaluar_candidato,Candidato C026: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+65,procesar_candidato,evaluar_candidato,Candidato C026: 10 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 65,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (26 de 39).
-66,procesar_candidato,evaluar_candidato,Candidato C027: 73.33 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+66,procesar_candidato,evaluar_candidato,Candidato C027: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 66,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (27 de 39).
-67,procesar_candidato,evaluar_candidato,Candidato C028: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+67,procesar_candidato,evaluar_candidato,Candidato C028: 17.69 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 67,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (28 de 39).
-68,procesar_candidato,evaluar_candidato,Candidato C029: 75 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+68,procesar_candidato,evaluar_candidato,Candidato C029: 26.35 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 68,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (29 de 39).
-69,procesar_candidato,evaluar_candidato,Candidato C030: 50 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+69,procesar_candidato,evaluar_candidato,Candidato C030: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 69,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (30 de 39).
-70,procesar_candidato,evaluar_candidato,Candidato C033: 80.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+70,procesar_candidato,evaluar_candidato,Candidato C033: 26.35 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 70,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (31 de 39).
-71,procesar_candidato,evaluar_candidato,Candidato C034: 62.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+71,procesar_candidato,evaluar_candidato,Candidato C034: 17.69 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 71,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (32 de 39).
-72,procesar_candidato,evaluar_candidato,Candidato C035: 75.83 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+72,procesar_candidato,evaluar_candidato,Candidato C035: 25 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 72,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (33 de 39).
-73,procesar_candidato,evaluar_candidato,Candidato C036: 55 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+73,procesar_candidato,evaluar_candidato,Candidato C036: 18.85 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 73,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (34 de 39).
-74,procesar_candidato,evaluar_candidato,Candidato C037: 61.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+74,procesar_candidato,evaluar_candidato,Candidato C037: 5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 74,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (35 de 39).
-75,procesar_candidato,evaluar_candidato,Candidato C038: 67.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+75,procesar_candidato,evaluar_candidato,Candidato C038: 22.5 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 75,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (36 de 39).
-76,procesar_candidato,evaluar_candidato,Candidato C039: 56.67 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+76,procesar_candidato,evaluar_candidato,Candidato C039: 72.31 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 76,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (37 de 39).
-77,procesar_candidato,evaluar_candidato,Candidato C040: 86.67 puntos; cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+77,procesar_candidato,evaluar_candidato,Candidato C040: 38.08 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 77,decidir_siguiente_paso,repetir,Quedan candidatos por revisar (38 de 39).
-78,procesar_candidato,evaluar_candidato,Candidato C041: 30 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
+78,procesar_candidato,evaluar_candidato,Candidato C041: 10 puntos; no cumple los requisitos obligatorios. Justificación por plantilla (modo sin LLM).
 78,decidir_siguiente_paso,finalizar,Se revisaron los 39 candidatos únicos disponibles.
 78,generar_shortlist,shortlist_generada,"Se evaluaron 39 candidatos únicos; la shortlist queda con 3 perfiles (umbral 70, orden por puntaje y luego por ID)."
-78,evaluar_resultado,exito,Éxito: 17 candidatos superan el umbral 70 (mínimo 3) y la shortlist está completa con 3 perfiles.
-78,finalizar,finalizar,"Terminó el recorrido con 39 candidatos únicos, 3 en la shortlist, 17 sobre el umbral y 1 relajaciones aplicadas."
+78,evaluar_resultado,exito,Éxito: 5 candidatos superan el umbral 70 (mínimo 3) y la shortlist está completa con 3 perfiles.
+78,finalizar,finalizar,"Terminó el recorrido con 39 candidatos únicos, 3 en la shortlist, 5 sobre el umbral y 1 relajaciones aplicadas."

@@ -231,8 +231,30 @@ def test_buscar_respuesta_sin_registro_devuelve_vacio():
 
 # --- RF-05: condición de éxito ---
 
+def vacante_facil():
+    """Vacante que sí se puede cubrir con el dataset de prueba.
+
+    `data/vacantes.json` es el catálogo de las 4 vacantes reales del lote y
+    ninguna se completa con los perfiles ficticios; para probar el camino de
+    éxito se arma una vacante con el stack que sí tienen los perfiles Python.
+    """
+
+    return {
+        "id": "V-FACIL",
+        "titulo": "Desarrollador Backend Python (control de prueba)",
+        "descripcion": "Vacante de control para probar la condición de éxito.",
+        "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
+        "skills_deseables": ["Docker", "FastAPI", "Django"],
+        "experience_required": 3,
+        "english_required": "B1",
+        "availability_required": "2026-10-25",
+        "modality": "remoto",
+    }
+
 def test_vacante_facil_tiene_exito():
-    resultado = ejecutar(cargar_vacantes()[0])
+    """Con candidatos que sí cumplen, el éxito sale: 3 puestos cubiertos."""
+
+    resultado = ejecutar(vacante_facil())
 
     assert resultado["estado"] == "finalizado"
     assert resultado["evaluacion"]["exito"] is True
@@ -240,9 +262,25 @@ def test_vacante_facil_tiene_exito():
     assert len(resultado["shortlist"]) == resultado["configuracion"].shortlist_size
 
 
-def test_vacante_dificil_no_se_completa_ni_con_tres_relajaciones():
-    dificil = [v for v in cargar_vacantes() if v["id"] == "V003"][0]
-    resultado = ejecutar(dificil)
+def vacante_imposible():
+    """Pide un stack que ningún perfil tiene: los skills obligatorios no se
+    relajan, así que no hay forma de completarla."""
+
+    return {
+        "id": "V-IMPOSIBLE",
+        "titulo": "Ingeniero Cobol CICS (control de prueba)",
+        "descripcion": "Vacante de control: ningún perfil tiene el stack.",
+        "skills_obligatorios": ["Cobol CICS", "JCL", "IMS DB"],
+        "skills_deseables": [],
+        "experience_required": 10,
+        "english_required": "C1",
+        "availability_required": "2026-11-01",
+        "modality": "remoto",
+    }
+
+
+def test_vacante_imposible_no_se_completa_ni_con_tres_relajaciones():
+    resultado = ejecutar(vacante_imposible())
 
     assert resultado["estado"] == "incompleta"
     assert resultado["requiere_revision_humana"] is True
@@ -252,8 +290,7 @@ def test_vacante_dificil_no_se_completa_ni_con_tres_relajaciones():
 
 
 def test_cada_relajacion_queda_en_la_auditoria():
-    dificil = [v for v in cargar_vacantes() if v["id"] == "V003"][0]
-    resultado = ejecutar(dificil)
+    resultado = ejecutar(vacante_imposible())
 
     relajaciones = [
         evento for evento in resultado["auditoria"]
@@ -271,10 +308,12 @@ def test_cada_relajacion_queda_en_la_auditoria():
 
 
 def test_se_registra_la_decision_de_exito():
-    resultado = ejecutar(cargar_vacantes()[0])
+    resultado = ejecutar(vacante_facil())
 
     decisiones = [
         (evento["nodo"], evento["decision"]) for evento in resultado["auditoria"]
     ]
-    assert ("evaluar_resultado", "exito_parcial") in decisiones
+    # La vacante fácil se cubre en la primera pasada; si hiciera falta, el
+    # grafo relaja y vuelve a evaluar ("exito_parcial").
     assert ("evaluar_resultado", "exito") in decisiones
+    assert resultado["estado"] == "finalizado"

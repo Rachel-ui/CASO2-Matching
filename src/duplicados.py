@@ -129,6 +129,37 @@ def depurar_duplicados(
     duplicados: list[dict] = []
 
     for indice, candidato in enumerate(candidatos, start=1):
+        # Dos nombres distintos sin correo ni teléfono no son la misma persona:
+        # los perfiles que llegan por correo suelen traer esos campos vacíos.
+        nombre = normalizar_texto(candidato.get("nombre"))
+        sin_contacto = not _clave_email(candidato) and not normalizar_telefono(
+            candidato.get("telefono")
+        )
+        if nombre and sin_contacto:
+            mismo_nombre = next(
+                (
+                    valido
+                    for valido in validos
+                    if normalizar_texto(valido.get("nombre")) == nombre
+                ),
+                None,
+            )
+            if mismo_nombre is not None:
+                duplicados.append(
+                    {
+                        "id": candidato.get("id", ""),
+                        "nombre": candidato.get("nombre", ""),
+                        "email": candidato.get("email", ""),
+                        "telefono": candidato.get("telefono", ""),
+                        "posicion": indice,
+                        "conservado_id": mismo_nombre.get("id", ""),
+                        "motivo": "Mismo nombre sin datos de contacto",
+                    }
+                )
+                continue
+            validos.append(candidato)
+            continue
+
         reportado, motivo = buscar_duplicado(candidato, validos)
 
         if reportado is not None:

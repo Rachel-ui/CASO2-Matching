@@ -27,20 +27,44 @@ MESES = {
 }
 
 # Vocabulario de referencia: solo se listan skills conocidas para no tomar
-# palabras sueltas como "de" o "con" como habilidades.
+# palabras sueltas como "de" o "con" como habilidades. La clave va como
+# aparece en el correo (normalizada); el valor es la forma canónica.
 CATALOGO_SKILLS = {
     "python": "Python", "java": "Java", "javascript": "JavaScript", "js": "JavaScript",
     "typescript": "TypeScript", "react": "React", "angular": "Angular", "vue": "Vue",
     "node": "Node.js", "nodejs": "Node.js", "html": "HTML", "css": "CSS",
     "sql": "SQL", "mysql": "MySQL", "postgresql": "PostgreSQL", "mongodb": "MongoDB",
-    "git": "Git", "github": "GitHub", "docker": "Docker", "kubernetes": "Kubernetes",
+    "db2": "DB2", "git": "Git", "github": "GitHub", "gitlab": "GitLab",
+    "docker": "Docker", "kubernetes": "Kubernetes",
     "aws": "AWS", "azure": "Azure", "gcp": "GCP", "linux": "Linux",
-    "django": "Django", "flask": "Flask", "fastapi": "FastAPI", "spring": "Spring",
+    "django": "Django", "flask": "Flask", "fastapi": "FastAPI",
+    "spring boot": "Spring Boot", "spring": "Spring",
     "rest": "REST API", "api rest": "REST API", "apis": "REST API", "api": "REST API",
-    "ci/cd": "CI/CD", "scrum": "Scrum", "excel": "Excel", "pandas": "Pandas",
+    "cache": "Caché", "cacheo": "Caché",
+    "linea de comandos": "CLI", "cli": "CLI",
+    "balanceo de carga": "Balanceo de carga",
+    "productos comerciales": "Productos comerciales",
+    "microservicios": "Microservicios", "microservices": "Microservicios",
+    "kafka": "Kafka", "terraform": "Terraform", "ci/cd": "CI/CD",
+    "new relic": "New Relic", "splunk": "Splunk", "claude": "Claude",
+    "agentes de ia": "Agentes de IA",
+    "infraestructura como codigo": "Infraestructura como codigo",
+    "automatizacion": "Automatizacion",
+    "rpg iii": "RPG III", "rpg iv": "RPG IV", "rpg ile": "RPG ILE",
+    "rpg free": "RPG Free", "ile": "RPG ILE", "cl": "CL",
+    "ibm i": "IBM i (AS/400)", "as/400": "IBM i (AS/400)",
+    "cobol": "COBOL 400/ILE", "cobol 400": "COBOL 400/ILE",
+    "scrum": "Scrum", "excel": "Excel", "pandas": "Pandas",
     "machine learning": "Machine Learning", "php": "PHP", "c#": "C#", ".net": ".NET",
     "c++": "C++", "kotlin": "Kotlin", "swift": "Swift", "flutter": "Flutter",
     "power bi": "Power BI", "sap": "SAP", "nextjs": "Next.js", "next.js": "Next.js",
+}
+
+# Skills canónicas que el catálogo reconoce con varios términos: en el texto
+# basta con uno de ellos para contar la skill ("RPG ILE" incluye lo de RPG IV).
+EQUIVALENCIAS_SKILLS = {
+    "RPG IV": ("RPG IV", "RPG ILE"),
+    "RPG ILE": ("RPG IV", "RPG ILE"),
 }
 
 # Orden de búsqueda: primero las entradas más largas ("api rest" antes de "api").
@@ -119,19 +143,64 @@ def _senales_contexto(texto: str) -> dict:
         if re.search(r"\b(?:soy|me llamo|tengo \d|estoy|he trabajado|trabajo con)\b", n):
             senales["perfil"].append(oracion)
 
-        # Posesión de datos personales propios.
+        # Perfil descrito en tercera persona por quien lo reenvía:
+        # "Andrés Pérez es un desarrollador senior con nueve años...",
+        # "Valeria Castro trabaja con Next.js y TypeScript".
+        if re.search(
+            r"\b(?:es|fue|trabaja|se desempena|se especializa|posee|cuenta con)"
+            r"\s+(?:un|una|el|la)?\s*(?:desarrollador|desarrolladora|ingenier[oa]"
+            r"|analista|programador|programadora|arquitect[oa]|consultor|consultora"
+            r"|profesional|especialista|tecnic[oa])\b",
+            n,
+        ) or re.search(
+            r"\bdesarrollador(?:a)?\s+(?:de\s+software\s+)?(?:senior|junior|mid"
+            r"|full[ -]?stack|backend|frontend|web|movil)\b",
+            n,
+        ) or re.search(
+            r"\b(?:trabaja|se desempena|se especializa|cuenta con|tiene experiencia)"
+            r"\s+(?:con|en)\s+[a-z0-9]",
+            n,
+        ):
+            senales["perfil"].append(oracion)
+
+        # Posesión de datos personales propios. Las viñetas de un CV
+        # ("Experiencia: 9 años", "Inglés: C1") también describen a la persona.
         if re.search(r"\bmi (?:nombre|experiencia|nivel|formacion|perfil|cv|curriculum)"
                      r"|\b(mis) (?:habilidades|competencias|estudios)", n):
             senales["posesion"].append(oracion)
+        if re.match(
+            r"^(?:experiencia|skills|habilidades|competencias|ingles|idiomas"
+            r"|modalidad|disponibilidad|residencia|ubicacion|telefono|email|correo"
+            r"|puesto|rol|candidato)\b",
+            n,
+        ):
+            senales["posesion"].append(oracion)
 
-        # Antigüedad declarada en primera persona ("tengo 3 años").
+        # Antigüedad declarada: "tengo 3 años" (primera persona) o
+        # "posee siete años de experiencia" (ficha reenviada).
         if re.search(r"\btengo \d+ (?:anos|años|lustros)", n):
+            senales["experiencia"].append(oracion)
+        if re.search(
+            r"\b(?:posee|cuenta con|tiene)\s+(?:(?:mas|menos)\s+de\s+)?"
+            r"(?:\d+|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once"
+            r"|doce|trece|catorce|quince|dieciseis|diecisiete|dieciocho|diecinueve"
+            r"|veinte)\s+(?:anos|años)\b",
+            n,
+        ):
             senales["experiencia"].append(oracion)
 
         # La organización presenta una necesidad que todavía no existe:
         # "buscamos / necesitamos / requerimos / se requiere" + objeto de cargo.
         if re.search(r"\b(?:buscamos|necesitamos|requerimos|se busca|se requiere|se solicitan?"
                      r"|necesito contratar|estamos contratando|convocamos)\b", n):
+            senales["solicitud"].append(oracion)
+        # Correo del reclutador que pide una pod de candidatos para un puesto:
+        # "quisiera consultar si tenemos candidatos para las siguientes vacantes".
+        if re.search(r"\b(?:candidatos?|perfiles?|recursos?|pod)\b", n) and re.search(
+            r"\b(?:tenemos|tiene|contamos|hay|disponibles?|disponibilidad|para)\b"
+            r"|\b(?:piden?|solicitan|vacantes?|puestos?|roles?|posiciones?)\b",
+            n,
+        ) and not re.search(r"\b(?:me llamo|soy|tengo \d+ (?:anos|años))\b", n):
             senales["solicitud"].append(oracion)
         if re.search(r"\b(?:vacante|plaza|puesto|oferta|convocatoria|cargo)"
                      r"\b(?:disponible|abiert[ao]|para el area|para el departamento)?", n):
@@ -168,7 +237,9 @@ def detectar_tipo(texto: str) -> tuple[str, list[str]]:
     solicitud = len(evidencia["solicitud"]) * 2 + len(evidencia["oferta"])
     gestion = len(evidencia["trato"]) + len(evidencia["actividad"])
 
-    # Primera persona dominante → perfil personal.
+    # Un perfil se describe con varias oraciones, todas sobre la misma persona:
+    # con una sola ("es un desarrollador senior") no alcanza, porque una
+    # vacante también puede nombrar el cargo una vez.
     if perfil >= 2 and perfil > solicitud:
         return TIPO_CANDIDATO, evidencia["perfil"] + evidencia["posesion"] + evidencia["experiencia"]
 
@@ -194,18 +265,29 @@ def extraer_skills(texto: str) -> list[str]:
     return encontradas
 
 
+_NUMEROS_EN_LETRA = {
+    "un": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
+    "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10, "once": 11,
+    "doce": 12, "trece": 13, "catorce": 14, "quince": 15, "dieciseis": 16,
+    "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20,
+}
+
+
 def extraer_experiencia(texto: str) -> int | None:
-    """Años de experiencia: '3 años', '3 anos', 'experiencia de 5 años'."""
+    """Años de experiencia: '3 años', '3 anos', 'siete años y medio'."""
 
     base = _texto_normalizado(texto)
-    patron = r"(\d{1,2})\s*(?:años|anos|lustros?)"
+    patron = (
+        r"(\d{1,2}|un|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez"
+        r"|once|doce|trece|catorce|quince|dieciseis|diecisiete|dieciocho"
+        r"|diecinueve|veinte)\s*(?:años|anos|lustros?)"
+    )
     coincidencia = re.search(patron, base)
     if not coincidencia:
         return None
 
-    valor = int(coincidencia.group(1))
-    if "lustro" in coincidencia.group(0):
-        valor *= 5
+    # "siete años y seis meses" son 7 años completos (los meses no suman año).
+    valor = _valor_experiencia(coincidencia)
 
     # "tengo 26 años" es la edad, no la experiencia.
     previo = base[max(0, coincidencia.start() - 12) : coincidencia.start()]
@@ -219,7 +301,8 @@ def extraer_experiencia(texto: str) -> int | None:
 
 
 def _valor_experiencia(coincidencia: re.Match) -> int:
-    valor = int(coincidencia.group(1))
+    bruto = coincidencia.group(1)
+    valor = int(bruto) if bruto.isdigit() else _NUMEROS_EN_LETRA[bruto]
     return valor * 5 if "lustro" in coincidencia.group(0) else valor
 
 
@@ -302,7 +385,16 @@ def extraer_nombre(texto: str) -> str | None:
     )
     coincidencia = patron.search(limpio)
     if not coincidencia:
-        return None
+        # Perfil reenviado en tercera persona: el nombre va al inicio de la
+        # primera oración ("Andrés Felipe Ramírez Solano es un desarrollador...").
+        inicio = re.match(
+            r"([A-ZÁÉÍÓÚÑ][\wáéíóúñü]+(?:\s+[A-ZÁÉÍÓÚÑ][\wáéíóúñü]+){2,3})"
+            r"\s+(?:es|fue|trabaja|se desempena|se especializa|posee|cuenta con)\b",
+            re.sub(r"\s+", " ", limpio),
+        )
+        if not inicio:
+            return None
+        coincidencia = inicio
 
     nombre = coincidencia.group(1).strip(" .,;")
     # "soy desarrolladora web" o "soy programador" no son nombres.
@@ -422,7 +514,26 @@ def _rol_desde_texto(texto: str) -> str:
     for clave, rol in roles:
         if clave in base:
             return rol
+    # Títulos del lote real que no tienen un nombre corto fijo (Java, AWS, RPG).
+    for clave, rol in _ROLES_TECNICOS:
+        if re.search(rf"\b{re.escape(clave)}\b", base):
+            return rol
     return ""
+
+
+# Roles del lote real: la clave se busca como palabra completa sobre el texto
+# ya normalizado (sin tildes).
+_ROLES_TECNICOS = (
+    ("rpg", "Ingeniero de Software iSeries RPG"),
+    ("ibm i", "Ingeniero de Software iSeries RPG"),
+    ("as/400", "Ingeniero de Software iSeries RPG"),
+    ("java", "Ingeniero de Software Java"),
+    ("administrador aws", "Administrador AWS"),
+    ("aws", "Administrador AWS"),
+    ("supply chain", "Ingeniero de Software Supply Chain"),
+    ("emr", "Ingeniero de Software EMR"),
+    ("typescript", "Ingeniero de Software Full Stack"),
+)
 
 
 def _faltantes_vacante(datos: dict) -> list[str]:
@@ -480,6 +591,15 @@ def interpretar(texto: str, hoy: date | None = None) -> TextoInterpretado:
         # toma como perfil si además hay un dato personal o una antigüedad.
         hay_dato_personal = bool(extraer_nombre(texto))
         hay_experiencia = extraer_experiencia(texto) is not None
+
+        # Perfil en tercera persona: alguien lo describe con su nombre al inicio
+        # ("Nombre Apellido es/trabaja/posee...") y trae skills.
+        if not hay_dato_personal and re.match(
+            r"[A-ZÁÉÍÓÚÑ][\wáéíóúñü]+(?:\s+[A-ZÁÉÍÓÚÑ][\wáéíóúñü]+){2,3}"
+            r"\s+(?:es|fue|trabaja|se desempena|se especializa|posee|cuenta con)\b",
+            texto.strip(),
+        ):
+            hay_dato_personal = True
 
         skills = extraer_skills(texto)
         if skills and (hay_dato_personal or hay_experiencia):

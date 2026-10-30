@@ -108,8 +108,14 @@ def test_termina_con_la_cola_vacia(bandeja_temporal):
     # `vacantes_en_cola` son las que pasaron por la cola (RF-13); lo que tiene
     # que quedar vacío al cerrar es la cola en sí.
     assert resultado["vacantes_pendientes"] == []
-    # Ninguna vacante queda sin leer cuando la corrida cierra.
-    assert set(resultado["matching_disparado"]) >= {"V001", "V002", "V003"}
+    # Ninguna vacante queda sin leer cuando la corrida cierra. Se comparan con
+    # las vacantes de la bandeja, no con data/vacantes.json: el catálogo real
+    # ya no trae las vacantes de prueba de la simulación.
+    assert set(resultado["matching_disparado"]) == {
+        correo["vacante_estructurada"]["id"]
+        for correo in cargar_bandeja(ruta_bandeja)["correos"]
+        if isinstance(correo.get("vacante_estructurada"), dict)
+    }
 
 
 # --- ids guardados: nada se procesa dos veces ---
@@ -137,8 +143,11 @@ def test_una_segunda_corrida_no_reprocesa_nada(bandeja_temporal):
     assert all(ciclo["correos_nuevos"] == [] for ciclo in segunda["ciclos"])
 
 
-def test_el_reenvio_no_vuelve_a_disparar_el_matching():
-    resultado = ejecutar_bandeja(reiniciar=True)
+def test_el_reenvio_no_vuelve_a_disparar_el_matching(bandeja_temporal):
+    ruta_bandeja, ruta_procesados = bandeja_temporal
+    resultado = ejecutar_bandeja(
+        ruta_bandeja=ruta_bandeja, ruta_procesados=ruta_procesados, reiniciar=True
+    )
 
     ciclos_b4 = [
         ciclo for ciclo in resultado["ciclos"] if "b4" in ciclo["correos_nuevos"]
@@ -147,18 +156,21 @@ def test_el_reenvio_no_vuelve_a_disparar_el_matching():
     acciones = {a["message_id"]: a["accion"] for a in ciclos_b4[0]["acciones"]}
     # RF-16: el reenvío se clasifica como duplicado de la vacante ya recibida.
     assert acciones["b4"] in {"ya_procesada", "reenvio", "duplicado"}
-    assert resultado["matching_disparado"].count("V001") == 1
+    assert resultado["matching_disparado"].count("B001") == 1
 
 
 # --- el matching solo arranca con un correo de vacante ---
 
-def test_solo_las_vacantes_disparan_el_matching():
-    bandeja = cargar_bandeja()
-    resultado = ejecutar_bandeja(reiniciar=True)
+def test_solo_las_vacantes_disparan_el_matching(bandeja_temporal):
+    ruta_bandeja, ruta_procesados = bandeja_temporal
+    bandeja = cargar_bandeja(ruta_bandeja)
+    resultado = ejecutar_bandeja(
+        ruta_bandeja=ruta_bandeja, ruta_procesados=ruta_procesados, reiniciar=True
+    )
 
     disparadas = set(resultado["matching_disparado"])
     for correo_actual in bandeja["correos"]:
-        if correo_actual["message_id"] == "b4":  # reenvío de V001
+        if correo_actual["message_id"] == "b4":  # reenvío de B001
             continue
         if es_vacante(correo_actual):
             assert clasificar_correo(correo_actual)["vacante"]["id"] in disparadas
@@ -189,7 +201,7 @@ def test_un_correo_de_vacante_dispara_el_matching():
     vacante = correo(bandeja, "b1")
 
     assert es_vacante(vacante) is True
-    assert clasificar_correo(vacante)["vacante"]["id"] == "V001"
+    assert clasificar_correo(vacante)["vacante"]["id"] == "B001"
 
 
 def test_el_ciclo_marca_cuando_dispara_el_matching(bandeja_temporal):
@@ -200,7 +212,7 @@ def test_el_ciclo_marca_cuando_dispara_el_matching(bandeja_temporal):
     )
 
     ciclo_b1 = next(c for c in resultado["ciclos"] if "b1" in c["correos_nuevos"])
-    assert ciclo_b1["matching_disparado"] == ["V001"]
+    assert ciclo_b1["matching_disparado"] == ["B001"]
 
 
 # --- la simulación no toca el dataset real ---
@@ -217,11 +229,19 @@ def test_la_corrida_no_modifica_el_dataset():
     assert (DATA / "candidatos.csv").read_text(encoding="utf-8-sig") == antes["candidatos"]
 
 
-def test_las_vacantes_procesadas_quedan_listadas():
-    resultado = ejecutar_bandeja(reiniciar=True)
+def test_las_vacantes_procesadas_quedan_listadas(bandeja_temporal):
+    ruta_bandeja, ruta_procesados = bandeja_temporal
+    resultado = ejecutar_bandeja(
+        ruta_bandeja=ruta_bandeja, ruta_procesados=ruta_procesados, reiniciar=True
+    )
 
     assert resultado["vacantes"]
-    assert set(resultado["vacantes"]) >= {"V001", "V002", "V003"}
+    esperadas = {
+        correo["vacante_estructurada"]["id"]
+        for correo in cargar_bandeja(ruta_bandeja)["correos"]
+        if isinstance(correo.get("vacante_estructurada"), dict)
+    }
+    assert set(resultado["vacantes"]) == esperadas
     assert set(resultado["resultados"]) == set(resultado["vacantes"])
 
 
@@ -235,33 +255,23 @@ def test_la_hora_maxima_no_pasa_la_ventana_simulada():
     assert HORAS_SIMULADAS_POR_CORRIDA == 8
 
 
-def test_la_vacante_del_correo_coincide_con_el_catalogo():
-    """El correo no puede pedir otra cosa que la vacante ya publicada.
+def test_los_ids_de_la_bandeja_no_chocan_con_el_catalogo():
+    """Ni el correo ni la simulación pueden mover un ID del catálogo real.
 
-    Si divergen, el mismo puesto da una shortlist distinta según se procese
-    desde la bandeja o desde el catálogo.
+    `data/vacantes.json` es el catálogo del sistema (las 4 vacantes reales del
+    lote) y la simulación vive solo en `data/bandeja.json`. Si un correo de la
+    bandeja reutilizara un ID del catálogo, un reenvío simulado se marcaría
+    como duplicado de la vacante real y el mismo ID daría dos puestos.
     """
-
-    from src.bandeja_simulada import cargar_bandeja as leer_bandeja
 
     with (DATA / "vacantes.json").open("r", encoding="utf-8-sig") as archivo:
         catalogo = {v["id"]: v for v in json.load(archivo)["vacantes"]}
 
-    criterios = (
-        "skills_obligatorios",
-        "skills_deseables",
-        "experience_required",
-        "english_required",
-        "availability_required",
-        "modality",
-    )
-    for correo_actual in leer_bandeja()["correos"]:
+    for correo_actual in cargar_bandeja()["correos"]:
         vacante = correo_actual.get("vacante_estructurada")
-        if not isinstance(vacante, dict) or vacante.get("id") not in catalogo:
+        if not isinstance(vacante, dict) or not vacante.get("id"):
             continue
-        publicada = catalogo[vacante["id"]]
-        for campo in criterios:
-            assert vacante.get(campo) == publicada.get(campo), (
-                f"{correo_actual['message_id']} ({vacante['id']}): '{campo}' "
-                "no coincide con data/vacantes.json"
-            )
+        assert vacante["id"] not in catalogo, (
+            f"{correo_actual['message_id']}: el ID {vacante['id']} de la bandeja "
+            "choca con el catálogo real (data/vacantes.json)"
+        )

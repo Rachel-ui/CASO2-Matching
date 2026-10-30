@@ -16,12 +16,7 @@ from pathlib import Path
 
 from src.agentmail_cliente import AgentMailCliente, Correo
 from src.configuracion import cargar_configuracion
-from src.ejecutar_matching import (
-    exportar_auditoria,
-    exportar_shortlist,
-    invocar_con_limite,
-    texto_limites,
-)
+from src.ejecutar_matching import invocar_con_limite, texto_limites
 from src.grafo_matching import app_matching
 from src.solicitud_vacante import ErrorVacante, SolicitudVacante, extraer_vacante
 
@@ -136,6 +131,10 @@ def procesar_correo(
     estado_inicial = crear_estado_inicial(solicitud.vacante, cargar_candidatos())
     config = cargar_configuracion()
     resultado = invocar_con_limite(estado_inicial, config)
+
+    # Se resuelven en el momento (no al importar) para que REPORTS se pueda
+    # redirigir en las pruebas.
+    from src.ejecutar_matching import exportar_auditoria, exportar_shortlist
 
     vacante_id = solicitud.vacante["id"]
     ruta_log = REPORTS / f"auditoria_{vacante_id}.csv"

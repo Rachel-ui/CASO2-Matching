@@ -1,5 +1,5 @@
 {
-  "descripcion": "Bandeja simulada del Caso 2: correos repartidos en las primeras 4 horas de una corrida de 24 h, como en el Caso 1 (3 a 4 h). La hora 0 es el inicio de la corrida. Los correos de vacante traen ademas el campo vacante_estructurada, que es el que usa el agente en modo sin LLM (RNF-02). El agente lee la bandeja hora por hora (RF-15).",
+  "descripcion": "Bandeja simulada del Caso 2: correos repartidos en las primeras 4 horas de una corrida de 24 h, como en el Caso 1 (3 a 4 h). La hora 0 es el inicio de la corrida. Los correos de vacante traen ademas el campo vacante_estructurada, que es el que usa el agente en modo sin LLM (RNF-02). El agente lee la bandeja hora por hora (RF-15). Las vacantes de la bandeja (B001, B002, B003) viven solo aqui: data/vacantes.json es el catalogo real del lote (V001-V003) y ningun ID se repite entre los dos.",
   "inicio": "2026-10-20T06:00:00",
   "correos": [
     {
@@ -18,7 +18,7 @@
       "asunto": "Solicitud de vacante: Desarrollador Backend Python",
       "cuerpo": "Hola, buenos días. Necesitamos cubrir un puesto de Desarrollador Backend Python para el equipo de plataforma. Se requiere Python, SQL, Git y REST API; deseables Docker, FastAPI y Django. Experiencia mínima de 3 años, inglés B1, modalidad remoto y disponible para iniciar el 25/10/2026. Quedamos atentos a sus candidatos.",
       "vacante_estructurada": {
-        "id": "V001",
+        "id": "B001",
         "titulo": "Desarrollador Backend Python",
         "descripcion": "Se busca desarrollador backend con experiencia en Python y construccion de APIs REST, SQL y Git.",
         "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
@@ -37,7 +37,7 @@
       "asunto": "Ingeniero Backend Senior - urgente",
       "cuerpo": "Buenas noches, se requiere profesional con sólida experiencia en desarrollo backend con Python, SQL y herramientas modernas de desarrollo. Debe poseer experiencia trabajando con APIs, control de versiones y contenedores. Buscamos 7 años de experiencia, inglés B2, modalidad remoto y disponibilidad inmediata (20/10/2026).",
       "vacante_estructurada": {
-        "id": "V002",
+        "id": "B002",
         "titulo": "Ingeniero Backend Senior",
         "descripcion": "Se requiere profesional con solida experiencia en desarrollo backend, Python, SQL, APIs y contenedores.",
         "skills_obligatorios": ["Python", "SQL", "Git"],
@@ -56,7 +56,7 @@
       "asunto": "Especialista Backend Python (perfil senior)",
       "cuerpo": "Necesitamos un especialista backend altamente experimentado para sistemas críticos: Python, SQL, Git, REST API, Docker, Kubernetes y AWS son obligatorios. 10 años de experiencia, inglés C2, remoto y disponibilidad para el 30/10/2026.",
       "vacante_estructurada": {
-        "id": "V003",
+        "id": "B003",
         "titulo": "Especialista Backend Python",
         "descripcion": "Se busca especialista backend altamente experimentado en Python, SQL, Git e infraestructura avanzada.",
         "skills_obligatorios": ["Python", "SQL", "Git", "REST API", "Docker", "Kubernetes", "AWS"],
@@ -76,9 +76,9 @@
       "reenvio_de": "b1",
       "cuerpo": "Reenvío por si no les llegó. Hola, buenos días. Necesitamos cubrir un puesto de Desarrollador Backend Python para el equipo de plataforma. Se requiere Python, SQL, Git y REST API; deseables Docker, FastAPI y Django. Experiencia mínima de 3 años, inglés B1, modalidad remoto y disponible para iniciar el 25/10/2026.",
       "vacante_estructurada": {
-        "id": "V001",
+        "id": "B001",
         "titulo": "Desarrollador Backend Python",
-        "descripcion": "Reenvio de la misma solicitud de vacante V001.",
+        "descripcion": "Reenvio de la misma solicitud de vacante B001.",
         "skills_obligatorios": ["Python", "SQL", "Git", "REST API"],
         "skills_deseables": ["Docker", "FastAPI", "Django"],
         "experience_required": 3,
@@ -136,25 +136,6 @@
       "asunto": "Desarrollador backend con 5 años",
       "cuerpo": "Hola, buenas. Me llamo Carlos López. Cuento con 5 años de experiencia en desarrollo backend. Manejo Python, SQL, Git, REST API y Docker. Mi nivel de inglés es B2, trabajo en modalidad híbrida y puedo incorporarme el 28/10/2026.",
       "vacante_estructurada": null
-    },
-    {
-      "message_id": "b11",
-      "timestamp": "2026-10-20T11:05:00",
-      "remitente": "rrhh@gestion-talentos.example",
-      "asunto": "Solicitud de vacante: Desarrollador Backend SQL",
-      "cuerpo": "Hola, necesitamos cubrir una vacante de Desarrollador Backend SQL para el equipo de datos. Se requiere Python, SQL y Git; deseables FastAPI, REST API y Docker. Experiencia mínima de 2 años, inglés B1, modalidad remoto y disponible para iniciar el 01/11/2026.",
-      "vacante_estructurada": {
-        "id": "V004",
-        "titulo": "Desarrollador Backend SQL",
-        "descripcion": "Se busca desarrollador backend con Python y SQL para el equipo de datos.",
-        "skills_obligatorios": ["Python", "SQL", "Git"],
-        "skills_deseables": ["FastAPI", "REST API", "Docker"],
-        "experience_required": 2,
-        "english_required": "B1",
-        "availability_required": "2026-11-01",
-        "modality": "remoto",
-        "scenario": "facil"
-      }
     }
   ]
 }

@@ -6,7 +6,7 @@ orden en que llegaron. Cada vacante deja su propio reporte.
 
 Se verifica:
 
-- que las cuatro vacantes de la bandeja se procesen en la misma corrida;
+- que todas las vacantes de la bandeja se procesen en la misma corrida;
 - que el orden sea el de llegada y no el del ID;
 - que entre en la cola solo lo que entra como vacante nueva;
 - que cada vacante tenga su reporte y que el índice apunte a todos;
@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from src.bandeja_simulada import ejecutar_bandeja
+from src.bandeja_simulada import cargar_bandeja, ejecutar_bandeja
 from src.clasificar_correos import vacia_cola
 from src.configuracion import cargar_configuracion
 from src.interpretar_correo_bandeja import procesar_cola
@@ -39,12 +39,12 @@ def corrida(tmp_path_factory):
 # --- varias vacantes en una sola corrida ---
 
 def test_la_corrida_procesa_todas_las_vacantes_de_la_bandeja(corrida):
-    assert corrida["orden_procesamiento"] == ["V001", "V002", "V004", "V003"]
+    assert corrida["orden_procesamiento"] == ["B001", "B002", "B003"]
     assert corrida["matching_disparado"] == corrida["orden_procesamiento"]
 
 
 def test_cada_vacante_tiene_su_resultado(corrida):
-    assert set(corrida["resultados"]) == {"V001", "V002", "V004", "V003"}
+    assert set(corrida["resultados"]) == {"B001", "B002", "B003"}
     for estado in corrida["resultados"].values():
         assert estado["vacante_actual"]["id"]
 
@@ -53,7 +53,7 @@ def test_una_sola_corrida_basta_para_todas_las_vacantes(corrida):
     """No hace falta volver a correr la bandeja para la segunda vacante."""
 
     assert corrida["ciclos_ejecutados"] == 8
-    assert len(corrida["resultados"]) == 4
+    assert len(corrida["resultados"]) == 3
 
 
 # --- el orden es el de llegada ---
@@ -61,14 +61,20 @@ def test_una_sola_corrida_basta_para_todas_las_vacantes(corrida):
 def test_el_orden_es_el_de_llegada_y_no_el_del_id(corrida):
     orden = corrida["orden_procesamiento"]
 
-    assert orden != sorted(orden)
-    assert orden.index("V004") < orden.index("V003")
+    # B002 llega antes que B003 aunque su ID sea menor: el orden es el de la
+    # bandeja y se comprueba contra ella, no contra una lista fija.
+    assert orden == [
+        correo["vacante_estructurada"]["id"]
+        for correo in cargar_bandeja()["correos"]
+        if isinstance(correo.get("vacante_estructurada"), dict)
+        and correo["message_id"] != "b4"
+    ]
 
 
 def test_las_vacantes_de_un_mismo_ciclo_salen_en_orden(corrida):
-    ciclo_v004 = next(c for c in corrida["ciclos"] if "V004" in c["matching_disparado"])
+    ciclo_b001 = next(c for c in corrida["ciclos"] if "B001" in c["matching_disparado"])
 
-    assert ciclo_v004["vacantes_en_cola"] == ["V004"]
+    assert ciclo_b001["vacantes_en_cola"] == ["B001"]
 
 
 def test_la_cola_queda_vacia_al_terminar(corrida):
@@ -144,7 +150,7 @@ def test_se_genera_un_reporte_por_vacante(corrida, tmp_path):
 
     generados = generar_reportes_bandeja(corrida, config, directorio=tmp_path)
 
-    assert [g["vacante_id"] for g in generados] == ["V001", "V002", "V004", "V003"]
+    assert [g["vacante_id"] for g in generados] == ["B001", "B002", "B003"]
     for generado in generados:
         assert generado["rutas"]["markdown"].exists()
         assert generado["rutas"]["json"].exists()

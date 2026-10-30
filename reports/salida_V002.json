@@ -1,10 +1,10 @@
 {
   "vacante_id": "V002",
-  "titulo": "Ingeniero Backend Senior",
-  "escenario": "media",
+  "titulo": "Pod EMR: Ingeniero de Software (Mid-Senior) con Claude",
+  "escenario": "lote_real",
   "estado": "finalizado",
   "exito": true,
-  "aptos": 16,
+  "aptos": 4,
   "minimo": 3,
   "shortlist": 3,
   "shortlist_parcial": false,
@@ -16,21 +16,21 @@
   "perfiles_entregados": [
     {
       "posicion": 1,
-      "id": "C019",
-      "puntaje": 90.0,
-      "justificacion": "Natalia Campos: Cumple todos los requisitos obligatorios. Skills: 3/3 skills obligatorios (Python, SQL, Git). Deseables: Docker, FastAPI. Experiencia: 7 años (requiere 6). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-17 (a tiempo, se requiere para 2026-11-03). Modalidad: modalidad remoto (vacante remoto)."
+      "id": "C010",
+      "puntaje": 100.0,
+      "justificacion": "Mateo Rojas: Cumple todos los requisitos obligatorios. Skills: 5/5 skills obligatorios (Next.js, TypeScript, Claude, Arquitectura full-stack escalable, Agentes de IA). Deseables: Productos comerciales, Caché, Balanceo de carga, AWS, CLI. Experiencia: 7 años (requiere 5). Inglés: B2 (requiere B2). Disponibilidad: disponible desde 2026-11-20 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
     },
     {
       "posicion": 2,
-      "id": "C033",
-      "puntaje": 90.0,
-      "justificacion": "Juan Quesada: Cumple todos los requisitos obligatorios. Skills: 3/3 skills obligatorios (Python, SQL, Git). Deseables: Docker, FastAPI. Experiencia: 6 años (requiere 6). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-23 (a tiempo, se requiere para 2026-11-03). Modalidad: modalidad remoto (vacante remoto)."
+      "id": "C029",
+      "puntaje": 92.0,
+      "justificacion": "Gabriela Montero: Cumple todos los requisitos obligatorios. Skills: 5/5 skills obligatorios (Next.js, TypeScript, Claude, Arquitectura full-stack escalable, Agentes de IA). Deseables: Balanceo de carga, AWS, CLI. Experiencia: 6 años (requiere 5). Inglés: B2 (requiere B2). Disponibilidad: disponible desde 2026-11-18 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
     },
     {
       "posicion": 3,
-      "id": "C008",
-      "puntaje": 85.0,
-      "justificacion": "Andrés Solano: Cumple todos los requisitos obligatorios. Skills: 3/3 skills obligatorios (Python, SQL, Git). Deseables: Docker. Experiencia: 6 años (requiere 6). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-18 (a tiempo, se requiere para 2026-11-03). Modalidad: modalidad remoto (vacante remoto)."
+      "id": "C021",
+      "puntaje": 88.0,
+      "justificacion": "Paula Jiménez: Cumple todos los requisitos obligatorios. Skills: 5/5 skills obligatorios (Next.js, TypeScript, Claude, Arquitectura full-stack escalable, Agentes de IA). Deseables: Productos comerciales, Caché. Experiencia: 5 años (requiere 5). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
     }
   ],
   "limites": {
@@ -41,20 +41,11 @@
     "pasos_grafo": 400,
     "recursion_limit": 400
   },
-  "pasos_grafo": 246,
+  "pasos_grafo": 165,
   "relajaciones": [
-    "Se movió la fecha de inicio 2 semanas: 2026-10-20 -> 2026-11-03.",
-    "Se acepta 1 año menos de experiencia: 7 -> 6 años."
+    "Se movió la fecha de inicio 2 semanas: 2026-11-15 -> 2026-11-29."
   ],
   "consultas_reclutador": [
-    {
-      "candidato_id": "C025",
-      "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C025?",
-      "respuesta": "no se sabe",
-      "resultado": "no_se_sabe",
-      "motivo": "El reclutador respondió \"no se sabe\"; el dato sigue desconocido."
-    },
     {
       "candidato_id": "C021",
       "campo": "availability_date",
@@ -64,26 +55,26 @@
       "motivo": "El reclutador confirmó availability_date = 2026-10-30."
     },
     {
-      "candidato_id": "C027",
+      "candidato_id": "C025",
       "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C027?",
-      "respuesta": "2026-11-03",
-      "resultado": "respondida",
-      "motivo": "El reclutador confirmó availability_date = 2026-11-03."
+      "pregunta": "¿Cuál es la availability_date del candidato C025?",
+      "respuesta": "no se sabe",
+      "resultado": "no_se_sabe",
+      "motivo": "El reclutador respondió \"no se sabe\"; el dato sigue desconocido."
     },
     {
-      "candidato_id": "C023",
+      "candidato_id": "C003",
       "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C023?",
-      "respuesta": "2026-10-28",
-      "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "pregunta": "¿Cuál es la availability_date del candidato C003?",
+      "respuesta": "",
+      "resultado": "sin_respuesta",
+      "motivo": "El reclutador no tiene una respuesta registrada para este dato."
     },
     {
-      "candidato_id": "C024",
+      "candidato_id": "C016",
       "campo": "availability_date",
-      "pregunta": "¿Cuál es la availability_date del candidato C024?",
-      "respuesta": "2026-11-10",
+      "pregunta": "¿Cuál es la availability_date del candidato C016?",
+      "respuesta": "",
       "resultado": "limite_alcanzado",
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
@@ -92,6 +83,14 @@
       "campo": "availability_date",
       "pregunta": "¿Cuál es la availability_date del candidato C022?",
       "respuesta": "2026-11-05",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C024",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C024?",
+      "respuesta": "2026-11-10",
       "resultado": "limite_alcanzado",
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
@@ -110,22 +109,40 @@
       "respuesta": "2026-11-15",
       "resultado": "limite_alcanzado",
       "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C027",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C027?",
+      "respuesta": "2026-11-03",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+    },
+    {
+      "candidato_id": "C023",
+      "campo": "availability_date",
+      "pregunta": "¿Cuál es la availability_date del candidato C023?",
+      "respuesta": "2026-10-28",
+      "resultado": "limite_alcanzado",
+      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
     }
   ],
   "criterios_vigentes": {
     "skills_obligatorios": [
-      "Python",
-      "SQL",
-      "Git"
+      "Next.js",
+      "TypeScript",
+      "Claude",
+      "Arquitectura full-stack escalable",
+      "Agentes de IA"
     ],
-    "experience_required": 6,
+    "experience_required": 5,
     "english_required": "B2",
-    "availability_required": "2026-11-03",
+    "availability_required": "2026-11-29",
     "modality": "remoto"
   },
   "criterios_originales": {
-    "experience_required": 7,
+    "experience_required": 5,
     "english_required": "B2",
-    "availability_required": "2026-10-20"
+    "availability_required": "2026-11-15"
   }
 }

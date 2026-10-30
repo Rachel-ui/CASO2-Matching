@@ -2,69 +2,113 @@
   "vacantes": [
     {
       "id": "V001",
-      "titulo": "Desarrollador Backend Python",
-      "descripcion": "Se busca desarrollador backend con experiencia en Python y construcción de APIs REST. La persona debe trabajar con bases de datos SQL, utilizar Git y contar con experiencia en desarrollo de aplicaciones backend.",
+      "titulo": "Ingeniero de Software Java Supply Chain (Junior y Senior)",
+      "descripcion": "Software para servicios de Supply Chain y sistemas de gestión de bodegas: diseño, arquitectura e implementación de sistemas que resuelven problemas complejos, definición y estimación de historias, entrega de código de alta calidad, escalable, mantenible y con pruebas, documentación de diseños y soporte on-call de los sistemas del equipo. Se requiere buena proficiencia en Java y Spring Boot, tecnologías de mensajería y streaming (Kafka), arquitectura RESTful y microservicios, herramientas modernas de infraestructura y pipelines (GitLab, CI/CD, Terraform), automatización de pruebas en todos los niveles (unidad, integración, regresión y rendimiento/carga), herramientas de logging y métricas (New Relic, Splunk) y tecnologías de nube (AWS, Kubernetes).",
       "skills_obligatorios": [
-        "Python",
-        "SQL",
-        "Git",
-        "REST API"
-      ],
-      "skills_deseables": [
-        "Docker",
-        "FastAPI",
-        "Django"
-      ],
-      "experience_required": 3,
-      "english_required": "B1",
-      "availability_required": "2026-10-25",
-      "modality": "remoto",
-      "scenario": "facil"
-    },
-    {
-      "id": "V002",
-      "titulo": "Ingeniero Backend Senior",
-      "descripcion": "Se requiere profesional con sólida experiencia en desarrollo backend utilizando Python, SQL y herramientas modernas de desarrollo. Debe poseer experiencia trabajando con APIs, control de versiones y contenedores.",
-      "skills_obligatorios": [
-        "Python",
-        "SQL",
-        "Git"
-      ],
-      "skills_deseables": [
+        "Java",
+        "Spring Boot",
+        "Kafka",
         "REST API",
-        "Docker",
-        "FastAPI",
-        "Django"
+        "Microservicios",
+        "GitLab",
+        "CI/CD",
+        "Terraform",
+        "Automatizacion de pruebas",
+        "New Relic",
+        "Splunk",
+        "AWS",
+        "Kubernetes"
+      ],
+      "skills_deseables": [
+        "GCP",
+        "Bases de datos relacionales",
+        "Supply Chain",
+        "Gestion de bodegas"
       ],
       "experience_required": 7,
       "english_required": "B2",
-      "availability_required": "2026-10-20",
+      "availability_required": "2026-11-15",
       "modality": "remoto",
-      "scenario": "media"
+      "seniority": "junior_senior",
+      "vacantes_disponibles": 2,
+      "requisitos_pais": "solamente candidatos de Costa Rica",
+      "supuestos": [
+        "El correo abarca 'JR and Senior': el esquema no separa seniority, así que se exige la experiencia del perfil senior (7+).",
+        "GCP, bases de datos relacionales, Supply Chain y gestión de bodegas figuran como 'plus'/'bonus' en el correo: van como deseables.",
+        "El correo no indica fecha de inicio, modalidad ni nivel de inglés: se asume remoto (el correo no exige presencialidad), inicio a 2 semanas del alta (2026-11-15) y el inglés B2 que pide un puesto senior con clientes del exterior. Confirmar con el reclutador."
+      ],
+      "scenario": "lote_real"
+    },
+    {
+      "id": "V002",
+      "titulo": "Pod EMR: Ingeniero de Software (Mid-Senior) con Claude",
+      "descripcion": "Pod de 4 ingenieros Mid-Senior (sin juniors) para un proyecto EMR. Experiencia con Claude (codificación con IA), construcción de productos comerciales (no sistemas empresariales), Next.js y TypeScript (obligatorio para sus flujos de IA), arquitectura full-stack escalable (caché, balanceo de carga) y aprobación técnica evaluada en una sesión en vivo de 2 horas: enfoque real de codificación, uso de CLI, agentes y orquestación de flujos.",
+      "skills_obligatorios": [
+        "Next.js",
+        "TypeScript",
+        "Claude",
+        "Arquitectura full-stack escalable",
+        "Agentes de IA"
+      ],
+      "skills_deseables": [
+        "Productos comerciales",
+        "Caché",
+        "Balanceo de carga",
+        "AWS",
+        "CLI"
+      ],
+      "experience_required": 5,
+      "english_required": "B2",
+      "availability_required": "2026-11-15",
+      "modality": "remoto",
+      "seniority": "mid_senior",
+      "vacantes_disponibles": 4,
+      "supuestos": [
+        "El correo exige '2+ años' con Claude: el esquema solo guarda años totales, así que se registra como deseable y no como requisito duro.",
+        "El correo no fija años de experiencia: 5 años es la interpretación de 'Mid-Senior, no juniors'. Confirmar con el reclutador.",
+        "El pod lo completa el Administrador AWS Senior que venía junto en el mismo correo, pero que se dejó fuera del catálogo: aquí solo se registra el perfil de ingeniería.",
+        "Sin fecha de inicio en el correo: se toma a 2 semanas del alta (2026-11-15)."
+      ],
+      "scenario": "lote_real"
     },
     {
       "id": "V003",
-      "titulo": "Especialista Backend Python",
-      "descripcion": "Se busca especialista backend altamente experimentado para desarrollar sistemas críticos utilizando Python, SQL, Git y tecnologías avanzadas de infraestructura y APIs.",
+      "titulo": "Ingeniero de Software iSeries RPG",
+      "descripcion": "Diseñar, desarrollar, mantener y dar soporte a aplicaciones en un entorno IBM i (AS/400). Escribir, modificar, probar y desplegar código con RPG III, RPG IV, RPG ILE, RPG Free, SQL y CL. Analizar requisitos de negocio y traducirlos en soluciones técnicas; resolver problemas de aplicación, integración y sistema; mantener estructuras de base de datos, consultas y reportes con SQL y DB2; participar en integración de sistemas y en funciones de seguridad de IBM i; hacer revisiones de código, pruebas y aseguramiento de calidad. Se valora la experiencia en la industria financiera y en servicios hipotecarios.",
       "skills_obligatorios": [
-        "Python",
+        "IBM i (AS/400)",
+        "RPG III",
+        "RPG IV",
+        "RPG ILE",
+        "RPG Free",
+        "CL",
         "SQL",
-        "Git",
-        "REST API",
-        "Docker",
-        "Kubernetes",
-        "AWS"
+        "DB2",
+        "Integracion de sistemas"
       ],
       "skills_deseables": [
-        "FastAPI",
-        "Django",
-        "CI/CD"
+        "LSAMS Mortgage Servicing System",
+        "COBOL 400/ILE",
+        "FTP",
+        "Secure FTP",
+        "PGP",
+        "Servicios hipotecarios",
+        "Industria financiera",
+        "Aseguramiento de calidad"
       ],
       "experience_required": 10,
-      "english_required": "C2",
-      "availability_required": "2026-10-30",
-      "modality": "remoto",
-      "scenario": "dificil"
+      "english_required": "B2",
+      "availability_required": "2026-11-15",
+      "modality": "presencial",
+      "seniority": "senior",
+      "vacantes_disponibles": 8,
+      "requisitos_pais": "US-based; Dallas, TX preferred",
+      "supuestos": [
+        "El correo sitúa el trabajo en Estados Unidos (Dallas, TX): se registra como requisito de país y el dataset de candidatos (Costa Rica) no puede cubrirlo.",
+        "La modalidad no se dice explícitamente; 'colaboración periódica en la oficina de Cypress Waters' se registra como presencial.",
+        "La sesión en vivo de 2 horas y la disponibilidad inmediata ('Priority: Immediate') no están en el esquema: se usa inicio a 2 semanas (2026-11-15) y se anota aquí."
+      ],
+      "scenario": "lote_real"
     }
   ]
 }

@@ -26,6 +26,10 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 REPORTS = RAIZ / "reports"
+# La bandeja simulada usa sus propios IDs (B001…), pero sus reportes se
+# guardan aparte para no pisar los del catálogo real (V001…), que se llaman
+# igual.
+REPORTS_BANDEJA = REPORTS / "bandeja"
 
 COMPONENTES = (
     ("mandatory_skills", "Skills obligatorios"),
@@ -644,7 +648,7 @@ def generar_reportes_bandeja(
     procesó las vacantes.
     """
 
-    directorio = Path(directorio) if directorio else REPORTS
+    directorio = Path(directorio) if directorio else REPORTS_BANDEJA
     resultados = resultado_bandeja.get("resultados") or {}
 
     generados = []
@@ -667,18 +671,23 @@ def generar_reportes_bandeja(
             "Las vacantes se procesaron una por una desde la cola, en el orden "
             "en que llegaron los correos.",
             "",
+            "Estos reportes son de las vacantes de prueba de la bandeja simulada "
+            "(`B001`–`B003`), no del catálogo real `data/vacantes.json`; los del "
+            "catálogo están en `reports/reporte_V00*.md`.",
+            "",
             "| Orden | Vacante | Estado | Puestos | Reporte |",
             "|---|---|---|---|---|",
         ]
         for posicion, generado in enumerate(generados, start=1):
             reporte = generado["reporte"]
+            # Enlace solo al nombre del archivo: el índice vive en la misma carpeta.
+            archivo = Path(generado["rutas"]["markdown"]).name
             lineas.append(
                 f"| {posicion} | {reporte['vacante']['id']} | "
                 f"{reporte['vacante']['estado']} | "
                 f"{reporte['resultado']['puestos_llenos']}/"
                 f"{reporte['resultado']['puestos_llenos'] + reporte['resultado']['puestos_libres']} | "
-                f"[reporte_{reporte['vacante']['id']}.md]"
-                f"(reporte_{reporte['vacante']['id']}.md) |"
+                f"[{archivo}]({archivo}) |"
             )
         lineas.append("")
         indice.write_text("\n".join(lineas), encoding="utf-8")

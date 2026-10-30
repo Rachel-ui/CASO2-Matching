@@ -47,6 +47,7 @@ def sin_archivos_reales(tmp_path, monkeypatch):
     monkeypatch.setattr("src.candidatos.ARCHIVO_CANDIDATOS", tmp_path / "candidatos.csv")
     monkeypatch.setattr("src.registro_correos.ARCHIVO_CORREOS", tmp_path / "registro.csv")
     monkeypatch.setattr("src.procesar_correo.ARCHIVO_VACANTES", tmp_path / "vacantes.json")
+    monkeypatch.setattr("src.procesar_correo.REPORTS", tmp_path / "reports")
     return tmp_path
 
 
@@ -146,10 +147,17 @@ def test_grafo_no_crea_un_json_por_correo(sin_archivos_reales):
     for indice, texto in enumerate((TEXTO_PERFIL, TEXTO_PUESTO)):
         interpretar_y_guardar(texto, _correo(texto, f"m{indice}"))
 
-    archivos = sorted(ruta.name for ruta in sin_archivos_reales.iterdir())
-
-    assert archivos == ["candidatos.csv", "registro.csv", "vacantes.json"]
-    assert not any(ruta.is_dir() for ruta in sin_archivos_reales.iterdir())
+    # Los datos viven en CSV/catálogo y la auditoría va aparte, en reports/:
+    # no se crea un JSON (ni ningún otro archivo) por correo.
+    datos = sorted(
+        ruta.name
+        for ruta in sin_archivos_reales.iterdir()
+        if ruta.is_file()
+    )
+    assert datos == ["candidatos.csv", "registro.csv", "vacantes.json"]
+    assert sorted(ruta.name for ruta in sin_archivos_reales.iterdir() if ruta.is_dir()) == [
+        "reports"
+    ]
 
 
 def test_grafo_guarda_perfil_en_csv(sin_archivos_reales):
@@ -211,3 +219,47 @@ def test_registro_permite_verificar_y_actualiza_la_misma_fila(tmp_path, monkeypa
     assert filas[0]["coincide"] == "no"
     assert filas[0]["accion"] == "candidato_guardado"
 
+
+# --- perfil reenviado en tercera persona (correos reales del 30/10) ---
+
+TEXTO_PERFIL_TERCERA_PERSONA = (
+    "Andrés Felipe Ramírez Solano es un desarrollador de software senior "
+    "ficticio, residente en San José, Costa Rica, con más de nueve años de "
+    "experiencia profesional en el desarrollo de aplicaciones empresariales. "
+    "Se especializa en Java y Spring Boot, tecnologías que ha utilizado para "
+    "construir servicios backend, API REST y arquitecturas basadas en "
+    "microservicios. Cuenta con experiencia trabajando con Apache Kafka, "
+    "GitLab y procesos CI/CD, además de AWS, Kubernetes y Terraform."
+)
+
+
+def test_perfil_en_tercera_persona_se_reconoce_como_candidato():
+    resultado = interpretar(TEXTO_PERFIL_TERCERA_PERSONA)
+
+    assert resultado.tipo == TIPO_CANDIDATO
+    assert resultado.datos["nombre"] == "Andrés Felipe Ramírez Solano"
+    assert resultado.datos["experience_years"] == 9
+    for skill in ("Java", "Spring Boot", "Kafka", "Terraform", "Kubernetes"):
+        assert skill in resultado.datos["skills"]
+
+
+def test_perfil_en_tercera_persona_sin_experiencia_igual_se_guarda():
+    texto = (
+        "Valeria Castro es una desarrolladora full-stack. "
+        "Trabaja con Next.js, TypeScript y Claude, y usa GitHub y AWS."
+    )
+
+    resultado = interpretar(texto)
+
+    assert resultado.tipo == TIPO_CANDIDATO
+    assert "Next.js" in resultado.datos["skills"]
+    assert "TypeScript" in resultado.datos["skills"]
+
+
+def test_un_solo_comentario_sobre_un_cargo_no_es_un_perfil():
+    """Nombrar el cargo una vez no alcanza: se necesitan varias señales."""
+
+    texto = "El puesto de backend con Python y SQL sigue abierto."
+    resultado = interpretar(texto)
+
+    assert resultado.tipo != TIPO_CANDIDATO
