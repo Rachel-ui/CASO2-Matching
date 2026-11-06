@@ -149,7 +149,8 @@ def test_limites_configurados():
 
     assert config.max_relajaciones == 3
     assert config.max_consultas_reclutador == 3
-    assert config.max_llamadas_llm == 30
+    # Acotado a propósito: el plan gratis de OpenRouter da 50 al día.
+    assert config.max_llamadas_llm == 8
     assert config.recursion_limit == config.max_pasos_grafo
 
 
@@ -186,7 +187,7 @@ def test_los_limites_quedan_en_el_estado():
 
     assert resultado["limites"]["relajaciones"] == 3
     assert resultado["limites"]["consultas_reclutador"] == 3
-    assert resultado["limites"]["llamadas_llm"] == 30
+    assert resultado["limites"]["llamadas_llm"] == 8
     assert resultado["limites"]["horas_monitoreo"] > 0
     assert resultado["limites"]["recursion_limit"] == resultado["configuracion"].recursion_limit
     assert 0 < resultado["pasos_grafo"] <= resultado["configuracion"].recursion_limit

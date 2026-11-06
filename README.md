@@ -14,7 +14,27 @@ AGENTMAIL_API_KEY=am_...
 AGENTMAIL_INBOX_ID=tu-bandeja@agentmail.to
 AGENTE_MODO=without_llm
 OPENROUTER_API_KEY=...        # solo si AGENTE_MODO usa LLM
+LLM_MODEL=openrouter/free     # opcional: cualquiera de https://openrouter.ai/models
 ```
+
+### Modelo del LLM y cómo se evita que la secuencia falle
+
+`LLM_MODEL=openrouter/free` es un **enrutador**: si el modelo gratis elegido
+está caído o saturado, OpenRouter responde con otro modelo gratis en la misma
+llamada, así el grafo no se detiene. Hay que distinguir dos límites:
+
+| Límite | ¿Lo evita `openrouter/free`? | Qué pasa |
+|---|---|---|
+| Modelo caído o saturado (429 del proveedor) | Sí, enruta a otro gratis | La secuencia continúa sin error |
+| Tope diario de la cuenta (`free-models-per-day`, 50/día) | No: es de la cuenta, no del modelo | Reintento (1) y luego justificación por plantilla (RNF-08); el error queda en `errores` y en la auditoría |
+
+Para la segunda fila hay tres salidas: esperar al reinicio diario (lo indica
+`X-RateLimit-Reset` en el error), agregar créditos en OpenRouter, o apuntar a
+Groq con `LLM_BASE_URL=https://api.groq.com/openai/v1` y `LLM_API_KEY=gsk_...`
+(sin `LLM_MODEL`, se usa `llama-3.3-70b-versatile`).
+
+El puntaje nunca depende del LLM (RF-03): si todas las llamadas fallan, la
+shortlist y el resultado son los mismos, solo cambia el texto de la justificación.
 
 ## Agente de matching
 
@@ -68,7 +88,7 @@ Flujo del grafo (`src/grafo_matching.py`):
 validar_estado -> depurar_duplicados -> consultar_reclutador
    -> procesar_candidato (loop) -> decidir_siguiente_paso
    -> generar_shortlist -> evaluar_resultado
-        -> [éxito] finalizar
+        -> [éxito] aprobacion_humana -> finalizar
         -> [insuficientes] relajar_criterios -> procesar_candidato ...
 ```
 
@@ -77,11 +97,79 @@ validar_estado -> depurar_duplicados -> consultar_reclutador
 | `validar_estado` | RNF-02 | Carga la configuración y el modo de ejecución |
 | `depurar_duplicados` | RF-09 | Deja un solo perfil por persona |
 | `consultar_reclutador` | RF-04 | Pregunta la fecha faltante al reclutador simulado (`data/reclutador.json`), hasta `recruiter.max_queries` preguntas |
-| `procesar_candidato` | RF-03 | Puntúa de 0 a 100 en código y justifica con plantilla |
+| `procesar_candidato` | RF-03 | Puntúa de 0 a 100 en código y justifica con plantilla o con el LLM (RNF-08) |
 | `generar_shortlist` | RF-02 | Solo ocupan puesto quienes cumplen todos los requisitos duros y el umbral |
 | `evaluar_resultado` | RF-05 | Éxito si al menos 3 candidatos superan el umbral; además se explica el bloqueo (RF-07) |
 | `relajar_criterios` | RF-06 | Mueve la fecha 2 semanas, luego acepta 1 año menos, luego 1 nivel menos de inglés |
+| `aprobacion_humana` | RF-08 | Detiene el grafo con `interrupt` y muestra la shortlist; si la persona rechaza a un candidato, lo excluye y busca reemplazo |
 | `finalizar` | RF-07 | Si la shortlist quedó incompleta, entrega los perfiles que hay y dice qué requisito lo impide |
+
+### Aprobación humana de la shortlist (RF-08)
+
+Antes de cerrar, el grafo se detiene y muestra la shortlist para que una
+persona la apruebe (el `interrupt` de [LangGraph](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)).
+
+```powershell
+# Revisa la shortlist de una vacante y espera la respuesta por consola
+python -m src.aprobacion V001
+
+# Rechaza candidatos concretos (una ronda por ID) y aprueba el resto
+python -m src.aprobacion V001 --rechazar C002,C004
+
+# Aprueba sin preguntar (útil en una demo) y deja la respuesta en JSON
+python -m src.aprobacion V001 --aprobar-todo --salida reports/aprobacion_V001.json
+```
+
+- **Se detiene con la shortlist**: la corrida se pausa con `interrupt` y
+  espera `Command(resume=...)`. En consola se listan puesto, ID, puntaje y
+  justificación; `ENTER` (o una lista vacía) aprueba todo.
+- **Rechazo con reemplazo**: cada ID rechazado sale de la shortlist y el
+  agente busca el siguiente perfil apto sobre el umbral que no esté aprobado
+  ni rechazado. La shortlist nueva vuelve a presentarse para aprobarla.
+- **Reserva de reemplazos**: los perfiles aptos que superan el umbral pero no
+  ocupan puesto (la shortlist ya estaba llena) quedan en `reserva`; el
+  interrupt los muestra como "Reemplazos disponibles" y el reemplazo sale de
+  ahí. No se presentan ni se aprueban hasta que haga falta, así la shortlist
+  sigue teniendo los puestos de la vacante.
+- **Sin reemplazo**: si no quedan perfiles aptos, se registra `sin_reemplazo`
+  con los perfiles revisados y el requisito que no cumplían, el puesto queda
+  sin cubrir (`puestos_sin_reemplazo`) y la vacante queda para revisión humana.
+  Con el dataset actual pasa en V001 y V002 (solo hay 3 aptos); en V003 el
+  rechazo de C013 se cubre con C014.
+- **Rondas acotadas**: `approval.max_reviews` (3 por defecto) limita las
+  revisiones; al agotarse, la shortlist vigente se aprueba y queda
+  `aprobada_por_limite`.
+- **Auditoría**: la ronda queda en el log con las decisiones `interrupt`,
+  `shortlist_aprobada`, `rechazar_candidato`, `reemplazo_encontrado` o
+  `sin_reemplazo`. La respuesta final aparece en `aprobacion` y en el reporte.
+
+La corrida automática (`ejecutar_matching`, la bandeja y los reportes) **no se
+detiene** porque no tiene a quién preguntar: compila el grafo sin checkpointer,
+registra la ronda en la auditoría como `shortlist_aprobada` y sigue. Cuando se
+quiere la pausa real se usa `compilar_con_aprobacion()` o `src.aprobacion`.
+
+### Reintento y regla de respaldo del LLM (RNF-08)
+
+Si el LLM falla o devuelve un formato inválido, se reintenta **una vez** y,
+si vuelve a fallar, se usa la regla de respaldo (`con_reintento` en
+`src/llm_cliente.py`):
+
+| Dónde | Regla de respaldo |
+|---|---|
+| Justificación de un candidato | Vuelve a la justificación por plantilla (`fallback_plantilla` en el log) |
+| Clasificación de correos (RF-16) | Vuelve a las reglas deterministas; el aviso queda en `advertencias` |
+
+Cuenta como fallo la red, la cuota, una respuesta vacía o un formato inválido
+(JSON que no parsea o una `clase` fuera del esquema). El error queda en el log:
+el nodo `procesar_candidato` agrega el evento `fallback_plantilla` en la
+auditoría y el mensaje en `errores`. Las dos llamadas cuentan para
+`llm.max_calls_per_job`; si la cuota se agotó, el resto de la corrida usa la
+plantilla sin volver a llamar al LLM.
+
+El mensaje del error se resume (`resumir_error`): tipo, código HTTP y mensaje
+del proveedor, sin el JSON completo de la respuesta. Así la consola y la
+auditoría dicen qué pasó (por ejemplo `OpenAIRateLimitError - HTTP 429 - Rate
+limit exceeded: free-models-per-day`) en vez de volcar el cuerpo entero.
 
 ### Shortlist parcial (RF-07)
 
@@ -112,6 +200,7 @@ como bloqueado por `skills_obligatorios`.
 | Relajaciones | 3 | `relaxation.max_relaxations` |
 | Consultas al reclutador | 3 | `recruiter.max_queries` |
 | Llamadas al LLM por vacante | 30 | `llm.max_calls_per_job` |
+| Rondas de aprobación humana | 3 | `approval.max_reviews` (RF-08) |
 | Pasos del grafo (`recursion_limit`) | 400 | `limits.recursion_limit` |
 
 La corrida imprime los límites y cuántos pasos usó. Ningún límite se pasa:
@@ -250,6 +339,31 @@ La fase depende de `AGENTE_MODO` (o del argumento `modo`):
 | 1 | `without_llm` | Reglas deterministas sobre el texto (`interpretar_texto`), sin red |
 | 2 | `with_llm` | El LLM clasifica y extrae los campos; el rol, los skills obligatorios, la detección de duplicados y la entrada a la cola **siguen en código**. Si el LLM falla o no devuelve JSON válido, se usan las reglas |
 
+### Extracción de requisitos (RF-01)
+
+El texto de la vacante se convierte en requisitos estructurados: **rol**,
+**skills obligatorios**, **skills deseables**, **años de experiencia**,
+**nivel de inglés**, **modalidad** y **fecha de inicio**. Los requisitos
+fail alineados con el esquema del matching (`titulo`,
+`availability_required`, etc.) y se exponen en forma legible con
+`requisitos_estructurados`: `rol`, `skills_obligatorios`,
+`skills_deseables`, `anos_experiencia`, `nivel_ingles`, `modalidad` y
+`fecha_inicio`. En la cola y en los reportes aparecen como `requisitos`.
+
+| Fase | De dónde salen los requisitos |
+|---|---|
+| 1 (`without_llm`) | Del campo `vacante_estructurada` del correo si viene completo; si no, de las reglas sobre el texto (sin red) |
+| 2 (`with_llm`) | Los extrae el LLM (JSON validado en código); si un campo llega vacío o ilegible, se completa **solo** con lo que las reglas encuentren escrito en el texto (`completar_con_reglas`) |
+
+En la fase 2, lo que el LLM sí devolvió nunca se reemplaza, lo que no está
+escrito no se inventa y cada requisito recuperado de las reglas queda en las
+advertencias con la marca "tomado del texto por reglas" para poder auditarlo.
+Las skills del LLM se llevan a la forma canónica del catálogo (`nodejs` →
+`Node.js`) para que el puntaje no dependa de cómo las escribió el modelo.
+El `titulo` es el rol, no el correo: si el LLM copia el cuerpo entero, se
+recorta en la primera frase (máximo 80 caracteres) y se avisa en las
+advertencias.
+
 La corrida termina cuando **ya no queda ninguna vacante sin leer** en la
 bandeja (las 24 h solo se agotan si no llega ninguna), o al llegar a la hora
 máxima. Los correos de gestión, candidato o basura que queden se reportan como
@@ -328,6 +442,32 @@ reintentan hasta 5 veces seguidas antes de abortar.
 
 Códigos de salida: `0` correo nuevo mostrado, `1` error de AgentMail,
 `2` sin novedades al vencer `--tiempo-maximo`, `130` cancelado con Ctrl+C.
+
+## Demo de los cuatro requisitos
+
+```powershell
+# RF-16, RF-01, RNF-08 y RF-08 en una sola corrida (usa el LLM del .env)
+python demo_requisitos.py
+
+# Sin red: solo RNF-08 y RF-08
+python demo_requisitos.py --sin-llm
+
+# Otra vacante u otro rechazo
+python demo_requisitos.py V001 --rechazar C004
+```
+
+1. **RF-16**: clasifica cuatro correos (vacante nueva, no relacionado, sin rol
+   ni skills y un reenvío) y muestra la clase, la fuente (`llm` o `reglas`) y
+   el motivo.
+2. **RF-01**: muestra los siete requisitos extraídos, lo que aportan las
+   reglas y qué campos completaron ellas.
+3. **RNF-08**: un doble que siempre falla; se ven los 2 intentos, el error
+   resumido y la justificación por plantilla con el mismo puntaje.
+4. **RF-08**: el `interrupt` real, el rechazo, el reemplazo y la segunda
+   aprobación. Por defecto usa V003, donde C014 reemplaza a C013.
+
+Si el LLM no responde (sin clave, sin red o cuota diaria agotada), la demo no
+se cae: avisa y sigue con el respaldo por reglas (RNF-08).
 
 ## Pruebas
 

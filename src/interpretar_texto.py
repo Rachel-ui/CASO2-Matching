@@ -265,6 +265,19 @@ def extraer_skills(texto: str) -> list[str]:
     return encontradas
 
 
+def canonicalizar_skill(skill: str) -> str:
+    """Lleva una skill a la forma canónica del catálogo (RF-01).
+
+    El LLM o un CSV pueden escribir la misma skill de otra forma ("nodejs"
+    en vez de "Node.js"). Si el catálogo la reconoce, se devuelve la forma
+    canónica; si no la conoce, la skill se devuelve tal cual, porque el
+    matching compara por texto normalizado y no debe perder un skill ajeno.
+    """
+
+    limpia = " ".join(str(skill or "").split())
+    return CATALOGO_SKILLS.get(_texto_normalizado(limpia), limpia)
+
+
 _NUMEROS_EN_LETRA = {
     "un": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5,
     "seis": 6, "siete": 7, "ocho": 8, "nueve": 9, "diez": 10, "once": 11,
@@ -485,14 +498,45 @@ def interpretar_candidato(texto: str, pistas: list[str], hoy: date | None = None
 
 
 def _titulo_desde_texto(texto: str) -> str:
+    """Rol del puesto: el cargo nombrado en el texto, no el saludo del correo.
+
+    "Hola, necesitamos cubrir un puesto de Desarrollador Backend Python para
+    el equipo..." da "Desarrollador Backend Python". Si el texto no nombra un
+    cargo conocido, se usa la primera línea (recortada) como antes.
+    """
+
     primera = next((linea.strip() for linea in texto.splitlines() if linea.strip()), "")
     if not primera:
         return ""
+
+    cargo = _cargo_desde_texto(primera)
+    if cargo:
+        return cargo
 
     if len(primera) <= 80:
         return primera
 
     return primera[:77].rstrip() + "..."
+
+
+def _cargo_desde_texto(texto: str) -> str:
+    """Cargo concreto que sigue a "puesto de", "perfil de" o "como"."""
+
+    base = _texto_normalizado(texto)
+    coincidencia = re.search(
+        r"\b(?:puesto|perfil|vacante|rol|posicion|cargo)\s+(?:de|para)\s+"
+        r"(?:un |una |el |la )?"
+        r"([a-z0-9][a-z0-9 +#./-]{2,60}?)"
+        r"(?=\s+(?:para|con|en|que|y|disponible|remoto|presencial|hibrido)\b|[.,;:]|$)",
+        base,
+    )
+    if not coincidencia:
+        return ""
+
+    cargo = coincidencia.group(1).strip(" -")
+    if len(cargo.split()) < 2 and len(cargo) < 5:
+        return ""
+    return cargo[:1].upper() + cargo[1:]
 
 
 def _rol_desde_texto(texto: str) -> str:

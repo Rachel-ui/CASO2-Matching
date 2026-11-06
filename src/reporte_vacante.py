@@ -374,6 +374,7 @@ def construir_reporte(resultado: dict, config) -> dict:
             for evaluado in evaluados
         ],
         "criterios_relajados": relajaciones,
+        "aprobacion": resultado.get("aprobacion") or {},
         "consultas_reclutador": resultado.get("consultas_reclutador") or [],
         "duplicados": resultado.get("duplicados") or [],
         "limites": resultado.get("limites") or config.limites(),
@@ -410,6 +411,20 @@ def renderizar_markdown(reporte: dict) -> str:
         f"- **Revisión humana:** {'sí' if resultado['requiere_revision_humana'] else 'no'}",
         "",
     ]
+
+    aprobacion = reporte.get("aprobacion") or {}
+    if aprobacion:
+        lineas += [
+            f"## Aprobación humana (RF-08)",
+            "",
+            f"- **Estado:** {aprobacion.get('estado', '')}"
+            f" (revisiones: {aprobacion.get('revisiones', 0)})",
+            f"- **Rechazados:** "
+            f"{', '.join(aprobacion.get('rechazados') or []) or 'ninguno'}",
+            f"- **Shortlist final:** "
+            f"{', '.join(aprobacion.get('aprobados') or []) or 'ningún perfil'}",
+            "",
+        ]
 
     if resultado["puestos_libres"]:
         lineas += [

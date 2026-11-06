@@ -40,6 +40,20 @@ class EstadoAgente(TypedDict):
     vacante_original: dict
     calificados: list[dict]
     evaluacion: dict
+    # RF-08: aprobación humana de la shortlist (interrupt de LangGraph).
+    # `candidatos_rechazados` son los IDs que la persona descartó;
+    # `aprobacion_revision` cuenta las rondas de revisión y `aprobacion_pendiente`
+    # guarda la shortlist que espera el visto bueno.
+    candidatos_rechazados: list[str]
+    # Perfiles aptos que superan el umbral pero no ocupan puesto: son los
+    # reemplazos posibles si el humano rechaza a alguien (RF-08).
+    reserva: list[dict]
+    aprobacion_revision: int
+    aprobacion_pendiente: dict
+    aprobacion: dict
+    # Solo el grafo con checkpointer (`app_aprobacion`) puede pausar en el
+    # interrupt; la corrida automática lo deja en False y aprueba la shortlist.
+    interrupt_habilitado: bool
     # Límites de la corrida y pasos del grafo (RNF-04), y la explicación de
     # qué requisito impide completar la shortlist (RF-07).
     limites: dict
@@ -84,6 +98,12 @@ def crear_estado_inicial(
         "vacante_original": dict(vacante),
         "calificados": [],
         "evaluacion": {},
+        "candidatos_rechazados": [],
+        "reserva": [],
+        "aprobacion_revision": 0,
+        "aprobacion_pendiente": {},
+        "aprobacion": {},
+        "interrupt_habilitado": False,
         "limites": {},
         "pasos_grafo": 0,
         "analisis_shortlist": {},

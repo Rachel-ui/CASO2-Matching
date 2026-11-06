@@ -1,0 +1,36 @@
+{
+  "vacante_id": "V003",
+  "aprobacion": {
+    "estado": "aprobada",
+    "aprobados": [
+      "C015",
+      "C035",
+      "C014"
+    ],
+    "rechazados": [
+      "C013"
+    ],
+    "revisiones": 2,
+    "puestos_sin_reemplazo": 0
+  },
+  "shortlist": [
+    {
+      "posicion": 1,
+      "id": "C015",
+      "puntaje": 92.5,
+      "justificacion": "Daniela Pérez: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: COBOL 400/ILE, FTP, Secure FTP, PGP, Industria financiera. Experiencia: 13 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
+    },
+    {
+      "posicion": 2,
+      "id": "C035",
+      "puntaje": 87.5,
+      "justificacion": "Miguel Alfaro: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: LSAMS Mortgage Servicing System, Servicios hipotecarios, Industria financiera. Experiencia: 14 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-10-30 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
+    },
+    {
+      "posicion": 3,
+      "id": "C014",
+      "puntaje": 80.0,
+      "justificacion": "Kevin Salazar: Cumple todos los requisitos obligatorios. Skills: 9/9 skills obligatorios (IBM i (AS/400), RPG III, RPG IV, RPG ILE, RPG Free, CL, SQL, DB2, Integracion de sistemas). Deseables: ninguno. Experiencia: 12 años (requiere 10). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-11-15 (a tiempo, se requiere para 2026-11-15). Modalidad: modalidad presencial (vacante presencial)."
+    }
+  ]
+}

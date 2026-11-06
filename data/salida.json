@@ -39,9 +39,10 @@
     "consultas_reclutador": 3,
     "llamadas_llm": 30,
     "pasos_grafo": 400,
-    "recursion_limit": 400
+    "recursion_limit": 400,
+    "revisiones_aprobacion": 3
   },
-  "pasos_grafo": 84,
+  "pasos_grafo": 85,
   "relajaciones": [],
   "consultas_reclutador": [
     {
@@ -74,7 +75,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C026?",
       "respuesta": "2026-11-15",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C028",
@@ -82,7 +83,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C028?",
       "respuesta": "no se sabe",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C023",
@@ -90,7 +91,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C023?",
       "respuesta": "2026-10-28",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C027",
@@ -98,7 +99,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C027?",
       "respuesta": "2026-11-03",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C003",
@@ -106,7 +107,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C003?",
       "respuesta": "",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C021",
@@ -114,7 +115,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C021?",
       "respuesta": "2026-10-30",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     },
     {
       "candidato_id": "C024",
@@ -122,7 +123,7 @@
       "pregunta": "¿Cuál es la availability_date del candidato C024?",
       "respuesta": "2026-11-10",
       "resultado": "limite_alcanzado",
-      "motivo": "No se preguntó: se alcanzó el máximo de 3 consultas al reclutador; el dato sigue desconocido."
+      "motivo": "No se preguntÃ³: se alcanzÃ³ el mÃ¡ximo de 3 consultas al reclutador; el dato sigue desconocido."
     }
   ],
   "criterios_vigentes": {

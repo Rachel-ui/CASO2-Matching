@@ -30,10 +30,23 @@ limits:
 recruiter:
   max_queries: 3
 
+# RF-08: rondas de aprobación humana de la shortlist (rechazo + reemplazo).
+# Con el valor por defecto (3) cada puesto se puede reemplazar hasta 2 veces.
+approval:
+  max_reviews: 3
+
 llm:
-  max_calls_per_job: 30
+  # Con el plan gratis de OpenRouter (50 peticiones/día) 8 llamadas alcanzan
+  # para las justificaciones del LLM; el resto usa la plantilla (RNF-08).
+  max_calls_per_job: 8
   # OpenRouter (API compatible con OpenAI). Se puede sobreescribir con LLM_MODEL.
-  model: anthropic/claude-3.5-haiku
+  # Los modelos gratis se saturan: `openrouter/free` enruta a otro modelo gratis
+  # cuando uno está caído o saturado (429 del proveedor), así la secuencia no
+  # se detiene. OJO: no evita el tope de la cuenta (`free-models-per-day`, 50
+  # al día); si ese se agota, todo cae a la justificación por plantilla (RNF-08)
+  # y el error queda en `errores` y en la auditoría. Para evadirlo: esperar al
+  # reinicio diario, agregar créditos o usar Groq (LLM_BASE_URL + LLM_API_KEY).
+  model: openrouter/free
   base_url: https://openrouter.ai/api/v1
 
 agent:

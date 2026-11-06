@@ -410,3 +410,329 @@ def test_si_el_llm_responde_algo_que_no_es_json_se_usan_las_reglas(monkeypatch):
 
     assert clasificado["clase"] == NO_RELACIONADO
     assert clasificado["fuente"] == "reglas"
+
+
+# --- RF-01: extracción de requisitos (fase 1 por campo, fase 2 con el LLM) ---
+
+def test_fase_1_usa_la_vacante_estructurada_del_correo():
+    """Sin LLM, los requisitos salen del campo `vacante_estructurada`."""
+
+    original = correo(cargar_bandeja(), "b1")["vacante_estructurada"]
+    decision = encolar(correo(cargar_bandeja(), "b1"), vacia_cola())
+
+    requisitos = decision["requisitos"]
+
+    assert decision["fuente"] == "reglas"
+    # El rol es el título normalizado (minúsculas), igual que el que usa la
+    # huella de duplicados.
+    assert requisitos["rol"] == original["titulo"].lower()
+    assert requisitos["skills_obligatorios"] == original["skills_obligatorios"]
+    assert requisitos["skills_deseables"] == original["skills_deseables"]
+    assert requisitos["anos_experiencia"] == original["experience_required"]
+    assert requisitos["nivel_ingles"] == original["english_required"]
+    assert requisitos["modalidad"] == original["modality"]
+    assert requisitos["fecha_inicio"] == original["availability_required"]
+
+
+def test_fase_2_extrae_los_siete_requisitos_con_el_llm():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend con Python.",
+                "vacante": {
+                    "titulo": "Desarrollador Backend",
+                    "skills_obligatorios": ["Python", "SQL"],
+                    "skills_deseables": ["AWS"],
+                    "experience_required": 3,
+                    "english_required": "b2",
+                    "availability_required": "2026-11-15",
+                    "modality": "Híbrido",
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(
+        correo_libre("r1", "Vacante", "Buscamos un backend con Python y SQL."), llm
+    )
+
+    assert clasificado["clase"] == VACANTE_NUEVA
+    assert clasificado["requisitos"] == {
+        # `rol_de_vacante` normaliza el título en minúsculas, igual que en fase 1.
+        "rol": "desarrollador backend",
+        "skills_obligatorios": ["Python", "SQL"],
+        "skills_deseables": ["AWS"],
+        "anos_experiencia": 3,
+        "nivel_ingles": "B2",
+        "modalidad": "hibrido",
+        "fecha_inicio": "2026-11-15",
+    }
+    # El LLM ve el correo completo y no se le pide decidir la cola.
+    assert "Python y SQL" in llm.mensajes[0][1][1]
+
+
+def test_la_fecha_relativa_del_llm_se_calcula_desde_el_correo():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Go"],
+                    "availability_required": "en 2 semanas",
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(
+        correo_libre("r2", "Vacante", "Buscamos Go.", timestamp="2026-10-20T09:00:00"), llm
+    )
+
+    assert clasificado["vacante"]["availability_required"] == "2026-11-03"
+
+
+def test_un_dato_invalido_del_llm_queda_vacio_y_se_avisa():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Python"],
+                    "english_required": "nativo",
+                    "modality": "desde Marte",
+                    "availability_required": "cuando puedan",
+                    "experience_required": "muchos",
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r3", "Vacante", "Bajo."), llm)
+    vacante = clasificado["vacante"]
+
+    assert vacante["english_required"] is None
+    assert vacante["modality"] is None
+    assert vacante["availability_required"] is None
+    assert vacante["experience_required"] is None
+    assert len(clasificado["advertencias"]) == 4
+    assert any("inglés" in advertencia for advertencia in clasificado["advertencias"])
+
+
+def test_un_dato_ilegible_del_llm_se_recupera_del_texto_si_esta_escrito():
+    """RF-01 fase 2: lo que el LLM no pudo devolver se completa con reglas."""
+
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Python"],
+                    "english_required": "nativo",
+                    "modality": "desde Marte",
+                },
+            }
+        )
+    )
+    cuerpo = (
+        "Necesitamos un desarrollador backend con Python, inglés B1 y "
+        "modalidad remota, para empezar el 15 de noviembre de 2026."
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r6", "Vacante", cuerpo), llm)
+
+    assert clasificado["clase"] == VACANTE_NUEVA
+    assert clasificado["vacante"]["english_required"] == "B1"
+    assert clasificado["vacante"]["modality"] == "remoto"
+    assert clasificado["vacante"]["availability_required"] == "2026-11-15"
+    assert clasificado["origen"].endswith("reglas del texto")
+    assert any("tomado del texto" in aviso for aviso in clasificado["advertencias"])
+
+
+def test_las_reglas_no_pisan_lo_que_el_llm_si_extrajo():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Python"],
+                    "english_required": "A2",
+                    "modality": "hibrido",
+                },
+            }
+        )
+    )
+    cuerpo = "Necesitamos un backend con Python, inglés B2 y modalidad remota."
+
+    clasificado = clasificar_con_llm(correo_libre("r7", "Vacante", cuerpo), llm)
+
+    assert clasificado["vacante"]["english_required"] == "A2"
+    assert clasificado["vacante"]["modality"] == "hibrido"
+    assert clasificado["origen"] == "clasificación del LLM"
+
+
+def test_sin_skills_escritas_sin_rol_sigue_la_revision_humana():
+    """Si el texto no trae rol ni skills, las reglas no pueden completarlos."""
+
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Parece vacante.",
+                "vacante": {"titulo": "", "skills_obligatorios": []},
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r8", "Saludos", "Hola, gracias."), llm)
+
+    assert clasificado["clase"] == REVISION_HUMANA
+
+
+def test_las_skills_del_llm_se_llevan_a_la_forma_del_catalogo():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["python", "nodejs"],
+                    "skills_deseables": ["Node.js", "Kafka"],
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r9", "Vacante", "Bajo."), llm)
+
+    assert clasificado["vacante"]["skills_obligatorios"] == ["Python", "Node.js"]
+    assert clasificado["vacante"]["skills_deseables"] == ["Kafka"]
+
+
+def test_sin_skills_del_llm_se_toman_las_escritas_en_el_texto():
+    """RF-01: si el LLM no devuelve skills, las reglas las recuperan del texto."""
+
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {"titulo": "Backend", "skills_obligatorios": []},
+            }
+        )
+    )
+    cuerpo = "Buscamos un desarrollador backend con Python y SQL para el equipo."
+
+    clasificado = clasificar_con_llm(correo_libre("r10", "Vacante", cuerpo), llm)
+
+    assert clasificado["clase"] == VACANTE_NUEVA
+    assert clasificado["vacante"]["skills_obligatorios"] == ["Python", "SQL"]
+    assert clasificado["requisitos"]["skills_obligatorios"] == ["Python", "SQL"]
+    assert any("tomados del texto" in aviso for aviso in clasificado["advertencias"])
+
+
+def test_una_skill_recuperada_del_texto_no_queda_duplicada_en_deseables():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["SQL"],
+                    "skills_deseables": ["Python"],
+                },
+            }
+        )
+    )
+    cuerpo = "Necesitamos un backend con Python, SQL, Django y AWS."
+
+    clasificado = clasificar_con_llm(correo_libre("r11", "Vacante", cuerpo), llm)
+
+    vacante = clasificado["vacante"]
+    assert vacante["skills_obligatorios"] == ["SQL"]
+    # Las deseables del LLM se mantienen y no repiten una obligatoria; lo demás
+    # del texto no se promueve a obligatorio porque el LLM ya devolvió skills.
+    assert vacante["skills_deseables"] == ["Python"]
+    assert "Django" not in vacante["skills_obligatorios"]
+
+
+def test_el_llm_no_inventa_el_id_de_la_vacante():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "id": "B999",
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Python"],
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r10", "Vacante", "Bajo."), llm)
+    decision = encolar(
+        correo_libre("r10", "Vacante", "Bajo."), vacia_cola(), modo=MODO_CON_LLM, llm=llm
+    )
+
+    assert "id" not in clasificado["vacante"]
+    assert decision["clase"] == VACANTE_NUEVA
+    assert decision["vacante_id"] == "V2026-10-20T09:00:00"
+
+
+def test_las_skills_deseables_no_repiten_las_obligatorias():
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Piden un backend.",
+                "vacante": {
+                    "titulo": "Backend",
+                    "skills_obligatorios": ["Python"],
+                    "skills_deseables": ["python", "Docker"],
+                },
+            }
+        )
+    )
+
+    clasificado = clasificar_con_llm(correo_libre("r4", "Vacante", "Bajo."), llm)
+
+    assert clasificado["vacante"]["skills_deseables"] == ["Docker"]
+
+
+def test_el_llm_recibe_las_vacantes_ya_recibidas_para_reconocer_reenvios():
+    bandeja = cargar_bandeja()
+    cola = vacia_cola()
+    encolar(correo(bandeja, "b1"), cola)
+
+    llm = LLM_Doble(
+        texto=json.dumps(
+            {
+                "clase": "vacante_nueva",
+                "motivo": "Otra solicitud.",
+                "vacante": {"titulo": "Desarrollador Go", "skills_obligatorios": ["Go"]},
+            }
+        )
+    )
+    encolar(
+        correo_libre("r5", "RE: Solicitud", "Reenvío de la de siempre."),
+        cola,
+        modo=MODO_CON_LLM,
+        llm=llm,
+    )
+
+    prompt = llm.mensajes[0][1][1]
+
+    assert "Vacantes ya recibidas" in prompt
+    assert "B001" in prompt

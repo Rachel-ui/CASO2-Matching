@@ -43,6 +43,8 @@ class Configuracion:
     max_llamadas_llm: int = 30
     max_horas_monitoreo: float = 3
     max_pasos_grafo: int = 400
+    # RF-08: rondas de aprobación humana (rechazo + búsqueda de reemplazo).
+    max_revisiones_aprobacion: int = 3
 
     @property
     def sin_llm(self) -> bool:
@@ -64,6 +66,7 @@ class Configuracion:
             "llamadas_llm": self.max_llamadas_llm,
             "pasos_grafo": self.max_pasos_grafo,
             "recursion_limit": self.recursion_limit,
+            "revisiones_aprobacion": self.max_revisiones_aprobacion,
         }
 
 
@@ -103,6 +106,7 @@ def cargar_configuracion(ruta: Path | None = None) -> Configuracion:
     recruiter = datos.get("recruiter", {})
     llm = datos.get("llm", {})
     limites = datos.get("limits", {})
+    aprobacion = datos.get("approval", {})
 
     return Configuracion(
         modo=normalizar_modo(modo),
@@ -116,4 +120,5 @@ def cargar_configuracion(ruta: Path | None = None) -> Configuracion:
         max_llamadas_llm=int(llm.get("max_calls_per_job", 30)),
         max_horas_monitoreo=float(limites.get("max_monitoring_hours", 3)),
         max_pasos_grafo=int(limites.get("recursion_limit", 400)),
+        max_revisiones_aprobacion=int(aprobacion.get("max_reviews", 3)),
     )

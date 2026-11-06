@@ -1,4 +1,4 @@
-"""Clasificación de correos y cola de vacantes (RF-16).
+"""Clasificación de correos, extracción de requisitos y cola (RF-01, RF-16).
 
 Cada correo que llega a la bandeja se clasifica en una de tres clases:
 
@@ -14,12 +14,21 @@ obligatorios, no se inventan criterios: queda en `revision_humana`. La
 variante de texto que no alcanza para el matching también va a revisión, no a
 "no relacionado", porque el remitente sí quería contratar.
 
+Extracción de requisitos (RF-01). El agente convierte el texto de la vacante
+en requisitos estructurados: rol (`titulo`), skills obligatorios, skills
+deseables, años de experiencia, nivel de inglés, modalidad y fecha de inicio
+(`availability_required`).
+
 Fase 1 (por reglas, reproducibles, sin red), según `AGENTE_MODO` o el
 argumento `modo`:
 
-- `without_llm`: interpretación determinista del texto (`interpretar_texto`).
-- `with_llm`: el LLM decide la clase y extrae los campos; la validación y la
-  detección de duplicados siguen en código (el LLM no decide qué entra).
+- `without_llm`: interpretación determinista del texto (`interpretar_texto`) y,
+  si el correo trae el campo `vacante_estructurada`, se usa ese tal cual.
+- `with_llm`: el LLM decide la clase y extrae los campos (RF-01 y RF-16); la
+  validación, la detección de duplicados y la entrada a la cola siguen en
+  código (el LLM no decide qué entra). Los campos que el LLM deja vacíos o
+  devuelve mal se completan con las reglas del texto (`completar_con_reglas`),
+  sin inventar. Si el LLM falla, se usan las reglas.
 
 En ambos modos la salida tiene la misma forma, para que la cola y el matching
 no cambien de contrato.
@@ -69,6 +78,23 @@ CAMPOS_DE_VACANTE = (
     "availability_required",
     "modality",
 )
+
+# Requisitos estructurados que pide RF-01. La fecha de inicio del correo se
+# guarda en `availability_required`, que es el nombre del esquema de vacante.
+CAMPOS_DE_REQUISITOS = (
+    "rol",
+    "skills_obligatorios",
+    "skills_deseables",
+    "experience_required",
+    "english_required",
+    "modality",
+    "availability_required",
+)
+
+NIVELES_INGLES = {"A1", "A2", "B1", "B2", "C1", "C2"}
+# Un rol más largo que esto no es un título: es el cuerpo del correo copiado.
+MAX_TITULO = 80
+MODALIDADES = {"remoto", "hibrido", "presencial"}
 
 
 class ErrorClasificacion(ValueError):
@@ -445,6 +471,292 @@ def revisar_datos(datos: dict) -> list[str]:
     return validar_vacante(datos)
 
 
+def requisitos_estructurados(datos: dict) -> dict:
+    """Requisitos de la vacante con la forma que pide RF-01 (vista legible).
+
+    `rol` y la `fecha_inicio` son alias de `titulo` y `availability_required`,
+    que son los nombres del esquema con el que trabaja el matching.
+    """
+
+    return {
+        "rol": rol_de_vacante(datos),
+        "skills_obligatorios": list(datos.get("skills_obligatorios") or []),
+        "skills_deseables": list(datos.get("skills_deseables") or []),
+        "anos_experiencia": datos.get("experience_required"),
+        "nivel_ingles": datos.get("english_required"),
+        "modalidad": datos.get("modality"),
+        "fecha_inicio": datos.get("availability_required"),
+    }
+
+
+# --- extracción de requisitos con el LLM (RF-01, fase 2) ---
+
+
+def _texto(valor) -> str | None:
+    """Campo de texto del LLM: recortado, y None si quedó vacío."""
+
+    if valor is None or isinstance(valor, (dict, list)):
+        return None
+    texto = str(valor).strip()
+    return texto or None
+
+
+def _lista_de_skills(valor) -> list[str]:
+    """Skills del LLM como lista de textos únicos (acepta "a, b" o una lista)."""
+
+    if valor is None:
+        return []
+    elementos = valor if isinstance(valor, list) else re.split(r"[,;]", str(valor))
+    skills = [str(skill).strip() for skill in elementos if str(skill).strip()]
+    return list(dict.fromkeys(skills))
+
+
+def _anos_experiencia(valor) -> tuple[int | None, str | None]:
+    """Años de experiencia: entero no negativo, o None con el motivo."""
+
+    if valor is None or (isinstance(valor, str) and not valor.strip()):
+        return None, None
+    if isinstance(valor, bool):
+        return None, f"años de experiencia no válidos ({valor!r})"
+    try:
+        numero = int(float(str(valor).replace(",", ".").split()[0]))
+    except (TypeError, ValueError):
+        return None, f"años de experiencia no válidos ({valor!r})"
+    if numero < 0 or numero > 60:
+        return None, f"años de experiencia fuera de rango ({valor!r})"
+    return numero, None
+
+
+def _nivel_ingles(valor) -> tuple[str | None, str | None]:
+    """Nivel MCER normalizado ("b2" o "B2 alto" -> B2), o None con el motivo."""
+
+    if valor is None or (isinstance(valor, str) and not valor.strip()):
+        return None, None
+    texto = str(valor).upper()
+    coincidencia = re.search(r"\b([ABC][12])\b", texto)
+    if not coincidencia:
+        return None, f"nivel de inglés no válido ({valor!r})"
+    return coincidencia.group(1), None
+
+
+def _modalidad(valor) -> tuple[str | None, str | None]:
+    """Modalidad del esquema: remoto, hibrido o presencial."""
+
+    if valor is None or (isinstance(valor, str) and not valor.strip()):
+        return None, None
+    texto = normalizar_texto(str(valor))
+    for modalidad in MODALIDADES:
+        if modalidad in texto:
+            return modalidad, None
+    return None, f"modalidad no válida ({valor!r})"
+
+
+def _fecha(valor, hoy: date | None) -> tuple[str | None, str | None]:
+    """Fecha de inicio en ISO. Las relativas ("en 2 semanas") se cuentan desde hoy."""
+
+    if valor is None or (isinstance(valor, str) and not valor.strip()):
+        return None, None
+    if isinstance(valor, date):
+        return valor.isoformat(), None
+
+    texto = normalizar_texto(str(valor))
+    coincidencia = re.search(r"(\d{4}-\d{2}-\d{2})", texto)
+    if not coincidencia:
+        coincidencia = re.search(r"(\d{1,2})/(\d{1,2})/(\d{4})", texto)
+        if coincidencia:
+            dia, mes, anio = coincidencia.groups()
+            texto_iso = f"{anio}-{int(mes):02d}-{int(dia):02d}"
+        else:
+            texto_iso = ""
+    else:
+        texto_iso = coincidencia.group(1)
+
+    if texto_iso:
+        try:
+            return date.fromisoformat(texto_iso).isoformat(), None
+        except ValueError:
+            return None, f"fecha de inicio no válida ({valor!r})"
+
+    if hoy is not None:
+        from datetime import timedelta
+
+        try:
+            # Mismo cálculo que la fase 1 (`extraer_fecha`), para que la fecha
+            # sea la misma venga del LLM o de las reglas (RF-01).
+            from src.interpretar_texto import extraer_fecha
+
+            fecha_texto = extraer_fecha(texto, hoy)
+        except Exception:
+            fecha_texto = None
+        if fecha_texto:
+            return fecha_texto, None
+
+        relativa = re.search(
+            r"(?:en|dentro de)\s+(\d{1,2})\s+(dias?|semanas?|meses?|mes)", texto, re.IGNORECASE
+        )
+        if relativa:
+            cantidad = int(relativa.group(1))
+            unidad = relativa.group(2)
+            dias = cantidad * (
+                1 if unidad.startswith("dia") else 7 if unidad.startswith("semana") else 30
+            )
+            return (hoy + timedelta(days=dias)).isoformat(), None
+
+    return None, f"fecha de inicio ilegible ({valor!r})"
+
+
+def normalizar_vacante_llm(respuesta: dict, hoy: date | None = None) -> tuple[dict, list[str]]:
+    """Extrae los requisitos de RF-01 de la respuesta del LLM (fase 2).
+
+    Lo que el LLM devuelve se valida con el mismo esquema del matching: los
+    campos que no encajan (nivel, modalidad o fecha) quedan en None y se
+    reportan en las advertencias; nunca se inventa un valor. Si el LLM ya
+    trae el alias `rol` o `fecha_inicio`, se acepta también.
+
+    Las skills se llevan a su forma canónica del catálogo cuando el catálogo
+    las reconoce ("nodejs" -> Node.js), para que el puntaje no pierda un skill
+    por cómo lo escribió el modelo; lo que el catálogo no conoce se deja como
+    llegó, porque el matching compara por texto normalizado.
+    """
+
+    from src.interpretar_texto import canonicalizar_skill
+
+    datos = respuesta.get("vacante")
+    if not isinstance(datos, dict):
+        datos = {}
+
+    advertencias = []
+    experiencia, problema = _anos_experiencia(datos.get("experience_required"))
+    if problema:
+        advertencias.append(problema)
+    ingles, problema = _nivel_ingles(datos.get("english_required"))
+    if problema:
+        advertencias.append(problema)
+    modalidad, problema = _modalidad(datos.get("modality"))
+    if problema:
+        advertencias.append(problema)
+    fecha, problema = _fecha(datos.get("availability_required", datos.get("fecha_inicio")), hoy)
+    if problema:
+        advertencias.append(problema)
+
+    obligatorios = _lista_de_skills(
+        [canonicalizar_skill(skill) for skill in _lista_de_skills(datos.get("skills_obligatorios"))]
+    )
+    # Las deseables se separan de las obligatorias con el mismo criterio del
+    # catálogo (RPG IV y RPG ILE son la misma skill), no solo por texto.
+    ya_obligatorios = {normalizar_texto(skill) for skill in obligatorios}
+    deseables = _lista_de_skills(
+        [
+            canonicalizar_skill(skill)
+            for skill in _lista_de_skills(datos.get("skills_deseables"))
+            if normalizar_texto(canonicalizar_skill(skill)) not in ya_obligatorios
+        ]
+    )
+
+    titulo = _texto(datos.get("titulo")) or _texto(datos.get("rol")) or ""
+    if len(titulo) > MAX_TITULO:
+        # El rol es un título, no el cuerpo del correo: si el LLM copió el
+        # texto entero, se corta en la primera frase (RF-01).
+        titulo = re.split(r"[.\n]", titulo, maxsplit=1)[0].strip()[:MAX_TITULO].strip()
+        advertencias.append("titulo: el LLM devolvió el texto del correo; se recortó al rol")
+
+    vacante = {
+        "titulo": titulo,
+        "descripcion": _texto(datos.get("descripcion")) or "",
+        "skills_obligatorios": obligatorios,
+        "skills_deseables": deseables,
+        "experience_required": experiencia,
+        "english_required": ingles,
+        "availability_required": fecha,
+        "modality": modalidad,
+    }
+    return vacante, advertencias
+
+
+def completar_con_reglas(datos: dict, correo: dict) -> tuple[dict, list[str]]:
+    """Completa, sin inventar, los requisitos que el LLM no pudo devolver (RF-01).
+
+    Fase 2: el LLM extrae los requisitos, pero si un campo llega vacío o no se
+    pudo usar (nivel, modalidad, fecha o años ilegibles) se toma del mismo
+    texto con las reglas de la fase 1. Solo se llena lo que está vacío y solo
+    si la regla encontró ese dato escrito en el correo; lo que el LLM sí
+    devolvió nunca se cambia. Devuelve la vacante completada y las
+    advertencias de lo que se recuperó del texto.
+    """
+
+    texto = str(correo.get("cuerpo") or "")
+    if not texto.strip():
+        return dict(datos), []
+
+    del_texto = interpretar_vacante(texto, [], hoy=_fecha_del_correo(correo)).datos
+    completo = dict(datos)
+    recuperados = []
+
+    for campo in (
+        "experience_required",
+        "english_required",
+        "modality",
+        "availability_required",
+    ):
+        if completo.get(campo) not in (None, ""):
+            continue
+        valor = del_texto.get(campo)
+        if valor in (None, ""):
+            continue
+        completo[campo] = valor
+        recuperados.append(f"{campo}: {valor} (tomado del texto por reglas)")
+
+    # El título lo arma el LLM a partir del rol; si no lo trajo, se toma el de
+    # las reglas (primera línea del correo) para no descartar el correo por un
+    # título vacío. El rol en sí sigue siendo obligatorio para encolar.
+    if completo.get("titulo") in (None, ""):
+        valor = del_texto.get("titulo")
+        if valor not in (None, ""):
+            completo["titulo"] = valor
+            recuperados.append(f"titulo: {valor} (tomado del texto por reglas)")
+
+    if not completo.get("skills_obligatorios"):
+        # Sin skills obligatorios nada entra al matching: solo se completan si
+        # el texto las trae y el LLM no devolvió ninguna.
+        del_texto_skills = list(del_texto.get("skills_obligatorios") or [])
+        if del_texto_skills:
+            completo["skills_obligatorios"] = del_texto_skills
+            recuperados.append(
+                "skills_obligatorios: "
+                + ", ".join(del_texto_skills)
+                + " (tomados del texto por reglas)"
+            )
+
+    if not completo.get("skills_deseables"):
+        del_texto_deseables = list(del_texto.get("skills_deseables") or [])
+        if del_texto_deseables:
+            completo["skills_deseables"] = del_texto_deseables
+            recuperados.append(
+                "skills_deseables: "
+                + ", ".join(del_texto_deseables)
+                + " (tomadas del texto por reglas)"
+            )
+
+    # Un skill recuperado de las deseables del texto no puede quedar a la vez
+    # como deseable y como obligatorio.
+    return _sin_skills_repetidas(completo), recuperados
+
+
+def _sin_skills_repetidas(datos: dict) -> dict:
+    """La misma skill no queda a la vez como obligatoria y deseable."""
+
+    datos = dict(datos)
+    obligatorios = {
+        normalizar_texto(skill) for skill in datos.get("skills_obligatorios") or []
+    }
+    datos["skills_deseables"] = [
+        skill
+        for skill in datos.get("skills_deseables") or []
+        if normalizar_texto(skill) not in obligatorios
+    ]
+    return datos
+
+
 def _completar_desde_texto(datos: dict, texto: str, hoy: date | None) -> dict:
     """Deja vacíos (no inventados) los campos que el texto no mencionó."""
 
@@ -461,19 +773,30 @@ def _completar_desde_texto(datos: dict, texto: str, hoy: date | None) -> dict:
     return completo
 
 
-def clasificar_con_llm(correo: dict, llm) -> dict:
-    """Fase 2: el LLM decide la clase y extrae los criterios (RF-16).
+def clasificar_con_llm(correo: dict, llm, vacantes_recibidas=None) -> dict:
+    """Fase 2: el LLM clasifica y extrae los requisitos (RF-01/RF-16).
 
     Se le pasa el correo completo y su respuesta se valida en código: si
     dice `vacante_nueva` pero no trae rol ni skills obligatorios, se degrada
-    a `revision_humana`; si falla la llamada, se usa la fase 1 por reglas.
+    a `revision_humana`. Si el LLM falla o devuelve un formato inválido en
+    los dos intentos (RNF-08), se usa la fase 1 por reglas.
+
+    RF-01: los requisitos que el LLM deja vacíos o devuelve mal se completan
+    con las reglas del texto (`completar_con_reglas`). Lo que el LLM sí
+    devolvió nunca se cambia y lo que no está escrito tampoco se inventa.
+
+    `vacantes_recibidas` es la cola de vacantes ya aceptadas: va en el prompt
+    para que el LLM reconozca un reenvío, aunque el duplicado se decide en
+    `encolar`.
     """
 
-    from src.llm_cliente import ErrorLLM, interpretar_correo_con_llm
+    from src.llm_cliente import ErrorLLM, interpretar_correo_con_llm, resumir_error
 
     hoy = _fecha_del_correo(correo)
     try:
-        respuesta = interpretar_correo_con_llm(llm, correo, hoy)
+        respuesta = interpretar_correo_con_llm(
+            llm, correo, hoy, vacantes_recibidas=vacantes_recibidas
+        )
     except ErrorLLM as error:
         clasificado = clasificar_por_reglas(correo)
         clasificado["fuente"] = FUENTE_REGLAS
@@ -484,7 +807,8 @@ def clasificar_con_llm(correo: dict, llm) -> dict:
     except Exception as error:  # red, cuota o modelo inválido
         clasificado = clasificar_por_reglas(correo)
         clasificado["advertencias"] = clasificado.get("advertencias", []) + [
-            f"Falló la llamada al LLM, se usaron las reglas: {type(error).__name__}: {error}"
+            f"LLM no disponible tras el reintento (RNF-08), se usaron las reglas: "
+            f"{resumir_error(error)}"
         ]
         return clasificado
 
@@ -501,7 +825,11 @@ def clasificar_con_llm(correo: dict, llm) -> dict:
             "llm_calls": llm_calls,
         }
 
-    datos = normalizar_vacante_llm(respuesta)
+    datos, problemas_de_campos = normalizar_vacante_llm(respuesta, hoy)
+    if datos.get("id"):
+        # El ID es del catálogo de la bandeja, no algo que el LLM deba inventar.
+        del datos["id"]
+    datos, recuperados = completar_con_reglas(datos, correo)
     if not tiene_rol_y_skills(datos):
         return {
             **_revision(
@@ -510,41 +838,34 @@ def clasificar_con_llm(correo: dict, llm) -> dict:
                 FUENTE_LLM,
                 _problemas_de_vacante(datos),
             ),
+            "advertencias": problemas_de_campos + recuperados,
             "llm_calls": llm_calls,
         }
 
     # El LLM no decide si entra: solo propone la clase. La cola y los
     # duplicados los resuelve `encolar` en código.
     clase = VACANTE_NUEVA
+    origen = "clasificación del LLM"
+    if recuperados:
+        origen += " + reglas del texto"
     return {
         **vacante_nueva(
             datos,
-            "clasificación del LLM",
+            origen,
             FUENTE_LLM,
             str(respuesta.get("motivo") or "El LLM identificó una solicitud de vacante."),
+            # Un campo que el LLM devolvió mal se recupera del texto o queda
+            # vacío; se avisa y nunca se corrige a ojo ni se inventa
+            # (RF-01/RNF-03).
+            [
+                f"el LLM devolvió un dato que no se pudo usar: {problema}"
+                for problema in problemas_de_campos
+            ]
+            + recuperados,
         ),
         "clase": clase,
+        "requisitos": requisitos_estructurados(datos),
         "llm_calls": llm_calls,
-    }
-
-
-def normalizar_vacante_llm(respuesta: dict) -> dict:
-    """Normaliza los campos de la vacante que devolvió el LLM."""
-
-    datos = respuesta.get("vacante")
-    if not isinstance(datos, dict):
-        datos = {}
-
-    return {
-        "id": datos.get("id") or "",
-        "titulo": datos.get("titulo") or "",
-        "descripcion": datos.get("descripcion") or "",
-        "skills_obligatorios": [str(s).strip() for s in datos.get("skills_obligatorios") or [] if str(s).strip()],
-        "skills_deseables": [str(s).strip() for s in datos.get("skills_deseables") or [] if str(s).strip()],
-        "experience_required": datos.get("experience_required"),
-        "english_required": str(datos.get("english_required") or "").upper() or None,
-        "availability_required": datos.get("availability_required"),
-        "modality": datos.get("modality"),
     }
 
 
@@ -558,14 +879,23 @@ def modo_de_clasificacion(modo: str | None = None) -> str:
     return cargar_configuracion().modo
 
 
-def clasificar_correo(correo: dict, modo: str | None = None, llm=None) -> dict:
-    """Clasifica un correo en la fase indicada por la configuración (RF-16)."""
+def clasificar_correo(
+    correo: dict,
+    modo: str | None = None,
+    llm=None,
+    vacantes_recibidas=None,
+) -> dict:
+    """Clasifica un correo en la fase indicada por la configuración (RF-16).
+
+    En fase 1 los requisitos salen del campo `vacante_estructurada` del correo
+    (o de las reglas sobre el texto); en fase 2 los extrae el LLM (RF-01).
+    """
 
     from src.configuracion import MODO_CON_LLM
 
     fase = modo_de_clasificacion(modo)
     if fase == MODO_CON_LLM:
-        return clasificar_con_llm(correo, llm)
+        return clasificar_con_llm(correo, llm, vacantes_recibidas=vacantes_recibidas)
     return clasificar_por_reglas(correo)
 
 
@@ -634,7 +964,9 @@ def encolar(correo: dict, cola: dict, modo: str | None = None, llm=None) -> dict
     Devuelve la decisión con la forma de `clasificar_correo` más `en_cola`.
     """
 
-    clasificado = clasificar_correo(correo, modo=modo, llm=llm)
+    clasificado = clasificar_correo(
+        correo, modo=modo, llm=llm, vacantes_recibidas=cola["vacantes"]
+    )
     message_id = str(correo.get("message_id") or "")
     base = {
         "message_id": message_id,
@@ -677,6 +1009,8 @@ def encolar(correo: dict, cola: dict, modo: str | None = None, llm=None) -> dict
                     f"Vacante ya recibida en el correo {previo.get('message_id', '')}; "
                     "no vuelve a la cola."
                 ),
+                # Requisitos extraídos del correo, aunque no entren al matching.
+                "requisitos": clasificado.get("requisitos") or requisitos_estructurados(datos),
             }
 
         cola["vacantes"].append(
@@ -686,6 +1020,7 @@ def encolar(correo: dict, cola: dict, modo: str | None = None, llm=None) -> dict
                 "origen": clasificado.get("origen", ""),
                 "fuente": clasificado.get("fuente", ""),
                 "huella": huella_vacante(datos),
+                "requisitos": clasificado.get("requisitos") or requisitos_estructurados(datos),
             }
         )
         return {
@@ -695,6 +1030,7 @@ def encolar(correo: dict, cola: dict, modo: str | None = None, llm=None) -> dict
             "disparo_matching": True,
             "en_cola": True,
             **base,
+            "requisitos": clasificado.get("requisitos") or requisitos_estructurados(datos),
         }
 
     if clasificado["clase"] == REVISION_HUMANA:
@@ -704,6 +1040,8 @@ def encolar(correo: dict, cola: dict, modo: str | None = None, llm=None) -> dict
                 "datos": clasificado.get("datos") or {},
                 "problemas": clasificado.get("problemas", []),
                 "motivo": clasificado.get("motivo", ""),
+                # Lo extraído se guarda igual: la persona revisa y completa.
+                "requisitos": requisitos_estructurados(clasificado.get("datos") or {}),
             }
         )
         return {

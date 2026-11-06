@@ -16,6 +16,7 @@ from src.estado_agente import crear_estado_inicial
 from src.grafo_matching import app_matching
 from src.llm_cliente import (
     MODELO_POR_DEFECTO,
+    MODELO_POR_DEFECTO_GROQ,
     PROMPT_SISTEMA,
     ErrorLLM,
     api_key_configurada,
@@ -60,8 +61,13 @@ class LLM_Doble:
 
 # --- RNF-01: dependencias y OpenRouter ---
 
-def test_modelo_por_defecto_es_de_anthropic():
-    assert MODELO_POR_DEFECTO.startswith("anthropic/")
+def test_modelo_por_defecto_es_un_id_valido_de_openrouter():
+    # Los `anthropic/claude-3.5-*` que se usaban antes ya no existen en
+    # OpenRouter (daban 404 y todo caía a la plantilla). El id debe ser
+    # `proveedor/modelo`, no un nombre inventado.
+    proveedor, _, modelo = MODELO_POR_DEFECTO.partition("/")
+    assert proveedor and modelo, "el id debe tener la forma proveedor/modelo"
+    assert MODELO_POR_DEFECTO.count("/") == 1
 
 
 def test_modelo_se_puede_cambiar_por_variable(monkeypatch):
@@ -79,12 +85,28 @@ def test_sin_api_key_falla_con_mensaje_claro(monkeypatch, tmp_path):
 
 def test_cliente_apunta_a_openrouter(monkeypatch):
     monkeypatch.setenv("OPENROUTER_API_KEY", "clave-de-prueba")
+    monkeypatch.delenv("LLM_BASE_URL", raising=False)
 
     llm = crear_llm()
 
     assert str(llm.openai_api_base).rstrip("/") == "https://openrouter.ai/api/v1"
     assert llm.model_name == modelo_actual()
     assert llm.temperature == 0
+
+
+def test_cliente_usa_groq_si_se_configura(monkeypatch):
+    # Mismo cliente compatible con OpenAI: solo cambian URL, clave y modelo.
+    monkeypatch.setenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
+    monkeypatch.setenv("LLM_API_KEY", "gsk-de-prueba")
+    # `crear_llm` carga el `.env` local (donde puede estar LLM_MODEL): se le
+    # apunta a un archivo inexistente para que no interfiera.
+    monkeypatch.setattr("src.llm_cliente.RUTA_ENV", RAIZ / "no-existe.env")
+    monkeypatch.delenv("LLM_MODEL", raising=False)
+
+    llm = crear_llm()
+
+    assert str(llm.openai_api_base).rstrip("/") == "https://api.groq.com/openai/v1"
+    assert llm.model_name == MODELO_POR_DEFECTO_GROQ
 
 
 def test_api_key_desde_env_o_archivo(monkeypatch, tmp_path):

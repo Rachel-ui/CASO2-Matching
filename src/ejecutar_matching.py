@@ -7,6 +7,7 @@ Cubre RF-09, RF-10, RNF-02, RNF-03 y RNF-05.
 import csv
 import json
 import time
+import uuid
 from pathlib import Path
 
 from src.estado_agente import crear_estado_inicial
@@ -165,7 +166,7 @@ def invocar_con_limite(estado_inicial: dict, config) -> dict:
     no caben, se invoca solo con el máximo y LangGraph corta la corrida.
     """
 
-    opciones = {"max_concurrency": 1}
+    opciones = {"max_concurrency": 1, "configurable": {"thread_id": f"run-{uuid.uuid4().hex[:8]}"}}
     # Cota provisional: ninguno de los límites por corrida (3 relajaciones,
     # 3 consultas, 30 llamadas al LLM, 24 h de monitoreo) permite superarla.
     # Cada recorrido de candidatos gasta ~4 pasos por perfil.

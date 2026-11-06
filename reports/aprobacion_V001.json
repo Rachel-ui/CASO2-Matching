@@ -1,0 +1,33 @@
+{
+  "vacante_id": "V001",
+  "aprobacion": {
+    "estado": "aprobada",
+    "aprobados": [
+      "C002",
+      "C004",
+      "C018"
+    ],
+    "rechazados": [],
+    "revisiones": 1
+  },
+  "shortlist": [
+    {
+      "posicion": 1,
+      "id": "C002",
+      "puntaje": 90.0,
+      "justificacion": "Carlos Méndez: Cumple todos los requisitos obligatorios. Skills: 13/13 skills obligatorios (Java, Spring Boot, Kafka, REST API, Microservicios, GitLab, CI/CD, Terraform, Automatizacion de pruebas, New Relic, Splunk, AWS, Kubernetes). Deseables: GCP, Bases de datos relacionales. Experiencia: 8 años (requiere 7). Inglés: B2 (requiere B2). Disponibilidad: disponible desde 2026-11-20 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
+    },
+    {
+      "posicion": 2,
+      "id": "C004",
+      "puntaje": 90.0,
+      "justificacion": "José Vargas: Cumple todos los requisitos obligatorios. Skills: 13/13 skills obligatorios (Java, Spring Boot, Kafka, REST API, Microservicios, GitLab, CI/CD, Terraform, Automatizacion de pruebas, New Relic, Splunk, AWS, Kubernetes). Deseables: Supply Chain, Gestion de bodegas. Experiencia: 9 años (requiere 7). Inglés: C1 (requiere B2). Disponibilidad: disponible desde 2026-11-05 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
+    },
+    {
+      "posicion": 3,
+      "id": "C018",
+      "puntaje": 85.0,
+      "justificacion": "Sebastián León: Cumple todos los requisitos obligatorios. Skills: 13/13 skills obligatorios (Java, Spring Boot, Kafka, REST API, Microservicios, GitLab, CI/CD, Terraform, Automatizacion de pruebas, New Relic, Splunk, AWS, Kubernetes). Deseables: GCP. Experiencia: 10 años (requiere 7). Inglés: C2 (requiere B2). Disponibilidad: disponible desde 2026-11-01 (a tiempo, se requiere para 2026-11-29). Modalidad: modalidad remoto (vacante remoto)."
+    }
+  ]
+}

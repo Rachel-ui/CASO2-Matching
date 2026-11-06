@@ -268,8 +268,14 @@ def construir_shortlist(
     candidatos: list[dict],
     vacante: dict,
     config: Configuracion,
+    tamano: int | None = None,
 ) -> list[dict]:
-    """Evalúa candidatos y devuelve únicamente los aptos que superan el umbral."""
+    """Evalúa candidatos y devuelve únicamente los aptos que superan el umbral.
+
+    `tamano` permite armar una shortlist más larga que `shortlist_size` (RF-08:
+    los perfiles de reserva para reemplazar a un rechazado). Por defecto se
+    usan los puestos de la vacante.
+    """
 
     calificados = [
         {
@@ -291,7 +297,7 @@ def construir_shortlist(
         and item["puntaje"] >= config.threshold
     ]
 
-    shortlist = aptos[: config.shortlist_size]
+    shortlist = aptos[: tamano if tamano is not None else config.shortlist_size]
 
     return [
         {
